@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:cart="http://typo3.org/ns/Extcode/Cart/ViewHelpers"
+      xmlns:cartbooks="http://typo3.org/ns/Extcode/CartBooks/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<cart:titleTag>
+    <f:format.htmlentitiesDecode>{book.title}</f:format.htmlentitiesDecode>
+</cart:titleTag>
+
+<f:if condition="{book.metaDescription}">
+    <f:then>
+        <cart:metaTag name="description" content="{book.metaDescription -> f:format.stripTags() -> f:format.crop(maxCharacters: '150')}" />
+    </f:then>
+    <f:else>
+        <cart:metaTag name="description" content="{book.description -> f:format.stripTags() -> f:format.crop(maxCharacters: '150')}" />
+    </f:else>
+</f:if>
+
+<script type="application/ld+json">
+<cartbooks:schema book="{book}" />
+</script>
+
+<div class="book-wrapper">
+    <div class="book-title"><h1>{book.title}</h1></div>
+    <div class="book-author">{book.author}</div>
+    <div class="book-description">
+        <f:format.html>{book.description}</f:format.html>
+    </div>
+</div>
+
+<f:if condition="{slot.handleStock}">
+    <div>
+        <f:render partial="Book/Seats" arguments="{book: book}" />
+    </div>
+</f:if>
+
+<div>
+    <f:render partial="Book/Price" arguments="{book: book}" />
+</div>
+
+<f:if condition="bookable">
+    <div>
+        <f:render partial="Book/CartForm" arguments="{book: book, pid: cartSettings.cart.pid}" />
+    </div>
+</f:if>

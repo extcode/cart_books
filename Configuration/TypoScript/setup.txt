@@ -1,0 +1,30 @@
+plugin.tx_cartbooks {
+    view {
+        templateRootPaths.0 = {$plugin.tx_cartbooks.view.templateRootPath}
+        partialRootPaths.0 = {$plugin.tx_cartbooks.view.partialRootPath}
+        layoutRootPaths.0 = {$plugin.tx_cartbooks.view.layoutRootPath}
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_cartbooks.persistence.storagePid}
+        recursive = {$plugin.tx_cartbooks.persistence.recursive}
+
+        classes {
+            Extcode\CartEvents\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                }
+            }
+        }
+    }
+
+    settings {
+        format.currency < plugin.tx_cart.settings.format.currency
+
+        addToCartByAjax = {$plugin.tx_cart.settings.addToCartByAjax}
+    }
+
+    features {
+        skipDefaultArguments = 1
+    }
+}

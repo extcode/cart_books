@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books">
+        <header/>
+        <body>
+
+            <trans-unit id="tx_cartbooks_domain_model_book">
+                <source>Book</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.sku">
+                <source>Stock keeping unit</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.author">
+                <source>Author</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.isbn10">
+                <source>ISBN-10</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.isbn13">
+                <source>ISBN-13</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.issn">
+                <source>ISSN</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.teaser">
+                <source>Teaser</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.meta_description">
+                <source>Meta description</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.price">
+                <source>Price</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.special_prices">
+                <source>Special Prices</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.handle_stock">
+                <source>Stock handling</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.stock">
+                <source>Stock</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.category">
+                <source>Main Category</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.categories">
+                <source>Associated Categories</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.tags">
+                <source>Tags</source>
+            </trans-unit>
+
+            <trans-unit id="tx_cartbooks_domain_model_specialprice">
+                <source>Special Price</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_specialprice.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_specialprice.frontend_user_group">
+                <source>Website Usergroup</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_specialprice.price">
+                <source>Price</source>
+            </trans-unit>
+
+            <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
+                <source>CartBooks: Page where Books of this category are listed.</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_category.cart_book_show_pid">
+                <source>CartBooks: Page where Books of this category are shown.</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

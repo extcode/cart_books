@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books">
+        <header/>
+        <body>
+
+            <trans-unit id="tx_cartbooks_domain_model_book">
+                <source>Book</source>
+                <target>Buch</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.sku">
+                <source>Stock keeping unit</source>
+                <target>Artikelnummer</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.title">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.author">
+                <source>Author</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.teaser">
+                <source>Teaser</source>
+                <target>Kurzbeschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.meta_description">
+                <source>Meta description</source>
+                <target>Metabeschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.price">
+                <source>Price</source>
+                <target>Preis</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.special_prices">
+                <source>Special Prices</source>
+                <target>Spezialpreis</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.handle_stock">
+                <source>Stock handling</source>
+                <target>Lagerbestand verwalten</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.stock">
+                <source>Stock</source>
+                <target>Lagerbestand</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.category">
+                <source>Main Category</source>
+                <target>Hauptkategorie</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.categories">
+                <source>Associated Categories</source>
+                <target>Assoziierte Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.tags">
+                <source>Tags</source>
+                <target>Tags</target>
+            </trans-unit>
+
+            <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
+                <source>CartBooks: Page where Books of this category are listed.</source>
+                <target>CartBooks: Seite auf der Bücher dieser Kategorie aufgelistet werden.</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_category.cart_book_show_pid">
+                <source>CartBooks: Page where Books of this category are shown.</source>
+                <target>CartBooks: Seite auf der Bücher dieser Kategorie angezeigt werden.</target>
+            </trans-unit>
+            
+        </body>
+    </file>
+</xliff>
