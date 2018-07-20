@@ -16,18 +16,18 @@
                                 <items>
                                     <numIndex index="0">
                                         <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list_and_show</numIndex>
-                                        <numIndex index="1">Event->show;Event->list;Cart->add</numIndex>
+                                        <numIndex index="1">Book->show;Book->list;Cart->add</numIndex>
                                     </numIndex>
                                     <numIndex index="1">
                                         <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.show</numIndex>
-                                        <numIndex index="1">Event->show;Cart->add</numIndex>
+                                        <numIndex index="1">Book->show;Cart->add</numIndex>
                                     </numIndex>
                                     <numIndex index="2">
                                         <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.teaser</numIndex>
-                                        <numIndex index="1">Event->teaser</numIndex>
+                                        <numIndex index="1">Book->teaser</numIndex>
                                     </numIndex>
                                 </items>
-                                <default>Event->show;Event->list;Cart->add</default>
+                                <default>Book->show;Book->list;Cart->add</default>
                             </config>
                         </TCEforms>
                     </switchableControllerActions>
@@ -37,7 +37,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.orderBy</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Event->show;Event->list;Cart->add</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list;Cart->add</displayCond>
                             <config>
                                 <type>select</type>
                                 <items>
@@ -71,7 +71,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.orderDirection</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Event->show;Event->list;Cart->add</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list;Cart->add</displayCond>
                             <config>
                                 <type>select</type>
                                 <items>
@@ -98,8 +98,8 @@
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.limit</label>
                             <displayCond>
                                 <OR>
-                                    <numIndex index="0">FIELD:switchableControllerActions:=:Event->show;Event->list;Cart->add</numIndex>
-                                    <numIndex index="1">FIELD:switchableControllerActions:=:Event->teaser</numIndex>
+                                    <numIndex index="0">FIELD:switchableControllerActions:=:Book->show;Book->list;Cart->add</numIndex>
+                                    <numIndex index="1">FIELD:switchableControllerActions:=:Book->teaser</numIndex>
                                 </OR>
                             </displayCond>
                             <config>
@@ -121,7 +121,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.select.single_pid</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Event->show;Event->list;Cart->add</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list;Cart->add</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -143,7 +143,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.teaser.select.books</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Event->teaser</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->teaser</displayCond>
                             <config>
                                 <type>select</type>
                                 <foreign_table>tx_cartbooks_domain_model_book</foreign_table>
@@ -158,7 +158,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.categories</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Event->show;Event->list;Cart->add</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list;Cart->add</displayCond>
                             <config>
                                 <type>select</type>
                                 <autoSizeMax>20</autoSizeMax>
@@ -182,7 +182,7 @@
                     <settings.listSubcategories>
                         <TCEforms>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.subcategories</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Event->show;Event->list;Cart->add</displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list;Cart->add</displayCond>
                             <config>
                                 <type>check</type>
                             </config>

@@ -49,14 +49,19 @@ class StockUtility
         $cartProduct = $params['cartProduct'];
 
         if ($cartProduct->getProductType() == 'CartBooks') {
-            if ($cartProduct->isHandleStocks()) {
-                $cartProduct->setStock($product->getStock() + $cartProduct->getQuantity());
+            $productRepository = $this->objectManager->get(
+                \Extcode\CartBooks\Domain\Repository\BookRepository::class
+            );
 
-                $productRepository->update($cartProduct);
+            $cartProductId = $cartProduct->getProductId();
+            $product = $productRepository->findByUid($cartProductId);
 
+            if ($product && $product->isHandleStock()) {
+                $product->setStock($product->getStock() - $cartProduct->getQuantity());
+                $productRepository->update($product);
                 $this->persistenceManager->persistAll();
 
-                $this->flushCache($product->getBook()->getUid());
+                $this->flushCache($product->getUid());
             }
         }
     }
