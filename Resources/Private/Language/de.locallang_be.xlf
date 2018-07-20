@@ -30,6 +30,17 @@
 				<target>CartBooks: Bücher</target>
 			</trans-unit>
 
+			<trans-unit id="flexforms_template.templateLayout">
+				<source>Template Layout</source>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayout.table">
+				<source>Table</source>
+				<target>Tabelle</target>
+			</trans-unit>
+			<trans-unit id="flexforms_template.templateLayout.grid">
+				<source>Grid</source>
+			</trans-unit>
+
 			<trans-unit id="tx_cartbooks.plugin.books.title">
 				<source>CartBooks: Books</source>
 				<target>CartBooks: Bücher</target>
