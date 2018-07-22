@@ -80,3 +80,7 @@ $dispatcher->connect(
 // register "cartbooks:" namespace
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['cartbooks'][]
     = 'Extcode\\CartBooks\\ViewHelpers';
+
+// register listTemplateLayouts
+$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts'][] = ['LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout.table', 'table'];
+$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts'][] = ['LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout.grid', 'grid'];

@@ -46,6 +46,3 @@ $TCA['pages']['columns']['module']['config']['items'][] = [
     'cartbooks',
     'EXT:cart_books/Resources/Public/Icons/pagetree_cartbooks_folder.svg',
 ];
-
-$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts'][] = ['LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout.table','table'];
-$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts'][] = ['LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout.grid','grid'];
