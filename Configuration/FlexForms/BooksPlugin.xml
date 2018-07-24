@@ -36,6 +36,7 @@
                     <settings.templateLayout>
                         <TCEforms>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>select</type>
                                 <itemsProcFunc>Extcode\Cart\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>

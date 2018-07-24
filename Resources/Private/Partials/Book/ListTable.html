@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:cart="http://typo3.org/ns/Extcode/Cart/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:for each="{books}" as="book">
+    <div class="book-detail">
+        <div class="row">
+            <div class="medium-7 columns">
+                <cartbooks:link.book book="{book}" settings="{settings}">
+                    <div class="book-title"><h3>{book.title}</h3></div>
+                    <div class="book-title">{book.author}</div>
+                </cartbooks:link.book>
+                <f:if condition="{book.images}">
+                    <cartbooks:link.book book="{book}" settings="{settings}">
+                        <f:image src="{book.firstImage.originalResource.originalFile.uid}"
+                                 title="{book.firstImage.originalResource.title}"
+                                 alt="{book.firstImage.originalResource.title}"
+                                 width="{settings.listAction.media.image.size.small.maxWidth}"
+                                 height="{settings.listAction.media.image.size.small.maxHeight}" />
+                    </cartbooks:link.book>
+                </f:if>
+                <div class="row item--content">
+                    <f:if condition="{book.teaser}">
+                        <div class="item--teaser-column">
+                            <div class="description"><f:format.html>{book.teaser}</f:format.html></div>
+                        </div>
+                    </f:if>
+                </div>
+
+            </div>
+            <div class="medium-5 columns">
+                <cartbooks:link.book book="{book}" settings="{settings}">
+                    <div class="book-title"><f:translate key="tx_cartbooks.more_link" /><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                </cartbooks:link.book>
+            </div>
+        </div>
+    </div>
+</f:for>
+</html>
