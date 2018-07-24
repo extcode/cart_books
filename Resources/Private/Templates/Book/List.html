@@ -12,7 +12,6 @@
                 <cart:variable.set name="showPageUid" value="{settings.showPageUids}"/>
             </f:else>
         </f:if>
-
         <div class="book-detail">
             <div class="row">
                 <div class="medium-7 columns">
@@ -22,6 +21,17 @@
                         <div class="book-title"><h3>{book.title}</h3></div>
                         <div class="book-title">{book.author}</div>
                     </f:link.action>
+                    <f:if condition="{book.images}">
+                        <f:link.action pageUid="{cart:variable.get(name: 'showPageUid')}"
+                                       action="show"
+                                       arguments="{book: book}">
+                            <f:image src="{book.firstImage.originalResource.originalFile.uid}"
+                                     title="{book.firstImage.originalResource.title}"
+                                     alt="{book.firstImage.originalResource.title}"
+                                     width="{settings.listAction.media.image.size.small.maxWidth}"
+                                     height="{settings.listAction.media.image.size.small.maxHeight}" />
+                        </f:link.action>
+                    </f:if>
                     <div class="row item--content">
                         <f:if condition="{book.teaser}">
                             <div class="item--teaser-column">

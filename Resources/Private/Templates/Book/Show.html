@@ -23,6 +23,23 @@
 <div class="book-wrapper">
     <div class="book-title"><h1>{book.title}</h1></div>
     <div class="book-author">{book.author}</div>
+    <f:if condition="{book.images}">
+        <f:image src="{book.firstImage.originalResource.originalFile.uid}"
+                 title="{book.firstImage.originalResource.title}"
+                 alt="{book.firstImage.originalResource.title}"
+                 width="{settings.showAction.media.image.size.medium.maxWidth}"
+                 height="{settings.showAction.media.image.size.medium.maxHeight}" />
+
+        <f:if condition="{book.images -> f:count()} > 1">
+            <f:for each="{book.images}" as="image">
+                <f:image src="{image.originalResource.originalFile.uid}"
+                         title="{image.originalResource.title}"
+                         alt="{image.originalResource.title}"
+                         width="{settings.showAction.media.image.size.small.maxWidth}"
+                         height="{settings.showAction.media.image.size.small.maxHeight}"  />
+            </f:for>
+        </f:if>
+    </f:if>
     <div class="book-description">
         <f:format.html>{book.description}</f:format.html>
     </div>

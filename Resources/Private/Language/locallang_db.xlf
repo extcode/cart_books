@@ -34,6 +34,12 @@
             <trans-unit id="tx_cartbooks_domain_model_book.meta_description">
                 <source>Meta description</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.images">
+                <source>Images</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.files">
+                <source>Files</source>
+            </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.price">
                 <source>Price</source>
             </trans-unit>

@@ -19,6 +19,9 @@ CREATE TABLE tx_cartbooks_domain_model_book (
     description text NOT NULL,
     meta_description text NOT NULL,
 
+    images varchar(255) DEFAULT '' NOT NULL,
+    files varchar(255) DEFAULT '' NOT NULL,
+
     price double(11,2) DEFAULT '0.00' NOT NULL,
     tax_class_id int(11) unsigned DEFAULT '1' NOT NULL,
     special_prices int(11) unsigned DEFAULT '0' NOT NULL,

@@ -10,6 +10,9 @@
 			<trans-unit id="tx_cartbooks_domain_model_book.div.descriptions">
 				<source>Description</source>
 			</trans-unit>
+			<trans-unit id="tx_cartbooks_domain_model_book.div.images_and_files">
+				<source>Images / Files</source>
+			</trans-unit>
 			<trans-unit id="tx_cartbooks_domain_model_book.div.price_and_stock">
 				<source>Price and Stock</source>
 			</trans-unit>
