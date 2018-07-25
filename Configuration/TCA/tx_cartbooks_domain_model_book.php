@@ -40,15 +40,20 @@ return [
         'iconfile' => 'EXT:cart_books/Resources/Public/Icons/Book.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, subtitle, author, illustrator, publisher, translator, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags',
     ],
     'types' => [
         '1' => [
             'showitem' => '
                 sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource,
-                sku, title, author,
+                sku,
+                    --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.title;title,
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.isbn;isbn,
+                --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.data,
+                    --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.author_and_publisher;author_and_publisher,
+                    number_of_pages,
                 --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.descriptions,
+                    genre,
                     teaser;;;richtext:rte_transform[mode=ts_links],
                     description;;;richtext:rte_transform[mode=ts_links],
                     meta_description,
@@ -71,6 +76,14 @@ return [
         ],
         'isbn' => [
             'showitem' => 'isbn10, --linebreak--, isbn13, --linebreak--, issn',
+            'canNotCollapse' => 1,
+        ],
+        'title' => [
+            'showitem' => 'title, --linebreak--, subtitle',
+            'canNotCollapse' => 1,
+        ],
+        'author_and_publisher' => [
+            'showitem' => 'author, --linebreak--, illustrator, --linebreak--, publisher, --linebreak--, translator, language',
             'canNotCollapse' => 1,
         ],
         'prices' => [
@@ -193,9 +206,64 @@ return [
                 'eval' => 'required,trim',
             ],
         ],
+        'subtitle' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.subtitle',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+
         'author' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.author',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+        'illustrator' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.illustrator',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+        'publisher' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.publisher',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+        'translator' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.translator',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+        'number_of_pages' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.number_of_pages',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
+        'language' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.language',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -231,6 +299,15 @@ return [
             ],
         ],
 
+        'genre' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.genre',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
         'teaser' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.teaser',

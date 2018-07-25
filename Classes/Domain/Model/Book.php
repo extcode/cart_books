@@ -7,95 +7,104 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Book extends AbstractEntity
 {
     /**
-     * SKU
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $sku = '';
 
     /**
-     * Title
-     *
      * @var string
      * @validate NotEmpty
      */
     protected $title = '';
 
     /**
-     * Author
-     *
+     * @var string
+     */
+    protected $subtitle = '';
+
+    /**
      * @var string
      */
     protected $author = '';
 
     /**
-     * Teaser
-     *
+     * @var string
+     */
+    protected $illustrator = '';
+
+    /**
+     * @var string
+     */
+    protected $publisher = '';
+
+    /**
+     * @var string
+     */
+    protected $translator = '';
+
+    /**
+     * @var string
+     */
+    protected $language = '';
+
+    /**
+     * @var string
+     */
+    protected $numberOfPages = '';
+
+    /**
+     * @var string
+     */
+    protected $genre = '';
+
+    /**
      * @var string
      */
     protected $teaser = '';
 
     /**
-     * Description
-     *
      * @var string
      */
     protected $description = '';
 
     /**
-     * Images
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $images;
 
     /**
-     * Files
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $files;
 
     /**
-     * Price
-     *
      * @var float
      */
     protected $price = 0.0;
 
     /**
-     * Handel Stock
-     *
      * @var bool
      */
     protected $handleStock = false;
 
     /**
-     * Stock
-     *
      * @var int
      */
     protected $stock = 0;
 
     /**
-     * Book Special Price
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice>
      * @cascade remove
      */
     protected $specialPrices;
 
     /**
-     * Main Category
-     *
      * @var \Extcode\CartBooks\Domain\Model\Category
      */
     protected $category;
 
     /**
-     * Associated Categories
-     *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category>
      */
     protected $categories;
@@ -106,15 +115,11 @@ class Book extends AbstractEntity
     protected $tags;
 
     /**
-     * TaxClass Id
-     *
      * @var int
      */
     protected $taxClassId = 1;
 
     /**
-     * Meta description
-     *
      * @var string
      */
     protected $metaDescription = '';
@@ -154,6 +159,22 @@ class Book extends AbstractEntity
     /**
      * @return string
      */
+    public function getSubtitle(): string
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @param string $subtitle
+     */
+    public function setSubtitle(string $subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    /**
+     * @return string
+     */
     public function getAuthor(): string
     {
         return $this->author;
@@ -165,6 +186,102 @@ class Book extends AbstractEntity
     public function setAuthor(string $author)
     {
         $this->author = $author;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIllustrator(): string
+    {
+        return $this->illustrator;
+    }
+
+    /**
+     * @param string $illustrator
+     */
+    public function setIllustrator(string $illustrator)
+    {
+        $this->illustrator = $illustrator;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublisher(): string
+    {
+        return $this->publisher;
+    }
+
+    /**
+     * @param string $publisher
+     */
+    public function setPublisher(string $publisher)
+    {
+        $this->publisher = $publisher;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTranslator(): string
+    {
+        return $this->translator;
+    }
+
+    /**
+     * @param string $translator
+     */
+    public function setTranslator(string $translator)
+    {
+        $this->translator = $translator;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLanguage(): string
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param string $language
+     */
+    public function setLanguage(string $language)
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumberOfPages(): string
+    {
+        return $this->numberOfPages;
+    }
+
+    /**
+     * @param string $numberOfPages
+     */
+    public function setNumberOfPages(string $numberOfPages)
+    {
+        $this->numberOfPages = $numberOfPages;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGenre(): string
+    {
+        return $this->genre;
+    }
+
+    /**
+     * @param string $genre
+     */
+    public function setGenre(string $genre)
+    {
+        $this->genre = $genre;
     }
 
     /**

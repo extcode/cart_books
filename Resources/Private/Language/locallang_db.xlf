@@ -13,8 +13,26 @@
             <trans-unit id="tx_cartbooks_domain_model_book.title">
                 <source>Title</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.subtitle">
+                <source>Subtitle</source>
+            </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.author">
                 <source>Author</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.illustrator">
+                <source>Illustrator</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.publisher">
+                <source>Publisher</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.translator">
+                <source>Translator</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.number_of_pages">
+                <source>Number of pages</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.language">
+                <source>Language</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.isbn10">
                 <source>ISBN-10</source>
@@ -24,6 +42,9 @@
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.issn">
                 <source>ISSN</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.genre">
+                <source>Genre</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.teaser">
                 <source>Teaser</source>

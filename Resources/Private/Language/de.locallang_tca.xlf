@@ -8,6 +8,10 @@
 				<source>Categorization</source>
 				<target>Kategorisierung</target>
 			</trans-unit>
+			<trans-unit id="tx_cartbooks_domain_model_book.div.data">
+				<source>Data</source>
+				<target>Daten</target>
+			</trans-unit>
 			<trans-unit id="tx_cartbooks_domain_model_book.div.descriptions">
 				<source>Description</source>
 				<target>Beschreibung</target>
@@ -21,6 +25,10 @@
 				<target>Preis und Lager</target>
 			</trans-unit>
 
+			<trans-unit id="palettes.visibility">
+				<source>Visibility</source>
+				<target>Sichtbarkeit</target>
+			</trans-unit>
 			<trans-unit id="palettes.visibility">
 				<source>Visibility</source>
 				<target>Sichtbarkeit</target>

@@ -9,12 +9,21 @@ CREATE TABLE tx_cartbooks_domain_model_book (
 
     sku varchar(255) DEFAULT '' NOT NULL,
     title varchar(255) DEFAULT '' NOT NULL,
-    author varchar(255) DEFAULT '' NOT NULL,
+    subtitle varchar(255) DEFAULT '' NOT NULL,
 
     isbn10 varchar(32) DEFAULT '' NOT NULL,
     isbn13 varchar(32) DEFAULT '' NOT NULL,
     issn varchar(32) DEFAULT '' NOT NULL,
 
+    author varchar(255) DEFAULT '' NOT NULL,
+    illustrator varchar(255) DEFAULT '' NOT NULL,
+    publisher varchar(255) DEFAULT '' NOT NULL,
+    translator varchar(255) DEFAULT '' NOT NULL,
+
+    language varchar(32) DEFAULT '' NOT NULL,
+    number_of_pages varchar(255) DEFAULT '' NOT NULL,
+
+    genre varchar(255) DEFAULT '' NOT NULL,
     teaser text NOT NULL,
     description text NOT NULL,
     meta_description text NOT NULL,

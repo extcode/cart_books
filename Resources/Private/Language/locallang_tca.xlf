@@ -7,6 +7,9 @@
 			<trans-unit id="tx_cartbooks_domain_model_book.div.categorization">
 				<source>Categorization</source>
 			</trans-unit>
+			<trans-unit id="tx_cartbooks_domain_model_book.div.data">
+				<source>Data</source>
+			</trans-unit>
 			<trans-unit id="tx_cartbooks_domain_model_book.div.descriptions">
 				<source>Description</source>
 			</trans-unit>
