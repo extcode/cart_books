@@ -190,8 +190,6 @@ class CartProductHook implements \Extcode\Cart\Hooks\CartProductHookInterface
         $product = new \Extcode\Cart\Domain\Model\Cart\Product(
             'CartBooks',
             $book->getUid(),
-            '3',
-            0,
             $sku,
             $title,
             $book->getBestSpecialPrice(),
