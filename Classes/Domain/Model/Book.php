@@ -36,6 +36,11 @@ class Book extends AbstractEntity
     /**
      * @var string
      */
+    protected $editor = '';
+
+    /**
+     * @var string
+     */
     protected $publisher = '';
 
     /**
@@ -52,6 +57,11 @@ class Book extends AbstractEntity
      * @var string
      */
     protected $numberOfPages = '';
+
+    /**
+     * @var \DateTime
+     */
+    protected $dateOfPublication;
 
     /**
      * @var string
@@ -207,6 +217,22 @@ class Book extends AbstractEntity
     /**
      * @return string
      */
+    public function getEditor(): string
+    {
+        return $this->editor;
+    }
+
+    /**
+     * @param string $editor
+     */
+    public function setEditor(string $editor)
+    {
+        $this->editor = $editor;
+    }
+
+    /**
+     * @return string
+     */
     public function getPublisher(): string
     {
         return $this->publisher;
@@ -266,6 +292,22 @@ class Book extends AbstractEntity
     public function setNumberOfPages(string $numberOfPages)
     {
         $this->numberOfPages = $numberOfPages;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateOfPublication(): \DateTime
+    {
+        return $this->dateOfPublication;
+    }
+
+    /**
+     * @param \DateTime $dateOfPublication
+     */
+    public function setDateOfPublication(\DateTime $dateOfPublication)
+    {
+        $this->dateOfPublication = $dateOfPublication;
     }
 
     /**

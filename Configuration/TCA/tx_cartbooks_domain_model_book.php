@@ -40,7 +40,7 @@ return [
         'iconfile' => 'EXT:cart_books/Resources/Public/Icons/Book.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, subtitle, author, illustrator, publisher, translator, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, subtitle, author, illustrator, editor, publisher, translator, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags',
     ],
     'types' => [
         '1' => [
@@ -51,7 +51,7 @@ return [
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.isbn;isbn,
                 --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.data,
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.author_and_publisher;author_and_publisher,
-                    number_of_pages,
+                    number_of_pages, date_of_publication,
                 --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.descriptions,
                     genre,
                     teaser;;;richtext:rte_transform[mode=ts_links],
@@ -83,7 +83,7 @@ return [
             'canNotCollapse' => 1,
         ],
         'author_and_publisher' => [
-            'showitem' => 'author, --linebreak--, illustrator, --linebreak--, publisher, --linebreak--, translator, language',
+            'showitem' => 'author, --linebreak--, illustrator, --linebreak--, editor, --linebreak--, publisher, --linebreak--, translator, language',
             'canNotCollapse' => 1,
         ],
         'prices' => [
@@ -234,6 +234,15 @@ return [
                 'eval' => 'trim',
             ],
         ],
+        'editor' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.editor',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+            ],
+        ],
         'publisher' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.publisher',
@@ -268,6 +277,19 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
+            ],
+        ],
+        'date_of_publication' => [
+            'exclude' => 1,
+            'l10n_mode' => 'mergeIfNotBlank',
+            'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.date_of_publication',
+            'config' => [
+                'type' => 'input',
+                'size' => 13,
+                'max' => 20,
+                'eval' => 'datetime',
+                'checkbox' => 0,
+                'default' => 0,
             ],
         ],
 

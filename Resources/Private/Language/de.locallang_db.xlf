@@ -28,9 +28,13 @@
                 <source>Illustrator</source>
                 <target>Illustrator</target>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.editor">
+                <source>Editor</source>
+                <target>Herausgeber</target>
+            </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.publisher">
                 <source>Publisher</source>
-                <target>Herausgeber</target>
+                <target>Verlag</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.translator">
                 <source>Translator</source>
@@ -43,6 +47,10 @@
             <trans-unit id="tx_cartbooks_domain_model_book.language">
                 <source>Language</source>
                 <target>Sprache</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
+                <source>Date of publication</source>
+                <target>Veröffentlichungsdatum</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.genre">
                 <source>Genre</source>
