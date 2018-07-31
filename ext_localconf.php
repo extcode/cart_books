@@ -19,8 +19,8 @@ defined('TYPO3_MODE') or die();
 
 if (TYPO3_MODE === 'BE') {
     $icons = [
-        'icon-apps-pagetree-cartbooks-folder' => 'pagetree_cartbooks_folder.svg',
-        'icon-apps-pagetree-cartbooks-page' => 'pagetree_cartbooks_page.svg',
+        'apps-pagetree-folder-cartbooks-books' => 'apps_pagetree_folder_cartbooks_books.svg',
+        'apps-pagetree-page-cartbooks-book' => 'apps_pagetree_page_cartbooks_books.svg',
         'ext-cartbooks-wizard-icon' => 'cartbooks_plugin_wizard.svg',
     ];
 
