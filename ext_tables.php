@@ -44,5 +44,5 @@ $TCA['pages']['ctrl']['typeicon_classes']['contains-cartbooks'] = 'apps-pagetree
 $TCA['pages']['columns']['module']['config']['items'][] = [
     'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_be.xlf:tcarecords-pages-contains.cart_books',
     'cartbooks',
-    'EXT:cart_books/Resources/Public/Icons/pagetree_cartbooks_folder.svg',
+    'apps-pagetree-folder-cartbooks-books',
 ];
