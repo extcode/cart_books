@@ -37,7 +37,7 @@ return [
         ],
         'requestUpdate' => '',
         'searchFields' => 'sku,title,teaser,description',
-        'iconfile' => 'EXT:cart_books/Resources/Public/Icons/Book.svg',
+        'iconfile' => 'EXT:cart_books/Resources/Public/Icons/tx_cartbooks_domain_model_book.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, subtitle, author, illustrator, editor, publisher, translator, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags',

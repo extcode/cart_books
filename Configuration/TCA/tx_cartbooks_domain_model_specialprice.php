@@ -32,7 +32,7 @@ return [
             'fe_group' => 'frontend_user_group',
         ],
         'searchFields' => 'price',
-        'iconfile' => 'EXT:cart_books/Resources/Public/Icons/SpecialPrice.svg',
+        'iconfile' => 'EXT:cart_books/Resources/Public/Icons/tx_cartbooks_domain_model_specialprice.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'hidden, starttime, endtime, title, frontend_user_group, price',
