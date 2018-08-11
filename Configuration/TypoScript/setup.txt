@@ -10,7 +10,7 @@ plugin.tx_cartbooks {
         recursive = {$plugin.tx_cartbooks.persistence.recursive}
 
         classes {
-            Extcode\CartEvents\Domain\Model\Category {
+            Extcode\CartBooks\Domain\Model\Category {
                 mapping {
                     tableName = sys_category
                 }
