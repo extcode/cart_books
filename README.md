@@ -4,8 +4,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c5392a12e3ac48e58f1c74ea27ec9839)](https://www.codacy.com/app/extcode/cart_books?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extcode/cart_books&amp;utm_campaign=Badge_Grade)
 
 Cart is a small but powerful extension which "solely" adds a shopping cart to your TYPO3 installation.
-The extension allows you to create coupons, products with or without variants, special prices.
-CartBooks provides an own data storage for books, magazines and journals. Books can be offered via a list and detail view and can be purchased via cart function of the Cart extension.  
+Cart Books provides an own data storage for books, magazines and journals. Books can be offered via a list and detail view and can be purchased via cart function of the Cart extension.  
 
 ## 1. Features
 
@@ -27,7 +26,7 @@ Download and install the extension with the extension manager module.
 
 ## 3.1 Compatibility and supported Versions
 
-| CartBooks     | TYPO3      | PHP       | Support/Development                     |
+| Cart Books    | TYPO3      | PHP       | Support/Development                     |
 | ------------- | ---------- | ----------|---------------------------------------- |
 | 2.x.x         | 9.x        | 7.2       | Features, Bugfixes, Security Updates    |
 | 1.x.x         | 8.7        | 7.0 - 7.2 | Features _(in certain circumstances with feature toogle)_, Bugfixes, Security Updates    |

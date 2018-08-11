@@ -8,7 +8,7 @@
 .. _start:
 
 ===========================
-EXT: Contacts
+EXT: Cart Books
 ===========================
 
 .. image:: Images/cart_books_logo.png
@@ -29,8 +29,7 @@ EXT: Contacts
 
    :Description:
       Cart is a small but powerful extension which "solely" adds a shopping cart to your TYPO3 installation.
-      The extension allows you to create coupons, products with or without variants, special prices.
-      CartBooks provides an own data storage for books, magazines and journals. Books can be offered via a list and detail view and can be purchased via cart function of the Cart extension.
+      Cart Books provides an own data storage for books, magazines and journals. Books can be offered via a list and detail view and can be purchased via cart function of the Cart extension.
 
    :Keywords:
       cart, books, magazines, shopping

@@ -6,7 +6,7 @@
 Sponsoring
 ==========
 
-If there is a feature that has not yet been implemented in Cart or CartBooks, you can contact me at any time.
+If there is a feature that has not yet been implemented in Cart or Cart Books, you can contact me at any time.
 
 There is also the possibility to support the further development independently of new functions.
 
