@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 defined('TYPO3_MODE') or die();
 
-// Extension manager configuration
-$configuration = \Extcode\CartBooks\Utility\EmConfiguration::getSettings();
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $_LLL = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
 
@@ -34,7 +34,7 @@ $GLOBALS['TCA']['tx_cartbooks_domain_model_book']['category']['config']['maxitem
 );
 
 // category restriction based on settings in extension manager
-$categoryRestrictionSetting = $configuration->getCategoryRestriction();
+$categoryRestrictionSetting = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('cart_books', 'categoryRestriction');
 
 if ($categoryRestrictionSetting) {
     $categoryRestriction = '';

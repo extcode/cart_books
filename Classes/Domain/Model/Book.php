@@ -8,13 +8,13 @@ class Book extends AbstractEntity
 {
     /**
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $sku = '';
 
     /**
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $title = '';
 
@@ -104,8 +104,8 @@ class Book extends AbstractEntity
     protected $stock = 0;
 
     /**
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice>
-     * @cascade remove
      */
     protected $specialPrices;
 
