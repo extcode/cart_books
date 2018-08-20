@@ -50,7 +50,7 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return $this->title;
     }
@@ -59,10 +59,13 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the Title
      *
      * @param string $title
+     * @return SpecialPrice
      */
-    public function setTitle($title)
+    public function setTitle($title) : self
     {
         $this->title = $title;
+
+        return $this;
     }
 
     /**
@@ -70,7 +73,7 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return float $price
      */
-    public function getPrice()
+    public function getPrice() : float
     {
         return $this->price;
     }
@@ -79,18 +82,21 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the Price
      *
      * @param float $price
+     * @return SpecialPrice
      */
-    public function setPrice($price)
+    public function setPrice($price) : self
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
      * Returns the Frontend User Group
      *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
+     * @return null|\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
      */
-    public function getFrontendUserGroup()
+    public function getFrontendUserGroup() : ?\TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
     {
         return $this->frontendUserGroup;
     }
@@ -99,9 +105,12 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the Frontend User Group
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup $frontendUserGroup
+     * @return SpecialPrice
      */
-    public function setFrontendUserGroup($frontendUserGroup)
+    public function setFrontendUserGroup($frontendUserGroup) : self
     {
         $this->setFrontendUserGroup = $frontendUserGroup;
+
+        return $this;
     }
 }

@@ -119,7 +119,8 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * @param \Extcode\CartBooks\Domain\Model\Book $book
      *
-     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation $book
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("book")
+     *
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function showAction(\Extcode\CartBooks\Domain\Model\Book $book = null)
