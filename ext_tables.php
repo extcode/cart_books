@@ -16,10 +16,15 @@ $_LLL = 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_be.xlf';
  * Register Frontend Plugins
  */
 $pluginNames = [
-    'Books',
+    'Books' => [
+        'subtypes_excludelist' => 'select_key'
+    ],
+    'TeaserBooks' => [
+        'subtypes_excludelist' => 'select_key, pages, recursive'
+    ],
 ];
 
-foreach ($pluginNames as $pluginName) {
+foreach ($pluginNames as $pluginName => $pluginConf) {
     $pluginSignature = strtolower(str_replace('_', '', $_EXTKEY)) . '_' . strtolower($pluginName);
     $pluginNameSC = strtolower(preg_replace('/[A-Z]/', '_$0', lcfirst($pluginName)));
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
@@ -27,7 +32,7 @@ foreach ($pluginNames as $pluginName) {
         $pluginName,
         $_LLL . ':tx_cartbooks.plugin.' . $pluginNameSC . '.title'
     );
-    $TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'select_key';
+    $TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = $pluginConf['subtypes_excludelist'];
 
     $flexFormPath = 'EXT:' . $_EXTKEY . '/Configuration/FlexForms/' . $pluginName . 'Plugin.xml';
     if (file_exists(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($flexFormPath))) {

@@ -32,11 +32,15 @@
 			<trans-unit id="flexforms_template.templateLayout">
 				<source>Template Layout</source>
 			</trans-unit>
-			<trans-unit id="flexforms_template.templateLayout.table">
+			<trans-unit id="flexforms_template.templateLayout.books.table">
 				<source>Table</source>
 			</trans-unit>
-			<trans-unit id="flexforms_template.templateLayout.grid">
+			<trans-unit id="flexforms_template.templateLayout.books.grid">
 				<source>Grid</source>
+			</trans-unit>
+
+			<trans-unit id="tx_cartbooks.plugin.teaser_books.title">
+				<source>CartBooks: Books (Teaser)</source>
 			</trans-unit>
 
 			<trans-unit id="tx_cartbooks.plugin.books.title">

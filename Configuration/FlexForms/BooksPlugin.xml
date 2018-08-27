@@ -22,10 +22,6 @@
                                         <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.show</numIndex>
                                         <numIndex index="1">Book->show</numIndex>
                                     </numIndex>
-                                    <numIndex index="2">
-                                        <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.teaser</numIndex>
-                                        <numIndex index="1">Book->teaser</numIndex>
-                                    </numIndex>
                                 </items>
                                 <default>Book->show;Book->list</default>
                             </config>
@@ -40,6 +36,7 @@
                             <config>
                                 <type>select</type>
                                 <itemsProcFunc>Extcode\Cart\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
+                                <itemsProcFuncConf>Books</itemsProcFuncConf>
                                 <renderType>selectSingle</renderType>
                             </config>
                         </TCEforms>
@@ -109,12 +106,7 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.limit</label>
-                            <displayCond>
-                                <OR>
-                                    <numIndex index="0">FIELD:switchableControllerActions:=:Book->show;Book->list</numIndex>
-                                    <numIndex index="1">FIELD:switchableControllerActions:=:Book->teaser</numIndex>
-                                </OR>
-                            </displayCond>
+                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>input</type>
                                 <size>3</size>
@@ -151,21 +143,6 @@
                             </config>
                         </TCEforms>
                     </settings.showPageUids>
-
-                    <settings.bookUids>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.teaser.select.books</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->teaser</displayCond>
-                            <config>
-                                <type>select</type>
-                                <foreign_table>tx_cartbooks_domain_model_book</foreign_table>
-                                <size>3</size>
-                                <minitems>1</minitems>
-                                <maxitems>99</maxitems>
-                            </config>
-                        </TCEforms>
-                    </settings.bookUids>
 
                     <settings.categoriesList>
                         <TCEforms>
