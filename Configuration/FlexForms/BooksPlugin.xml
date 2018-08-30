@@ -36,7 +36,8 @@
                             <config>
                                 <type>select</type>
                                 <itemsProcFunc>Extcode\Cart\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
-                                <itemsProcFuncConf>Books</itemsProcFuncConf>
+                                <extKey>cart_bools</extKey>
+                                <pluginName>Books</pluginName>
                                 <renderType>selectSingle</renderType>
                             </config>
                         </TCEforms>
