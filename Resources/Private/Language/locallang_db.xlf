@@ -103,10 +103,10 @@
             </trans-unit>
 
             <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
-                <source>CartBooks: Page where Books of this category are listed.</source>
+                <source>Cart: Page where Books of this category are listed.</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_category.cart_book_show_pid">
-                <source>CartBooks: Page where Books of this category are shown.</source>
+                <source>Cart: Page where Books of this category are shown.</source>
             </trans-unit>
 
         </body>

@@ -106,12 +106,12 @@
             </trans-unit>
 
             <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
-                <source>CartBooks: Page where Books of this category are listed.</source>
-                <target>CartBooks: Seite auf der Bücher dieser Kategorie aufgelistet werden.</target>
+                <source>Cart: Page where Books of this category are listed.</source>
+                <target>Cart: Seite auf der Bücher dieser Kategorie aufgelistet werden.</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_category.cart_book_show_pid">
-                <source>CartBooks: Page where Books of this category are shown.</source>
-                <target>CartBooks: Seite auf der Bücher dieser Kategorie angezeigt werden.</target>
+                <source>Cart: Page where Books of this category are shown.</source>
+                <target>Cart: Seite auf der Bücher dieser Kategorie angezeigt werden.</target>
             </trans-unit>
             
         </body>

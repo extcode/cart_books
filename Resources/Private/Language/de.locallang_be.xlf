@@ -26,8 +26,8 @@
 			</trans-unit>
 
 			<trans-unit id="tcarecords-pages-contains.cart_books">
-				<source>CartBooks: Books</source>
-				<target>CartBooks: Bücher</target>
+				<source>Cart: Books</source>
+				<target>Cart: Bücher</target>
 			</trans-unit>
 
 			<trans-unit id="flexforms_template.templateLayout">
@@ -41,17 +41,12 @@
 				<source>Grid</source>
 			</trans-unit>
 
-			<trans-unit id="tx_cartbooks.plugin.teaser_books.title">
-				<source>CartBooks: Books (Teaser)</source>
-				<target>CartBooks: Bücher (Teaser)</target>
-			</trans-unit>
-
 			<trans-unit id="tx_cartbooks.plugin.books.title">
-				<source>CartBooks: Books</source>
-				<target>CartBooks: Bücher</target>
+				<source>Cart: Books</source>
+				<target>Cart: Bücher</target>
 			</trans-unit>
 			<trans-unit id="tx_cartbooks.plugin.books.description">
-				<source>List and show books</source>
+				<source>list and show books</source>
 				<target>Listen- und Detailansicht für Bücher</target>
 			</trans-unit>
 			<trans-unit id="tx_cartbooks.plugin.books.action.switch">
@@ -125,6 +120,15 @@
 			<trans-unit id="tx_cartbooks.plugin.books.action.book.teaser.select.product">
 				<source>Choose teaser product</source>
 				<target>Teaserprodukt auswählen</target>
+			</trans-unit>
+
+			<trans-unit id="tx_cartbooks.plugin.teaser_books.title">
+				<source>Cart: selected Books</source>
+				<target>Cart: ausgewählte Bücher</target>
+			</trans-unit>
+			<trans-unit id="tx_cartbooks.plugin.teaser_books.description">
+				<source>list or tease selected books</source>
+				<target>Listen- oder Teaseransicht für ausgewählte Bücher</target>
 			</trans-unit>
 
 			<trans-unit id="pages.doktype.188">
