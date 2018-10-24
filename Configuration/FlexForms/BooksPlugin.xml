@@ -36,7 +36,7 @@
                             <config>
                                 <type>select</type>
                                 <itemsProcFunc>Extcode\Cart\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
-                                <extKey>cart_bools</extKey>
+                                <extKey>cart_books</extKey>
                                 <pluginName>Books</pluginName>
                                 <renderType>selectSingle</renderType>
                             </config>
