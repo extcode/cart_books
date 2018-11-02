@@ -1,0 +1,23 @@
+mod.wizards.newContentElement.wizardItems.plugins {
+    elements {
+        books {
+            iconIdentifier = ext-cartbooks-wizard-icon
+            title = LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.title
+            description = LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.description
+            tt_content_defValues {
+                CType = list
+                list_type = cartbooks_books
+            }
+        }
+
+        teaser_books {
+            iconIdentifier = ext-cartbooks-wizard-icon
+            title = LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.teaser_books.title
+            description = LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.teaser_books.description
+            tt_content_defValues {
+                CType = list
+                list_type = cartbooks_teaserbooks
+            }
+        }
+    }
+}
