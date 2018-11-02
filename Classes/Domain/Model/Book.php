@@ -297,7 +297,7 @@ class Book extends AbstractEntity
     /**
      * @return \DateTime
      */
-    public function getDateOfPublication(): \DateTime
+    public function getDateOfPublication()
     {
         return $this->dateOfPublication;
     }
