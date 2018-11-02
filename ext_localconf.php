@@ -65,13 +65,6 @@ if (TYPO3_MODE === 'FE') {
         \Extcode\CartBooks\Hooks\CartProductHook::class;
 }
 
-// realurl Hook
-
-if (TYPO3_MODE === 'FE') {
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['realurl']['ConfigurationReader_postProc'][1520842411] =
-        'EXT:cart_books/Classes/Hooks/RealUrlHook.php:Extcode\CartBooks\Hooks\RealUrlHook->postProcessConfiguration';
-}
-
 // clearCachePostProc Hook
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['cartbooks_clearcache'] =
