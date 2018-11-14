@@ -48,6 +48,7 @@ return [
                 sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource,
                 sku,
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.title;title,
+                path_segment,
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.isbn;isbn,
                 --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.data,
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.author_and_publisher;author_and_publisher,
@@ -213,6 +214,21 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim',
+            ],
+        ],
+
+        'path_segment' => [
+            'exclude' => true,
+            'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.path_segment',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['title'],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => '',
             ],
         ],
 

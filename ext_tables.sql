@@ -11,6 +11,8 @@ CREATE TABLE tx_cartbooks_domain_model_book (
     title varchar(255) DEFAULT '' NOT NULL,
     subtitle varchar(255) DEFAULT '' NOT NULL,
 
+    path_segment varchar(2048),
+
     isbn10 varchar(32) DEFAULT '' NOT NULL,
     isbn13 varchar(32) DEFAULT '' NOT NULL,
     issn varchar(32) DEFAULT '' NOT NULL,
