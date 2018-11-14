@@ -250,6 +250,8 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     protected function addCacheTags($books)
     {
+        $cacheTags = [];
+
         if (!empty($GLOBALS['TSFE']) && is_object($GLOBALS['TSFE'])) {
             foreach ($books as $book) {
                 $cacheTags[] = 'tx_cartbooks_book_' . $book->getUid();
