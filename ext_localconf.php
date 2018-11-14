@@ -87,6 +87,10 @@ $dispatcher->connect(
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['cartbooks'][]
     = 'Extcode\\CartBooks\\ViewHelpers';
 
+// update wizard for slugs
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['cartBooksSlugUpdater'] =
+    \Extcode\CartBooks\Updates\SlugUpdater::class;
+
 // register listTemplateLayouts
 $GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts']['books'][] = [$_LLL_be . ':flexforms_template.templateLayout.books.table', 'table'];
 $GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts']['books'][] = [$_LLL_be . ':flexforms_template.templateLayout.books.grid', 'grid'];
