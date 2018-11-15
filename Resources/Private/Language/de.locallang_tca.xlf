@@ -24,6 +24,10 @@
                 <source>Price and Stock</source>
                 <target>Preis und Lager</target>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.div.related_books">
+                <source>Related Books</source>
+                <target>Verwandte Bücher</target>
+            </trans-unit>
 
             <trans-unit id="palettes.visibility">
                 <source>Visibility</source>

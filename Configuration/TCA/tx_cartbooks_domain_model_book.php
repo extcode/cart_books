@@ -40,7 +40,7 @@ return [
         'iconfile' => 'EXT:cart_books/Resources/Public/Icons/tx_cartbooks_domain_model_book.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, subtitle, author, illustrator, editor, publisher, translator, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, sku, title, subtitle, author, illustrator, editor, publisher, translator, teaser, description, meta_description, price, tax_class_id, special_prices, handle_stock, stock, category, categories, tags, related_books',
     ],
     'types' => [
         '1' => [
@@ -64,6 +64,8 @@ return [
                     --palette--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.palette.prices;stock,
                 --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.categorization,
                     tags, category, categories,
+                --div--;' . $_LLL_tca . ':tx_cartbooks_domain_model_book.div.related_books,
+                    related_books,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
                     --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
                     --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
@@ -545,6 +547,45 @@ return [
                 'size' => 30,
                 'eval' => 'int',
                 'default' => 0,
+            ],
+        ],
+
+        'related_books' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.related_books',
+            'config' => [
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_cartbooks_domain_model_book',
+                'foreign_table' => 'tx_cartbooks_domain_model_book',
+                'MM_opposite_field' => 'related_books_from',
+                'size' => 5,
+                'minitems' => 0,
+                'maxitems' => 100,
+                'MM' => 'tx_cartbooks_domain_model_book_related_mm',
+                'wizards' => [
+                    'suggest' => [
+                        'type' => 'suggest',
+                        'default' => [
+                            'searchWholePhrase' => true,
+                        ],
+                    ],
+                ],
+            ],
+        ],
+
+        'related_books_from' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.related_books_from',
+            'config' => [
+                'type' => 'group',
+                'internal_type' => 'db',
+                'foreign_table' => 'tx_cartbooks_domain_model_book',
+                'allowed' => 'tx_cartbooks_domain_model_book',
+                'size' => 5,
+                'maxitems' => 100,
+                'MM' => 'tx_cartbooks_domain_model_book_related_mm',
+                'readOnly' => 1,
             ],
         ],
 

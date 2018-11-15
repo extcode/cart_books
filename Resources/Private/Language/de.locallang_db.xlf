@@ -104,6 +104,14 @@
                 <source>Tags</source>
                 <target>Tags</target>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.related_books">
+                <source>Related Books</source>
+                <target>Verwandte Bücher</target>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.related_books_from">
+                <source>Related Books (from)</source>
+                <target>Verwandte Bücher (von)</target>
+            </trans-unit>
 
             <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
                 <source>Cart: Page where Books of this category are listed.</source>

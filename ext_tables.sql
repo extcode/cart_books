@@ -44,6 +44,9 @@ CREATE TABLE tx_cartbooks_domain_model_book (
     categories int(11) unsigned DEFAULT '0' NOT NULL,
     tags int(11) DEFAULT '0' NOT NULL,
 
+    related_books int(11) DEFAULT '0' NOT NULL,
+    related_books_from int(11) DEFAULT '0' NOT NULL,
+
     sorting int(11) DEFAULT '0' NOT NULL,
 
     tstamp int(11) unsigned DEFAULT '0' NOT NULL,

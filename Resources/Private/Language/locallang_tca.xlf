@@ -19,6 +19,9 @@
             <trans-unit id="tx_cartbooks_domain_model_book.div.price_and_stock">
                 <source>Price and Stock</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.div.related_books">
+                <source>Related Books</source>
+            </trans-unit>
 
             <trans-unit id="palettes.visibility">
                 <source>Visibility</source>

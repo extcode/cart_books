@@ -60,3 +60,13 @@
         <f:render partial="Book/CartForm" arguments="{book: book, pid: cartSettings.cart.pid}" />
     </div>
 </f:if>
+
+<f:if condition="{book.relatedBooks}">
+    <ul>
+        <f:for each="{book.relatedBooks}" as="relatedBook">
+            <li>
+                <f:render partial="Book/RelatedBook" arguments="{book: relatedBook, settings: settings}"/>
+            </li>
+        </f:for>
+    </ul>
+</f:if>
