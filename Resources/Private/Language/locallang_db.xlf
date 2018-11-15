@@ -88,6 +88,12 @@
             <trans-unit id="tx_cartbooks_domain_model_book.tags">
                 <source>Tags</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.related_books">
+                <source>Related Books</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.related_books_from">
+                <source>Related Books (from)</source>
+            </trans-unit>
 
             <trans-unit id="tx_cartbooks_domain_model_specialprice">
                 <source>Special Price</source>

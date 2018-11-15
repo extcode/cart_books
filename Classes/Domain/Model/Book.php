@@ -125,6 +125,18 @@ class Book extends AbstractEntity
     protected $tags;
 
     /**
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
+     */
+    protected $relatedBooks = null;
+
+    /**
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
+     */
+    protected $relatedBooksFrom;
+
+    /**
      * @var int
      */
     protected $taxClassId = 1;
@@ -447,11 +459,11 @@ class Book extends AbstractEntity
     /**
      * Removes a Special Price
      *
-     * @param \Extcode\CartBooks\Domain\Model\SpecialPrice $specialPriceToRemove
+     * @param \Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice
      */
-    public function removeSpecialPrice(\Extcode\CartBooks\Domain\Model\SpecialPrice $specialPriceToRemove)
+    public function removeSpecialPrice(\Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice)
     {
-        $this->specialPrices->detach($specialPriceToRemove);
+        $this->specialPrices->detach($specialPrice);
     }
 
     /**
@@ -568,6 +580,70 @@ class Book extends AbstractEntity
     public function setTags(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags)
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBook
+     */
+    public function addRelatedBook(\Extcode\CartBooks\Domain\Model\Book $relatedBook)
+    {
+        $this->relatedBooks->attach($relatedBook);
+    }
+
+    /**
+     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBook
+     */
+    public function removeRelatedBook(\Extcode\CartBooks\Domain\Model\Book $relatedBook)
+    {
+        $this->relatedBooks->detach($relatedBook);
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBook
+     */
+    public function getRelatedBooks()
+    {
+        return $this->relatedBooks;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBooks
+     */
+    public function setRelatedBooks(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedBooks)
+    {
+        $this->relatedBooks = $relatedBooks;
+    }
+
+    /**
+     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBookFrom
+     */
+    public function addRelatedBookFrom(\Extcode\CartBooks\Domain\Model\Book $relatedBookFrom)
+    {
+        $this->relatedBooksFrom->attach($relatedBookFrom);
+    }
+
+    /**
+     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBookFrom
+     */
+    public function removeRelatedBookFrom(\Extcode\CartBooks\Domain\Model\Book $relatedBookFrom)
+    {
+        $this->relatedBooksFrom->detach($relatedBookFrom);
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBookFrom
+     */
+    public function getRelatedBooksFrom()
+    {
+        return $this->relatedBooksFrom;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBooksFrom
+     */
+    public function setRelatedBooksFrom(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedBooksFrom)
+    {
+        $this->relatedBooksFrom = $relatedBooksFrom;
     }
 
     /**
