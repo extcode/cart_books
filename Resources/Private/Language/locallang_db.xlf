@@ -16,6 +16,9 @@
             <trans-unit id="tx_cartbooks_domain_model_book.subtitle">
                 <source>Subtitle</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.path_segment">
+                <source>URL segment</source>
+            </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.author">
                 <source>Author</source>
             </trans-unit>

@@ -20,6 +20,10 @@
                 <source>Subtitle</source>
                 <target>Untertitel</target>
             </trans-unit>
+            <trans-unit id="tx_cartbooks_domain_model_book.path_segment">
+                <source>URL segment</source>
+                <target>URL Segment</target>
+            </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.author">
                 <source>Author</source>
                 <target>Autor</target>
