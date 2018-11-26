@@ -6,14 +6,14 @@ defined('TYPO3_MODE') or die();
 // Extension manager configuration
 $configuration = \Extcode\CartBooks\Utility\EmConfiguration::getSettings();
 
-$_LLL = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
+$_LLL_db = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf:';
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
     'cart_books',
     'tx_cartbooks_domain_model_book',
     'category',
     [
-        'label' => $_LLL . ':tx_cartbooks_domain_model_book.category',
+        'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.category',
         'fieldConfiguration' => [
             'minitems' => 0,
             'maxitems' => 1,
@@ -29,7 +29,7 @@ $GLOBALS['TCA']['tx_cartbooks_domain_model_book']['category']['config']['maxitem
     'tx_cartbooks_domain_model_book',
     'categories',
     [
-        'label' => $_LLL . ':tx_cartbooks_domain_model_book.categories',
+        'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.categories',
     ]
 );
 
