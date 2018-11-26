@@ -2,12 +2,12 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf';
+$_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:';
 
 // configure plugins
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Extcode.' . $_EXTKEY,
+    'Extcode.cart_books',
     'Books',
     [
         'Book' => 'show, list',
@@ -18,7 +18,7 @@ $_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf';
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Extcode.' . $_EXTKEY,
+    'Extcode.cart_books',
     'TeaserBooks',
     [
         'Book' => 'teaser',
@@ -92,7 +92,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['cartBooksSlu
     \Extcode\CartBooks\Updates\SlugUpdater::class;
 
 // register listTemplateLayouts
-$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts']['books'][] = [$_LLL_be . ':flexforms_template.templateLayout.books.table', 'table'];
-$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts']['books'][] = [$_LLL_be . ':flexforms_template.templateLayout.books.grid', 'grid'];
-$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts']['teaser_books'][] = [$_LLL_be . ':flexforms_template.templateLayout.books.table', 'table'];
-$GLOBALS['TYPO3_CONF_VARS']['EXT'][$_EXTKEY]['templateLayouts']['teaser_books'][] = [$_LLL_be . ':flexforms_template.templateLayout.books.grid', 'grid'];
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['cart_books']['templateLayouts']['books'][] = [$_LLL_be . 'flexforms_template.templateLayout.books.table', 'table'];
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['cart_books']['templateLayouts']['books'][] = [$_LLL_be . 'flexforms_template.templateLayout.books.grid', 'grid'];
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['cart_books']['templateLayouts']['teaser_books'][] = [$_LLL_be . 'flexforms_template.templateLayout.books.table', 'table'];
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['cart_books']['templateLayouts']['teaser_books'][] = [$_LLL_be . 'flexforms_template.templateLayout.books.grid', 'grid'];
