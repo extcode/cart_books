@@ -61,8 +61,8 @@ if (TYPO3_MODE === 'BE') {
 // Cart Hooks
 
 if (TYPO3_MODE === 'FE') {
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cart']['CartBooks'] =
-        \Extcode\CartBooks\Hooks\CartProductHook::class;
+    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cart']['CartBooks']['Cart']['AddToCartFinisher'] =
+        \Extcode\CartBooks\Domain\Finisher\Cart\AddToCartFinisher::class;
 }
 
 // clearCachePostProc Hook
