@@ -30,7 +30,7 @@ lint:cgl:
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
   script:
-  - .Build/bin/php-cs-fixer fix --config=Build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./
+    - .Build/bin/php-cs-fixer fix --config=Build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./
 
 lint:typoscriptcgl:
   stage: lint
@@ -69,7 +69,7 @@ lint:php72:
 .test: &test_php
   stage: test
   services:
-  - mysql:5
+    - mysql:5
   image: php:$DOCKER_TAG
   only:
     - branches
@@ -139,7 +139,7 @@ sonarqube:
     SONAR_SOURCES: "./Classes"
     SONAR_GITLAB_PROJECT_ID: "$CI_PROJECT_ID"
   script:
-    - echo "sonar.projectKey=cart-books-8.x" > sonar-project.properties
+    - echo "sonar.projectKey=cart-books-1.x" > sonar-project.properties
     - gitlab-sonar-scanner -Dsonar.php.coverage.reportPath=phpunit.coverage.xml -Dsonar.php.tests.reportPath=phpunit.report.xml
   allow_failure: true
 
@@ -154,7 +154,7 @@ sonarqube-reports:
     SONAR_ANALYSIS_MODE: "publish"
     SONAR_SOURCES: "./Classes"
   script:
-    - echo "sonar.projectKey=cart-books-8.x" > sonar-project.properties
+    - echo "sonar.projectKey=cart-books-1.x" > sonar-project.properties
     - gitlab-sonar-scanner -Dsonar.php.coverage.reportPath=phpunit.coverage.xml -Dsonar.php.tests.reportPath=phpunit.report.xml
 
 ter-upload:
@@ -162,13 +162,14 @@ ter-upload:
   stage: upload
   only:
     - tags
+  when: manual
   before_script:
     - apk --no-cache add git zlib-dev libxml2-dev
     - docker-php-ext-install mbstring zip soap
     - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
     - export COMPOSER_CACHE_DIR=.composer
   script:
-    - composer install
+    - composer install --no-progress --no-ansi --no-interaction
     - composer require namelesscoder/typo3-repository-client
     - export TYPO3_PATH_WEB="$PWD/.Build/Web"
     - >
