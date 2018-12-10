@@ -1,3 +1,9 @@
+2.0.1
+    2018-12-10
+    Daniel Lorenz <https://github.com/extcode>
+
+    * [BUGFIX] fix class name in AddToCartFinisher
+
 2.0.0
     2018-12-04
     Daniel Lorenz <https://github.com/extcode>

@@ -7,7 +7,7 @@ use Extcode\Cart\Domain\Model\Cart\Cart;
 use Extcode\Cart\Domain\Model\Cart\Product;
 use Extcode\Cart\Domain\Model\Dto\AvailabilityResponse;
 use Extcode\CartBooks\Domain\Model\Book;
-use Extcode\CartBooks\Domain\Repository\BooksRepository;
+use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -30,7 +30,7 @@ class AddToCartFinisher implements AddToCartFinisherInterface
     /**
      * Slot Repository
      *
-     * @var BooksRepository
+     * @var BookRepository
      */
     protected $bookRepository;
 
@@ -160,9 +160,6 @@ class AddToCartFinisher implements AddToCartFinisherInterface
 
             return [$errors, $cartProducts];
         }
-
-        $topic = null;
-        $date = null;
 
         $newProduct = $this->getProductFromSlot($book, $quantity, $taxClasses);
 
