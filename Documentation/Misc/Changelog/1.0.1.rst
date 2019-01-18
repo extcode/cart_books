@@ -3,13 +3,10 @@
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
 
-ChangeLog
-=========
+1.0.1 - 10.12.2018
+==================
 
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:
+All Changes
+-----------
 
-   1.0.2
-   1.0.1
-   1.0.0
+    2018-12-10 [BUGFIX] fix class name in AddToCartFinisher
