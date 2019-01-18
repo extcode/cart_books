@@ -28,8 +28,6 @@ class AddToCartFinisher implements AddToCartFinisherInterface
     protected $objectManager;
 
     /**
-     * Slot Repository
-     *
      * @var BookRepository
      */
     protected $bookRepository;
@@ -161,7 +159,7 @@ class AddToCartFinisher implements AddToCartFinisherInterface
             return [$errors, $cartProducts];
         }
 
-        $newProduct = $this->getProductFromSlot($book, $quantity, $taxClasses);
+        $newProduct = $this->getCartProductFromBook($book, $quantity, $taxClasses);
 
         $this->checkAvailability($request, $newProduct, $cart);
 
@@ -175,7 +173,7 @@ class AddToCartFinisher implements AddToCartFinisherInterface
      *
      * @return Product
      */
-    protected function getProductFromSlot(
+    protected function getCartProductFromBook(
         Book $book,
         int $quantity,
         array $taxClasses
