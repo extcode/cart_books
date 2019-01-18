@@ -22,8 +22,6 @@ class SchemaViewHelper extends AbstractViewHelper
 
     public function render()
     {
-        $schemaBooks = [];
-
         /** @var \Extcode\CartBooks\Domain\Model\Book $book */
         $book = $this->arguments['book'];
 
@@ -41,20 +39,5 @@ class SchemaViewHelper extends AbstractViewHelper
         ];
 
         return json_encode($schemaBook);
-    }
-
-    /**
-     * @param \Extcode\CartBooks\Domain\Model\Slot $slot
-     * @return string
-     */
-    protected function getStartDate(\Extcode\CartBooks\Domain\Model\Slot $slot) : string
-    {
-        $firstDate = $slot->getFirstDate();
-
-        if ($firstDate) {
-            return $firstDate->getBegin()->format(\DateTime::ATOM);
-        }
-
-        return '';
     }
 }

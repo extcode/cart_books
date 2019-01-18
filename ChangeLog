@@ -1,3 +1,9 @@
+1.0.2
+    2019-01-18
+    Daniel Lorenz <https://github.com/extcode>
+
+    * [BUGFIX] remove unused method from ViewHelper
+
 1.0.1
     2018-12-10
     Daniel Lorenz <https://github.com/extcode>
