@@ -60,7 +60,7 @@ class AddToCartFinisher implements AddToCartFinisherInterface
             $quantity = (int)$quantities[$cartProduct->getId()];
         }
 
-        if ($cartProduct->getProductType() != 'CartBooks') {
+        if ($cartProduct->getProductType() !== 'CartBooks') {
             return $availabilityResponse;
         }
 
@@ -178,14 +178,11 @@ class AddToCartFinisher implements AddToCartFinisherInterface
         int $quantity,
         array $taxClasses
     ) {
-        $title = implode(' - ', [$book->getTitle(), $book->getTitle()]);
-        $sku = implode(' - ', [$book->getSku(), $book->getSku()]);
-
         $product = new Product(
             'CartBooks',
             $book->getUid(),
-            $sku,
-            $title,
+            $book->getSku(),
+            $book->getTitle(),
             $book->getBestSpecialPrice(),
             $taxClasses[$book->getTaxClassId()],
             $quantity,
