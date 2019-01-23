@@ -9,5 +9,6 @@
 All Changes
 -----------
 
+   - 2019-01-23 [TASK] Add ke_search indexer (by extcode)
    - 2018-01-23 [BUGFIX] Avoid duplicated titel in cart (by extcode)
    - 2019-01-23 [BUGFIX] Fix exception on translating book records (by extcode)

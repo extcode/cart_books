@@ -65,6 +65,13 @@ if (TYPO3_MODE === 'FE') {
         \Extcode\CartBooks\Domain\Finisher\Cart\AddToCartFinisher::class;
 }
 
+// ke_search Hook - register indexer for books
+
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['registerIndexerConfiguration'][] =
+    \Extcode\CartBooks\Hooks\KeSearchIndexer::class;
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['customIndexer'][] =
+    \Extcode\CartBooks\Hooks\KeSearchIndexer::class;
+
 // clearCachePostProc Hook
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['cartbooks_clearcache'] =
