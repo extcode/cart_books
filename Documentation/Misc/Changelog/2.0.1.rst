@@ -9,4 +9,4 @@
 All Changes
 -----------
 
-    2018-12-10 [BUGFIX] fix class name in AddToCartFinisher
+   - 2018-12-10 [BUGFIX] fix class name in AddToCartFinisher (by extcode)
