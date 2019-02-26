@@ -26,6 +26,21 @@ class Book extends AbstractEntity
     /**
      * @var string
      */
+    protected $isbn10 = '';
+
+    /**
+     * @var string
+     */
+    protected $isbn13 = '';
+
+    /**
+     * @var string
+     */
+    protected $issn = '';
+
+    /**
+     * @var string
+     */
     protected $author = '';
 
     /**
@@ -192,6 +207,54 @@ class Book extends AbstractEntity
     public function setSubtitle(string $subtitle)
     {
         $this->subtitle = $subtitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsbn10(): string
+    {
+        return $this->isbn10;
+    }
+
+    /**
+     * @param string $isbn10
+     */
+    public function setIsbn10(string $isbn10)
+    {
+        $this->isbn10 = $isbn10;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsbn13(): string
+    {
+        return $this->isbn13;
+    }
+
+    /**
+     * @param string $isbn13
+     */
+    public function setIsbn13(string $isbn13)
+    {
+        $this->isbn10 = $isbn13;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIssn(): string
+    {
+        return $this->issn;
+    }
+
+    /**
+     * @param string $issn
+     */
+    public function setIssn(string $issn)
+    {
+        $this->isbn10 = $issn;
     }
 
     /**
