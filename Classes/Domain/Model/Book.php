@@ -77,6 +77,54 @@ class Book extends AbstractEntity
      * @var string
      */
     protected $description = '';
+    
+    /**
+     * @return string
+     */
+    public function getIsbn10(): string
+    {
+        return $this->isbn10;
+    }
+
+    /**
+     * @param string $isbn10
+     */
+    public function setIsbn10(string $isbn10)
+    {
+        $this->isbn10 = $isbn10;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getIsbn13(): string
+    {
+        return $this->isbn13;
+    }
+
+    /**
+     * @param string $isbn13
+     */
+    public function setIsbn13(string $isbn13)
+    {
+        $this->isbn10 = $isbn13;
+    }
+    
+    /**
+     * @return string
+     */
+    public function getIssn(): string
+    {
+        return $this->issn;
+    }
+
+    /**
+     * @param string $issn
+     */
+    public function setIssn(string $issn)
+    {
+        $this->isbn10 = $issn;
+    }
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
