@@ -17,12 +17,12 @@ return [
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
 
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
 
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
+
         'hideTable' => true,
         'delete' => 'deleted',
         'enablecolumns' => [
@@ -87,6 +87,7 @@ return [
                 ],
                 'foreign_table' => 'tx_cartbooks_domain_model_specialprice',
                 'foreign_table_where' => 'AND tx_cartbooks_domain_model_specialprice.pid=###CURRENT_PID### AND tx_cartbooks_domain_model_specialprice.sys_language_uid IN (-1,0)',
+                'default' => 0,
             ],
         ],
         'l10n_diffsource' => [
@@ -113,12 +114,11 @@ return [
         ],
         'starttime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => $_LLL_general . ':LGL.starttime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -126,12 +126,11 @@ return [
         ],
         'endtime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => $_LLL_general . ':LGL.endtime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,

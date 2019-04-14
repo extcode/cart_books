@@ -4,7 +4,7 @@ declare(strict_types=1);
 defined('TYPO3_MODE') or die();
 
 call_user_func(function () {
-    $_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:';
+    $_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf';
 
     $pluginNames = [
         'Books' => [
@@ -21,7 +21,7 @@ call_user_func(function () {
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
             'Extcode.cart_books',
             $pluginName,
-            $_LLL_be . 'tx_cartbooks.plugin.' . $pluginNameSC . '.title'
+            $_LLL_be . ':tx_cartbooks.plugin.' . $pluginNameSC . '.title'
         );
 
         $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = $pluginConf['subtypes_excludelist'];
