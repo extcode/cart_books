@@ -1,8 +1,3 @@
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
-
 .. include:: Includes.txt
 
 .. _start:
@@ -35,7 +30,7 @@ EXT: Cart Books
       cart, books, magazines, shopping
 
    :Autor:
-      Daniel Lorenz
+      Daniel Gohlke
 
    :E-Mail:
       ext.cart@extco.de
@@ -57,7 +52,5 @@ EXT: Cart Books
    :titlesonly:
 
    Introduction/Index
-   EditorManual/Index
-   DeveloperManual/Index
    AdministratorManual/Index
-   Misc/Index
+   Changelog/Index
