@@ -14,7 +14,7 @@
     ],
     "authors": [
         {
-            "name": "Daniel Lorenz",
+            "name": "Daniel Gohlke",
             "email": "ext.cart@extco.de",
             "role": "Developer"
         }
@@ -23,9 +23,9 @@
         "issues": "https://github.com/extcode/cart_books/issues"
     },
     "require": {
-        "php": ">=7.0.0 <7.3",
+        "php": ">=7.0.0 <7.5",
         "typo3/cms-core": "^8.7",
-        "extcode/cart": "^5.0"
+        "extcode/cart": "^5.6"
     },
     "require-dev": {
         "nimut/testing-framework": "^2.0 || ^3.0 || ^4.0",
