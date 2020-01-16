@@ -48,7 +48,7 @@
         }
     },
     "replace": {
-        "cart_books": "self.version"
+        "extcode/cart_books": "self.version"
     },
     "config": {
         "vendor-dir": ".Build/vendor",
