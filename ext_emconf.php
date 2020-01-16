@@ -1,11 +1,11 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF['cart_books'] = [
     'title' => 'Cart - Books',
     'description' => 'Shopping Cart(s) for TYPO3 - Book Extension',
     'category' => 'plugin',
     'shy' => false,
-    'version' => '1.0.3',
+    'version' => '1.0.4',
     'dependencies' => '',
     'conflicts' => '',
     'priority' => '',
