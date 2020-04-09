@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <tx_cartbooks_domain_model_book>
+        <uid>1</uid>
+        <pid>1</pid>
+        <sku>9783785726259</sku>
+        <title>NSA</title>
+        <subtitle>Nationales Sicherheits-Amt</subtitle>
+        <isbn13>978-3-7857-2625-9</isbn13>
+        <author>Eschbach, Andreas</author>
+        <publisher>Bastei Lübbe</publisher>
+        <language>deutsch</language>
+        <number_of_pages>800</number_of_pages>
+        <genre>Roman</genre>
+        <teaser>''</teaser>
+        <description>''</description>
+        <meta_description>''</meta_description>
+    </tx_cartbooks_domain_model_book>
+    <tx_cartbooks_domain_model_book>
+        <uid>2</uid>
+        <pid>1</pid>
+        <sku>9783492061315</sku>
+        <title>1793</title>
+        <subtitle>''</subtitle>
+        <isbn13>978-3-492-06131-5</isbn13>
+        <author>Natt och Dag, Niklas</author>
+        <publisher>Piper</publisher>
+        <translator>Flegler, Leena</translator>
+        <language>deutsch</language>
+        <number_of_pages>496</number_of_pages>
+        <genre>Roman</genre>
+        <teaser>''</teaser>
+        <description>''</description>
+        <meta_description>''</meta_description>
+    </tx_cartbooks_domain_model_book>
+</dataset>
