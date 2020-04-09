@@ -22,6 +22,28 @@
     "support": {
         "issues": "https://github.com/extcode/cart_books/issues"
     },
+    "config": {
+        "bin-dir": ".build/bin",
+        "discard-changes": true,
+        "optimize-autoloader": true,
+        "vendor-dir": ".build/vendor"
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "cart_books",
+            "app-dir": ".build",
+            "web-dir": ".build/public"
+        }
+    },
+    "replace": {
+        "extcode/cart_books": "self.version"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "mkdir -p .build/public/typo3conf/ext/",
+            "[ -L .build/public/typo3conf/ext/cart_books ] || ln -snvf ../../../../. .build/public/typo3conf/ext/cart_books"
+        ]
+    },
     "require": {
         "php": ">=7.2.0 <7.5",
         "ext-pdo": "*",
@@ -31,10 +53,10 @@
         "extcode/cart": "^6.6"
     },
     "require-dev": {
-        "nimut/testing-framework": "^4.0",
-        "friendsofphp/php-cs-fixer": "^2.0",
-        "helmich/typo3-typoscript-lint": "^1.4",
-        "phpro/grumphp": "*",
+        "typo3/testing-framework": "^4.0",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "helmich/typo3-typoscript-lint": "^2.0",
+        "overtrue/phplint": "^1.1",
         "phpmd/phpmd": "*"
     },
     "autoload": {
@@ -45,27 +67,6 @@
     "autoload-dev": {
         "psr-4": {
             "Extcode\\CartBooks\\Tests\\": "Tests"
-        }
-    },
-    "replace": {
-        "extcode/cart_books": "self.version"
-    },
-    "config": {
-        "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
-    },
-    "scripts": {
-        "post-autoload-dump": [
-            "mkdir -p .Build/Web/typo3conf/ext/",
-            "[ -L .Build/Web/typo3conf/ext/cart_books ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/cart_books"
-        ]
-    },
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "cart_books",
-            "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "app-dir": ".Build",
-            "web-dir": ".Build/public"
         }
     }
 }

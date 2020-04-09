@@ -6,7 +6,7 @@ cache:
 
 variables:
   COMPOSER_CACHE_DIR: ".composer"
-  TYPO3_PATH_WEB: "$CI_PROJECT_DIR/.Build/Web"
+  TYPO3_PATH_WEB: "$CI_PROJECT_DIR/.build/Web"
   MYSQL_DATABASE: "typo3"
   MYSQL_ROOT_PASSWORD: "joh316"
   typo3DatabaseName: "typo3"
@@ -30,7 +30,7 @@ lint:cgl:
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
   script:
-    - .Build/bin/php-cs-fixer fix --config=Build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./
+    - .build/bin/php-cs-fixer fix --config=Build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./
 
 lint:typoscriptcgl:
   stage: lint
@@ -38,7 +38,7 @@ lint:typoscriptcgl:
   script:
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
-    - .Build/bin/typoscript-lint -c tslint.yaml
+    - .build/bin/typoscript-lint -c tslint.yaml
 
 lint:yaml:
   stage: lint
@@ -90,11 +90,11 @@ lint:php74:
   script:
     - >
       if [[ "$COVERAGE" == "0" ]]; then
-        .Build/bin/phpunit -c Build/UnitTests.xml Tests/Unit
+        .build/bin/phpunit -c Build/UnitTests.xml
       fi
     - >
       if [[ "$COVERAGE" == "1" ]]; then
-        .Build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml Tests/Unit
+        .build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml
       fi
   artifacts:
     paths:
@@ -171,7 +171,7 @@ ter-upload:
   script:
     - composer install --no-progress --no-ansi --no-interaction
     - composer require namelesscoder/typo3-repository-client
-    - export TYPO3_PATH_WEB="$PWD/.Build/Web"
+    - export TYPO3_PATH_WEB="$PWD/.build/Web"
     - >
       if [ -n "$CI_COMMIT_TAG" ] && [ -n "$T3O_USERNAME" ] && [ -n "$T3O_PASSWORD" ]; then
         echo -e "Preparing upload of release ${CI_COMMIT_TAG} to TER\n"
@@ -180,5 +180,5 @@ ter-upload:
         # Upload
         TAG_MESSAGE=`git tag -n10 -l $CI_COMMIT_TAG | sed 's/^[0-9.]*[ ]*//g'`
         echo "Uploading release ${CI_COMMIT_TAG} to TER"
-        .Build/bin/upload . "$T3O_USERNAME" "$T3O_PASSWORD" "$TAG_MESSAGE"
+        .build/bin/upload . "$T3O_USERNAME" "$T3O_PASSWORD" "$TAG_MESSAGE"
       fi;

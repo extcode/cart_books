@@ -2,23 +2,22 @@
 declare(strict_types=1);
 namespace Extcode\CartBooks\Tests\Domain\Model;
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Extcode\CartBooks\Domain\Model\Book;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class BookTest extends UnitTestCase
 {
     /**
-     * Book
-     *
-     * @var \Extcode\CartBooks\Domain\Model\Book
+     * @var Book
      */
-    protected $book = null;
+    protected $book;
 
-    protected function setUp()
+    protected function setUp(): void
     {
-        $this->book = new \Extcode\CartBooks\Domain\Model\Book();
+        $this->book = new Book();
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         unset($this->book);
     }
@@ -26,7 +25,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSkuReturnsInitialValueForSku()
+    public function getSkuReturnsInitialValueForSku(): void
     {
         $this->assertSame(
             '',
@@ -37,7 +36,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSkuForStringSetsSku()
+    public function setSkuForStringSetsSku(): void
     {
         $this->book->setSku('Conceived at T3CON10');
 
@@ -50,7 +49,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleReturnsInitialValueForTitle()
+    public function getTitleReturnsInitialValueForTitle(): void
     {
         $this->assertSame(
             '',
@@ -61,7 +60,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleForStringSetsTitle()
+    public function setTitleForStringSetsTitle(): void
     {
         $this->book->setTitle('Conceived at T3CON10');
 
@@ -74,7 +73,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSubtitleReturnsInitialValueForSubtitle()
+    public function getSubtitleReturnsInitialValueForSubtitle(): void
     {
         $this->assertSame(
             '',
@@ -85,7 +84,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSubtitleForStringSetsSubtitle()
+    public function setSubtitleForStringSetsSubtitle(): void
     {
         $this->book->setSubtitle('Conceived at T3CON10');
 
@@ -98,7 +97,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getAuthorReturnsInitialValueForAuthor()
+    public function getAuthorReturnsInitialValueForAuthor(): void
     {
         $this->assertSame(
             '',
@@ -109,7 +108,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setAuthorForStringSetsAuthor()
+    public function setAuthorForStringSetsAuthor(): void
     {
         $this->book->setAuthor('Conceived at T3CON10');
 
@@ -122,7 +121,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getIllustratorReturnsInitialValueForIllustrator()
+    public function getIllustratorReturnsInitialValueForIllustrator(): void
     {
         $this->assertSame(
             '',
@@ -133,7 +132,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setIllustratorForStringSetsIllustrator()
+    public function setIllustratorForStringSetsIllustrator(): void
     {
         $this->book->setIllustrator('Conceived at T3CON10');
 
@@ -146,7 +145,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getEditorReturnsInitialValueForEditor()
+    public function getEditorReturnsInitialValueForEditor(): void
     {
         $this->assertSame(
             '',
@@ -157,7 +156,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setEditorForStringSetsEditor()
+    public function setEditorForStringSetsEditor(): void
     {
         $this->book->setEditor('Conceived at T3CON10');
 
@@ -170,7 +169,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPublisherReturnsInitialValueForPublisher()
+    public function getPublisherReturnsInitialValueForPublisher(): void
     {
         $this->assertSame(
             '',
@@ -181,7 +180,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPublisherForStringSetsPublisher()
+    public function setPublisherForStringSetsPublisher(): void
     {
         $this->book->setPublisher('Conceived at T3CON10');
 
@@ -194,7 +193,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTranslatorReturnsInitialValueForTranslator()
+    public function getTranslatorReturnsInitialValueForTranslator(): void
     {
         $this->assertSame(
             '',
@@ -205,7 +204,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTranslatorForStringSetsTranslator()
+    public function setTranslatorForStringSetsTranslator(): void
     {
         $this->book->setTranslator('Conceived at T3CON10');
 
@@ -218,7 +217,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLanguageReturnsInitialValueForLanguage()
+    public function getLanguageReturnsInitialValueForLanguage(): void
     {
         $this->assertSame(
             '',
@@ -229,7 +228,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLanguageForStringSetsLanguage()
+    public function setLanguageForStringSetsLanguage(): void
     {
         $this->book->setLanguage('Conceived at T3CON10');
 
@@ -242,7 +241,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getNumberOfPagesReturnsInitialValueForNumberOfPages()
+    public function getNumberOfPagesReturnsInitialValueForNumberOfPages(): void
     {
         $this->assertSame(
             '',
@@ -253,7 +252,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNumberOfPagesForStringSetsNumberOfPages()
+    public function setNumberOfPagesForStringSetsNumberOfPages(): void
     {
         $this->book->setNumberOfPages('Conceived at T3CON10');
 
@@ -266,7 +265,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getGenreReturnsInitialValueForGenre()
+    public function getGenreReturnsInitialValueForGenre(): void
     {
         $this->assertSame(
             '',
@@ -277,7 +276,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setGenreForStringSetsGenre()
+    public function setGenreForStringSetsGenre(): void
     {
         $this->book->setGenre('Conceived at T3CON10');
 
@@ -290,7 +289,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTeaserReturnsInitialValueForTeaser()
+    public function getTeaserReturnsInitialValueForTeaser(): void
     {
         $this->assertSame(
             '',
@@ -301,7 +300,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTeaserForStringSetsTeaser()
+    public function setTeaserForStringSetsTeaser(): void
     {
         $this->book->setTeaser('Conceived at T3CON10');
 
@@ -314,7 +313,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDescriptionReturnsInitialValueForDescription()
+    public function getDescriptionReturnsInitialValueForDescription(): void
     {
         $this->assertSame(
             '',
@@ -325,7 +324,7 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function setDescriptionForStringSetsDescription()
+    public function setDescriptionForStringSetsDescription(): void
     {
         $this->book->setDescription('Conceived at T3CON10');
 
