@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Extcode\CartBooks\ViewHelpers\Link;
 
 /*
@@ -28,9 +27,13 @@ class BookViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Link\ActionViewHelper
         $book = $this->arguments['book'];
 
         if ($book->getCategory() && $book->getCategory()->getCartBookShowPid()) {
+            $this->arguments['pluginName'] = 'SingleBook';
             $this->arguments['pageUid'] = $book->getCategory()->getCartBookShowPid();
-        } elseif ($this->arguments['settings']['showPageUids']) {
-            $this->arguments['pageUid'] = $this->arguments['settings']['showPageUids'];
+        } elseif ($this->arguments['settings']['showPageUid']) {
+            $this->arguments['pluginName'] = 'SingleBook';
+            $this->arguments['pageUid'] = $this->arguments['settings']['showPageUid'];
+        } else {
+            $this->arguments['pluginName'] = 'Books';
         }
 
         $this->arguments['action'] = 'show';

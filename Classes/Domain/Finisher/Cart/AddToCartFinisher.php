@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Extcode\CartBooks\Domain\Finisher\Cart;
 
 /*
@@ -19,7 +18,7 @@ use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Web\Request;
+use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -101,10 +100,8 @@ class AddToCartFinisher implements AddToCartFinisherInterface
      *
      * @return array
      */
-    public function getProductFromRequest(
-        Request $request,
-        Cart $cart
-    ) {
+    public function getProductFromRequest(Request $request, Cart $cart): array
+    {
         $requestArguments = $request->getArguments();
         $taxClasses = $cart->getTaxClasses();
 

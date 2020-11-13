@@ -44,3 +44,10 @@ plugin.tx_cartbooks {
         skipDefaultArguments = 1
     }
 }
+
+plugin.tx_cartbooks_books {
+    settings {
+        listAction.grid.teaser.maxCharacters = 200
+        listAction.table.teaser.maxCharacters = 400
+    }
+}

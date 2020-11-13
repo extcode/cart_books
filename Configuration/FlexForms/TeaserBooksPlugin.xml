@@ -12,6 +12,7 @@
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <itemsProcFunc>Extcode\Cart\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
                                 <extKey>cart_books</extKey>
                                 <pluginName>TeaserBooks</pluginName>
@@ -66,6 +67,7 @@
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.teaser.select.books</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectMultipleSideBySide</renderType>
                                 <enableMultiSelectFilterTextfield>1</enableMultiSelectFilterTextfield>
                                 <foreign_table>tx_cartbooks_domain_model_book</foreign_table>
                                 <size>3</size>

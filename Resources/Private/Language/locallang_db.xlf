@@ -35,13 +35,13 @@
                 <source>Translator</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.number_of_pages">
-                <source>Number of pages</source>
+                <source>Number of Pages</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.language">
                 <source>Language</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
-                <source>Date of publication</source>
+                <source>Date of Publication</source>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.isbn10">
                 <source>ISBN-10</source>

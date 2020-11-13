@@ -7,34 +7,13 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
-                    <switchableControllerActions>
-                        <TCEforms>
-                            <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.switch</label>
-                            <onChange>reload</onChange>
-                            <config>
-                                <type>select</type>
-                                <items>
-                                    <numIndex index="0">
-                                        <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list_and_show</numIndex>
-                                        <numIndex index="1">Book->show;Book->list</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.show</numIndex>
-                                        <numIndex index="1">Book->show</numIndex>
-                                    </numIndex>
-                                </items>
-                                <default>Book->show;Book->list</default>
-                            </config>
-                        </TCEforms>
-                    </switchableControllerActions>
 
-                    <!-- Template Layout -->
                     <settings.templateLayout>
                         <TCEforms>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <itemsProcFunc>Extcode\Cart\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
                                 <extKey>cart_books</extKey>
                                 <pluginName>Books</pluginName>
@@ -43,14 +22,13 @@
                         </TCEforms>
                     </settings.templateLayout>
 
-                    <!-- order -->
                     <settings.orderBy>
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.orderBy</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
                                         <numIndex index="0"></numIndex>
@@ -77,14 +55,13 @@
                         </TCEforms>
                     </settings.orderBy>
 
-                    <!-- order direction  -->
                     <settings.orderDirection>
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.orderDirection</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
                                         <numIndex index="0"></numIndex>
@@ -107,7 +84,6 @@
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.limit</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>input</type>
                                 <size>3</size>
@@ -123,11 +99,10 @@
                         </TCEforms>
                     </settings.limit>
 
-                    <settings.showPageUids>
+                    <settings.showPageUid>
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.select.single_pid</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>group</type>
                                 <internal_type>db</internal_type>
@@ -143,15 +118,15 @@
                                 </wizards>
                             </config>
                         </TCEforms>
-                    </settings.showPageUids>
+                    </settings.showPageUid>
 
                     <settings.categoriesList>
                         <TCEforms>
                             <exclude>1</exclude>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.categories</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectTree</renderType>
                                 <autoSizeMax>20</autoSizeMax>
                                 <foreign_table>sys_category</foreign_table>
                                 <foreign_table_where>AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC
@@ -173,7 +148,6 @@
                     <settings.listSubcategories>
                         <TCEforms>
                             <label>LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.books.action.book.list.subcategories</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Book->show;Book->list</displayCond>
                             <config>
                                 <type>check</type>
                             </config>

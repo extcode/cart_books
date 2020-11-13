@@ -19,5 +19,15 @@ mod.wizards.newContentElement.wizardItems.plugins {
                 list_type = cartbooks_teaserbooks
             }
         }
+
+        single_books {
+            iconIdentifier = ext-cartbooks-wizard-icon
+            title = LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.single_book.title
+            description = LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:tx_cartbooks.plugin.single_book.description
+            tt_content_defValues {
+                CType = list
+                list_type = cartbooks_singlebook
+            }
+        }
     }
 }

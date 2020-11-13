@@ -4,13 +4,19 @@
 
 <f:if condition="{book.bestSpecialPrice} < {book.price}">
     <f:then>
-        <cart:format.currency currencyTranslation="{currencyTranslationData.currencyTranslation}" currencySign="{currencyTranslationData.currencySign}">{book.bestSpecialPrice}</cart:format.currency>
-        <strike>
-            <cart:format.currency currencyTranslation="{currencyTranslationData.currencyTranslation}" currencySign="{currencyTranslationData.currencySign}">{book.price}</cart:format.currency>
-        </strike>
+        <span class="label"><f:translate key="tx_cartbooks_domain_model_book.price"/>:</span>
+        <span>
+            <cart:format.currency currencyTranslation="{currencyTranslationData.currencyTranslation}" currencySign="{currencyTranslationData.currencySign}">{book.bestSpecialPrice}</cart:format.currency>
+            <strike>
+                <cart:format.currency currencyTranslation="{currencyTranslationData.currencyTranslation}" currencySign="{currencyTranslationData.currencySign}">{book.price}</cart:format.currency>
+            </strike>
+        </span>
     </f:then>
     <f:else>
-        <cart:format.currency currencyTranslation="{currencyTranslationData.currencyTranslation}" currencySign="{currencyTranslationData.currencySign}">{book.price}</cart:format.currency>
+        <span class="label"><f:translate key="tx_cartbooks_domain_model_book.price"/>:</span>
+        <span>
+            <cart:format.currency currencyTranslation="{currencyTranslationData.currencyTranslation}" currencySign="{currencyTranslationData.currencySign}">{book.price}</cart:format.currency>
+        </span>
     </f:else>
 </f:if>
 </html>

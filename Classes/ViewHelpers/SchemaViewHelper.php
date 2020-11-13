@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Extcode\CartBooks\ViewHelpers;
 
 /*
@@ -10,7 +9,7 @@ namespace Extcode\CartBooks\ViewHelpers;
  * LICENSE file that was distributed with this source code.
  */
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class SchemaViewHelper extends AbstractViewHelper
 {

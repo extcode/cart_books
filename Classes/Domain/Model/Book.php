@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Extcode\CartBooks\Domain\Model;
 
 /*
@@ -135,7 +134,7 @@ class Book extends AbstractEntity
     /**
      * @var \Extcode\CartBooks\Domain\Model\Category
      */
-    protected $category;
+    protected $category = null;
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category>
@@ -151,7 +150,7 @@ class Book extends AbstractEntity
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
      */
-    protected $relatedBooks = null;
+    protected $relatedBooks;
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
@@ -168,6 +167,16 @@ class Book extends AbstractEntity
      * @var string
      */
     protected $metaDescription = '';
+
+    public function __construct()
+    {
+        $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->specialPrices = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->relatedBooks = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->relatedBooksFrom = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
     /**
      * @return string
@@ -442,51 +451,41 @@ class Book extends AbstractEntity
     }
 
     /**
-     * Returns the Images
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
-    public function getImages()
+    public function getImages(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->images;
     }
 
     /**
-     * Returns the first Image
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return null|\TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    public function getFirstImage()
+    public function getFirstImage(): ?\TYPO3\CMS\Extbase\Domain\Model\FileReference
     {
         return array_shift($this->getImages()->toArray());
     }
 
     /**
-     * Sets the Images
-     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
      */
-    public function setImages($images)
+    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
     {
         $this->images = $images;
     }
 
     /**
-     * Returns the Files
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
-    public function getFiles()
+    public function getFiles(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->files;
     }
 
     /**
-     * Sets the Files
-     *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
      */
-    public function setFiles($files)
+    public function setFiles(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $files)
     {
         $this->files = $files;
     }
@@ -508,18 +507,14 @@ class Book extends AbstractEntity
     }
 
     /**
-     * Returns the Special Prices
-     *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice>
      */
-    public function getSpecialPrices()
+    public function getSpecialPrices(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->specialPrices;
     }
 
     /**
-     * Adds a Special Price
-     *
      * @param \Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice
      */
     public function addSpecialPrice(\Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice)
@@ -528,8 +523,6 @@ class Book extends AbstractEntity
     }
 
     /**
-     * Removes a Special Price
-     *
      * @param \Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice
      */
     public function removeSpecialPrice(\Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice)
@@ -538,9 +531,7 @@ class Book extends AbstractEntity
     }
 
     /**
-     * Sets the Special Prices
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $specialPrices
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice> $specialPrices
      */
     public function setSpecialPrices(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $specialPrices)
     {
@@ -550,11 +541,11 @@ class Book extends AbstractEntity
     /**
      * Returns best Special Price
      *
-     * @var array
      * @param mixed $frontendUserGroupIds
+     *
      * @return float
      */
-    public function getBestSpecialPrice($frontendUserGroupIds = [])
+    public function getBestSpecialPrice($frontendUserGroupIds = []): float
     {
         $bestSpecialPrice = $this->price;
 
@@ -606,15 +597,15 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @return \Extcode\CartBooks\Domain\Model\Category
+     * @return null|Category
      */
-    public function getCategory()
+    public function getCategory(): ?Category
     {
         return $this->category;
     }
 
     /**
-     * @param \Extcode\CartBooks\Domain\Model\Category $category
+     * @param Category $category
      */
     public function setCategory(Category $category)
     {
@@ -622,15 +613,15 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category>
      */
-    public function getCategories()
+    public function getCategories(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->categories;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category> $categories
      */
     public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
     {
@@ -638,15 +629,15 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Cart\Domain\Model\Tag>
      */
-    public function getTags()
+    public function getTags(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->tags;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Cart\Domain\Model\Tag> $tags
      */
     public function setTags(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags)
     {
@@ -654,7 +645,7 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBook
+     * @param Book $relatedBook
      */
     public function addRelatedBook(self $relatedBook)
     {
@@ -662,7 +653,7 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBook
+     * @param Book $relatedBook
      */
     public function removeRelatedBook(self $relatedBook)
     {
@@ -670,9 +661,9 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBook
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
      */
-    public function getRelatedBooks()
+    public function getRelatedBooks(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->relatedBooks;
     }
@@ -686,7 +677,7 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBookFrom
+     * @param Book $relatedBookFrom
      */
     public function addRelatedBookFrom(self $relatedBookFrom)
     {
@@ -694,7 +685,7 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @param \Extcode\CartBooks\Domain\Model\Book $relatedBookFrom
+     * @param Book $relatedBookFrom
      */
     public function removeRelatedBookFrom(self $relatedBookFrom)
     {
@@ -702,9 +693,9 @@ class Book extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBookFrom
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
      */
-    public function getRelatedBooksFrom()
+    public function getRelatedBooksFrom(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
     {
         return $this->relatedBooksFrom;
     }
@@ -734,21 +725,17 @@ class Book extends AbstractEntity
     }
 
     /**
-     * Returns MetaDescription
-     *
      * @return string $metaDescription
      */
-    public function getMetaDescription()
+    public function getMetaDescription(): string
     {
         return $this->metaDescription;
     }
 
     /**
-     * Sets MetaDescription
-     *
      * @param string $metaDescription
      */
-    public function setMetaDescription($metaDescription)
+    public function setMetaDescription(string $metaDescription)
     {
         $this->metaDescription = $metaDescription;
     }

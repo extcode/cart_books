@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Extcode\CartBooks\Controller;
 
 /*
@@ -12,6 +11,7 @@ namespace Extcode\CartBooks\Controller;
 
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -98,6 +98,8 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('books', $books);
         $this->view->assign('cartSettings', $this->cartSettings);
 
+        $this->assignCurrencyTranslationData();
+
         $this->addCacheTags($books);
     }
 
@@ -116,6 +118,8 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('books', $books);
         $this->view->assign('cartSettings', $this->cartSettings);
 
+        $this->assignCurrencyTranslationData();
+
         $this->addCacheTags($books);
     }
 
@@ -128,7 +132,7 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function showAction(\Extcode\CartBooks\Domain\Model\Book $book = null)
     {
-        if (empty($book)) {
+        if ($book === null) {
             $this->forward('list');
         }
 
@@ -229,28 +233,26 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     protected function assignCurrencyTranslationData()
     {
-        if (TYPO3_MODE === 'FE') {
-            $currencyTranslationData = [];
+        $currencyTranslationData = [];
 
-            $cartFrameworkConfig = $this->configurationManager->getConfiguration(
-                \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
-                'Cart'
-            );
+        $cartFrameworkConfig = $this->configurationManager->getConfiguration(
+            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
+            'Cart'
+        );
 
-            $cart = $this->cartUtility->getCartFromSession($cartFrameworkConfig);
+        $cart = $this->cartUtility->getCartFromSession($cartFrameworkConfig);
 
-            if ($cart) {
-                $currencyTranslationData['currencyCode'] = $cart->getCurrencyCode();
-                $currencyTranslationData['currencySign'] = $cart->getCurrencySign();
-                $currencyTranslationData['currencyTranslation'] = $cart->getCurrencyTranslation();
-            }
-
-            $this->view->assign('currencyTranslationData', $currencyTranslationData);
+        if ($cart) {
+            $currencyTranslationData['currencyCode'] = $cart->getCurrencyCode();
+            $currencyTranslationData['currencySign'] = $cart->getCurrencySign();
+            $currencyTranslationData['currencyTranslation'] = $cart->getCurrencyTranslation();
         }
+
+        $this->view->assign('currencyTranslationData', $currencyTranslationData);
     }
 
     /**
-     * @param $books
+     * @param QueryResultInterface|array $books
      */
     protected function addCacheTags($books)
     {

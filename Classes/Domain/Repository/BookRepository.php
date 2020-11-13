@@ -33,7 +33,7 @@ class BookRepository extends Repository
             $constraints[] = $query->like('title', '%' . $demand->getTitle() . '%');
         }
 
-        if ((!empty($demand->getCategories()))) {
+        if (!empty($demand->getCategories())) {
             $categoryConstraints = [];
             foreach ($demand->getCategories() as $category) {
                 $categoryConstraints[] = $query->contains('category', $category);

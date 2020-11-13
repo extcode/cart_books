@@ -1,0 +1,47 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:cartbooks="http://typo3.org/ns/Extcode/CartBooks/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:for each="{books}" as="book">
+    <div class="book-list-item book-table-item mb-4">
+        <div class="row">
+            <div class="col-md-2">
+                <f:if condition="{book.images}">
+                    <cartbooks:link.book book="{book}" settings="{settings}">
+                        <f:image src="{book.firstImage.originalResource.originalFile.uid}"
+                                 title="{book.firstImage.originalResource.title}"
+                                 alt="{book.firstImage.originalResource.title}"
+                                 width="{settings.listAction.media.image.size.small.maxWidth}"
+                                 height="{settings.listAction.media.image.size.small.maxHeight}" />
+                    </cartbooks:link.book>
+                </f:if>
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-lg-6 col-md-8 col-sm-12">
+                        <cartbooks:link.book book="{book}" settings="{settings}">
+                            <div class="book-title">{book.title}</div>
+                        </cartbooks:link.book>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <div class="book-author">{book.author}</div>
+                    </div>
+                    <div class="col-lg-2 col-md-12">
+                        <div class="book-genre">{book.genre}</div>
+                    </div>
+                </div>
+                <f:if condition="{book.teaser}">
+                    <div class="teaser mt-2">
+                        <f:format.crop maxCharacters="{settings.listAction.table.teaser.maxCharacters}">{book.teaser}</f:format.crop>
+                        <span class="text-right">
+                            <cartbooks:link.book book="{book}" settings="{settings}">
+                                <div class="book-title"><f:translate key="tx_cartbooks.more_link" /><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                            </cartbooks:link.book>
+                        </span>
+                    </div>
+                </f:if>
+            </div>
+        </div>
+    </div>
+</f:for>
+</html>

@@ -1,6 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:cart="http://typo3.org/ns/Extcode/Cart/ViewHelpers"
-      xmlns:cartbooks="http://typo3.org/ns/Extcode/CartBooks/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <cart:titleTag>
@@ -9,10 +8,10 @@
 
 <f:if condition="{book.metaDescription}">
     <f:then>
-        <cart:metaTag name="description" content="{book.metaDescription -> f:format.stripTags() -> f:format.crop(maxCharacters: '150')}" />
+        <cart:metaTag property="description" content="{book.metaDescription -> f:format.crop(maxCharacters: '150')}" />
     </f:then>
     <f:else>
-        <cart:metaTag name="description" content="{book.description -> f:format.stripTags() -> f:format.crop(maxCharacters: '150')}" />
+        <cart:metaTag property="description" content="{book.teaser -> f:format.crop(maxCharacters: '150')}" />
     </f:else>
 </f:if>
 
@@ -21,52 +20,28 @@
 </script>
 
 <div class="book-wrapper">
-    <div class="book-title"><h1>{book.title}</h1></div>
-    <div class="book-author">{book.author}</div>
-    <f:if condition="{book.images}">
-        <f:image src="{book.firstImage.originalResource.originalFile.uid}"
-                 title="{book.firstImage.originalResource.title}"
-                 alt="{book.firstImage.originalResource.title}"
-                 width="{settings.showAction.media.image.size.medium.maxWidth}"
-                 height="{settings.showAction.media.image.size.medium.maxHeight}" />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <f:render partial="Book/Show/Image" arguments="{book: book}"/>
+            </div>
+            <div class="col-lg-6 col-md-8 col-sm-12">
+                <f:render partial="Book/Show/Information" arguments="{book: book}"/>
+            </div>
+            <div class="col-lg-2 col-md-12">
+                <div>
+                    <f:render partial="Book/Price" arguments="{book: book}" />
+                </div>
 
-        <f:if condition="{book.images -> f:count()} > 1">
-            <f:for each="{book.images}" as="image">
-                <f:image src="{image.originalResource.originalFile.uid}"
-                         title="{image.originalResource.title}"
-                         alt="{image.originalResource.title}"
-                         width="{settings.showAction.media.image.size.small.maxWidth}"
-                         height="{settings.showAction.media.image.size.small.maxHeight}"  />
-            </f:for>
-        </f:if>
-    </f:if>
-    <div class="book-description">
-        <f:format.html>{book.description}</f:format.html>
+                <f:if condition="{cartSettings.cart.pid}">
+                    <f:render partial="Book/CartForm" arguments="{book: book, pid: cartSettings.cart.pid}" />
+                </f:if>
+            </div>
+        </div>
+
+        <f:render partial="Book/Show/Description" arguments="{book: book}"/>
+
+        <f:render partial="Book/Show/RelatedBooks" arguments="{book: book}"/>
     </div>
 </div>
-
-<f:if condition="{slot.handleStock}">
-    <div>
-        <f:render partial="Book/Seats" arguments="{book: book}" />
-    </div>
-</f:if>
-
-<div>
-    <f:render partial="Book/Price" arguments="{book: book}" />
-</div>
-
-<f:if condition="bookable">
-    <div>
-        <f:render partial="Book/CartForm" arguments="{book: book, pid: cartSettings.cart.pid}" />
-    </div>
-</f:if>
-
-<f:if condition="{book.relatedBooks}">
-    <ul>
-        <f:for each="{book.relatedBooks}" as="relatedBook">
-            <li>
-                <f:render partial="Book/RelatedBook" arguments="{book: relatedBook, settings: settings}"/>
-            </li>
-        </f:for>
-    </ul>
-</f:if>
+</html>

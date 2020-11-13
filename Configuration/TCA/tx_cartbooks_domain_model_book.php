@@ -355,7 +355,9 @@ return [
             'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.teaser',
             'config' => [
                 'type' => 'text',
-                'enableRichtext' => true,
+                'cols' => 40,
+                'rows' => 5,
+                'eval' => 'trim',
             ],
         ],
         'description' => [

@@ -45,7 +45,7 @@
                 <target>Übersetzer</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.number_of_pages">
-                <source>Number of pages</source>
+                <source>Number of Pages</source>
                 <target>Seitenanzahl</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.language">
@@ -53,7 +53,7 @@
                 <target>Sprache</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
-                <source>Date of publication</source>
+                <source>Date of Publication</source>
                 <target>Veröffentlichungsdatum</target>
             </trans-unit>
             <trans-unit id="tx_cartbooks_domain_model_book.genre">

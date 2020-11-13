@@ -1,6 +1,5 @@
 <?php
 declare(strict_types=1);
-
 namespace Extcode\CartBooks\Domain\Model;
 
 /*
@@ -13,25 +12,19 @@ namespace Extcode\CartBooks\Domain\Model;
 class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
 {
     /**
-     * Cart Book List Pid
-     *
      * @var int
      */
     protected $cartBookListPid;
 
     /**
-     * Cart Book Single Pid
-     *
      * @var int
      */
     protected $cartBookShowPid;
 
     /**
-     * Returns Cart Book List Pid
-     *
      * @return int
      */
-    public function getCartBookListPid()
+    public function getCartBookListPid(): int
     {
         return $this->cartBookListPid;
     }
@@ -41,7 +34,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
      *
      * @return int
      */
-    public function getcartBookShowPid()
+    public function getCartBookShowPid(): int
     {
         return $this->cartBookShowPid;
     }

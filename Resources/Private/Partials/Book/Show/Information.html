@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="mb-4">
+    <div class="book-title"><h1>{book.title}</h1></div>
+    <f:if condition="{book.subtitle}">
+        <div class="book-subtitle"><h2>{book.subtitle}</h2></div>
+    </f:if>
+    <f:if condition="{book.genre}">
+        <div class="book-genre">{book.genre}</div>
+    </f:if>
+    <div class="book-author mb-2">{book.author}</div>
+</div>
+
+<f:if condition="{book.description}">
+    <f:then>
+        <div class="book-description">
+                <f:format.html>{book.description}</f:format.html>
+        </div>
+    </f:then>
+    <f:else>
+        <f:if condition="{book.teaser}">
+            <div class="book-teaser">{book.teaser}</div>
+        </f:if>
+    </f:else>
+</f:if>
+</html>

@@ -10,6 +10,9 @@ call_user_func(function () {
         'Books' => [
             'subtypes_excludelist' => 'select_key',
         ],
+        'SingleBook' => [
+            'subtypes_excludelist' => 'select_key, pages, recursive',
+        ],
         'TeaserBooks' => [
             'subtypes_excludelist' => 'select_key, pages, recursive',
         ],
@@ -19,7 +22,7 @@ call_user_func(function () {
         $pluginSignature = 'cartbooks_' . strtolower($pluginName);
         $pluginNameSC = strtolower(preg_replace('/[A-Z]/', '_$0', lcfirst($pluginName)));
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-            'Extcode.cart_books',
+            'cart_books',
             $pluginName,
             $_LLL_be . ':tx_cartbooks.plugin.' . $pluginNameSC . '.title'
         );
