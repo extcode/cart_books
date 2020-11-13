@@ -1,15 +1,18 @@
 <?php
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Controller;
+
+/*
+ * This file is part of the package extcode/cart_books.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
 
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 
-/**
- * Book Controller
- *
- * @author Daniel Lorenz <ext.cart@extco.de>
- */
 class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**

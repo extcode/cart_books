@@ -1,15 +1,18 @@
 <?php
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Utility;
+
+/*
+ * This file is part of the package extcode/cart_books.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
 
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-/**
- * Stock Utility
- *
- * @author Daniel Lorenz <ext.cart@extco.de>
- */
 class StockUtility
 {
     /**
