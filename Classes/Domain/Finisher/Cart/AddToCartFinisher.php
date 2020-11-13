@@ -1,6 +1,14 @@
 <?php
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Domain\Finisher\Cart;
+
+/*
+ * This file is part of the package extcode/cart_books.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
 
 use Extcode\Cart\Domain\Finisher\Cart\AddToCartFinisherInterface;
 use Extcode\Cart\Domain\Model\Cart\Cart;
@@ -15,11 +23,6 @@ use TYPO3\CMS\Extbase\Mvc\Web\Request;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-/**
- * CheckAvailability Hook
- *
- * @author Daniel Lorenz <ext.cart@extco.de>
- */
 class AddToCartFinisher implements AddToCartFinisherInterface
 {
     /**
