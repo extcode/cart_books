@@ -2,6 +2,13 @@
 declare(strict_types=1);
 namespace Extcode\CartBooks\ViewHelpers\Link;
 
+/*
+ * This file is part of the package extcode/cart_books.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 class BookViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Link\ActionViewHelper
 {
     public function initializeArguments()
