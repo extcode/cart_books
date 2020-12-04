@@ -22,9 +22,9 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     protected $cartBookShowPid;
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getCartBookListPid(): int
+    public function getCartBookListPid(): ?int
     {
         return $this->cartBookListPid;
     }
@@ -32,9 +32,9 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * Returns Cart Book Single Pid
      *
-     * @return int
+     * @return int|null
      */
-    public function getCartBookShowPid(): int
+    public function getCartBookShowPid(): ?int
     {
         return $this->cartBookShowPid;
     }
