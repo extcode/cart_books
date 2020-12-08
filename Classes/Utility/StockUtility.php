@@ -13,7 +13,6 @@ use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 class StockUtility
@@ -27,11 +26,6 @@ class StockUtility
      * @var LogManager
      */
     protected $logManager = null;
-
-    /**
-     * @var ObjectManager
-     */
-    protected $objectManager = null;
 
     /**
      * @var PersistenceManager
@@ -48,19 +42,15 @@ class StockUtility
      */
     public function __construct()
     {
-        $this->objectManager = GeneralUtility::makeInstance(
-            ObjectManager::class
-        );
-
-        $this->logManager = $this->objectManager->get(
+        $this->logManager = GeneralUtility::makeInstance(
             LogManager::class
         );
 
-        $this->persistenceManager = $this->objectManager->get(
+        $this->persistenceManager = GeneralUtility::makeInstance(
             PersistenceManager::class
         );
 
-        $this->configurationManager = $this->objectManager->get(
+        $this->configurationManager = GeneralUtility::makeInstance(
             ConfigurationManager::class
         );
 
@@ -75,7 +65,7 @@ class StockUtility
         $cartProduct = $params['cartProduct'];
 
         if ($cartProduct->getProductType() === 'CartBooks') {
-            $productRepository = $this->objectManager->get(
+            $productRepository = GeneralUtility::makeInstance(
                 \Extcode\CartBooks\Domain\Repository\BookRepository::class
             );
 
@@ -99,7 +89,7 @@ class StockUtility
     {
         $cacheTag = 'tx_cartbooks_book_' . $cartProductId;
 
-        $cacheManager = $this->objectManager->get(CacheManager::class);
+        $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
 
         $cacheManager->flushCachesInGroupByTag('pages', $cacheTag);
     }

@@ -12,17 +12,10 @@ namespace Extcode\CartBooks\Tests\Functional\Repository;
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 class BookRepositoryTest extends FunctionalTestCase
 {
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-     */
-    protected $objectManager;
-
     /**
      * @var BookRepository
      */
@@ -36,8 +29,7 @@ class BookRepositoryTest extends FunctionalTestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $this->bookRepository = $this->objectManager->get(BookRepository::class);
+        $this->bookRepository = GeneralUtility::makeInstance(BookRepository::class);
 
         $this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_cartbooks_domain_model_book.xml');
@@ -46,7 +38,6 @@ class BookRepositoryTest extends FunctionalTestCase
     public function tearDown(): void
     {
         unset($this->bookRepository);
-        unset($this->objectManager);
     }
 
     /**

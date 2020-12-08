@@ -11,6 +11,7 @@ namespace Extcode\CartBooks\Controller;
 
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
@@ -155,7 +156,7 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected function createDemandObjectFromSettings(string $type, array $settings) : BookDemand
     {
         /** @var BookDemand $demand */
-        $demand = $this->objectManager->get(
+        $demand = GeneralUtility::makeInstance(
             BookDemand::class
         );
 

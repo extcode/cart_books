@@ -19,20 +19,22 @@ use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Request;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class AddToCartFinisher implements AddToCartFinisherInterface
 {
     /**
-     * @var ObjectManager
-     */
-    protected $objectManager;
-
-    /**
      * @var BookRepository
      */
     protected $bookRepository;
+
+    /**
+     * @param BookRepository $bookRepository
+     */
+    public function injectBookRepository(BookRepository $bookRepository)
+    {
+        $this->bookRepository = $bookRepository;
+    }
 
     /**
      * @param Request $request
@@ -48,10 +50,6 @@ class AddToCartFinisher implements AddToCartFinisherInterface
         Cart $cart,
         string $mode = 'update'
     ): AvailabilityResponse {
-        $this->objectManager = GeneralUtility::makeInstance(
-            ObjectManager::class
-        );
-
         /** @var AvailabilityResponse $availabilityResponse */
         $availabilityResponse = GeneralUtility::makeInstance(
             AvailabilityResponse::class
@@ -65,10 +63,6 @@ class AddToCartFinisher implements AddToCartFinisherInterface
         if ($cartProduct->getProductType() !== 'CartBooks') {
             return $availabilityResponse;
         }
-
-        $this->bookRepository = $this->objectManager->get(
-            BookRepository::class
-        );
 
         $querySettings = $this->bookRepository->createQuery()->getQuerySettings();
         $querySettings->setRespectStoragePage(false);
@@ -137,13 +131,6 @@ class AddToCartFinisher implements AddToCartFinisherInterface
 
             return [$errors, $cartProducts];
         }
-
-        $this->objectManager = GeneralUtility::makeInstance(
-            ObjectManager::class
-        );
-        $this->bookRepository = $this->objectManager->get(
-            BookRepository::class
-        );
 
         $book = $this->bookRepository->findByUid((int)$requestArguments['book']);
 
