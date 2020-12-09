@@ -10,3 +10,6 @@ services:
 
   Extcode\CartBooks\Domain\Finisher\Cart\AddToCartFinisher:
     public: true
+
+  Extcode\CartBooks\Updates\SlugUpdater:
+    public: true
