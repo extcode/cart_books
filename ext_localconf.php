@@ -69,13 +69,6 @@ if (TYPO3_MODE === 'BE') {
     <INCLUDE_TYPOSCRIPT: source="FILE:EXT:cart_books/Configuration/TSconfig/ContentElementWizard.tsconfig">
 ');
 
-// Cart Hooks
-
-if (TYPO3_MODE === 'FE') {
-    $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['cart']['CartBooks']['Cart']['AddToCartFinisher'] =
-        \Extcode\CartBooks\Domain\Finisher\Cart\AddToCartFinisher::class;
-}
-
 // ke_search Hook - register indexer for books
 
 $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['registerIndexerConfiguration'][] =
@@ -87,19 +80,6 @@ $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['customIndexer'][] =
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['cartbooks_clearcache'] =
     \Extcode\CartBooks\Hooks\DataHandler::class . '->clearCachePostProc';
-
-// Signal Slots
-
-$dispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-    \TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
-);
-
-$dispatcher->connect(
-    \Extcode\Cart\Utility\StockUtility::class,
-    'handleStock',
-    \Extcode\CartBooks\Utility\StockUtility::class,
-    'handleStock'
-);
 
 // register "cartbooks:" namespace
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['cartbooks'][]
