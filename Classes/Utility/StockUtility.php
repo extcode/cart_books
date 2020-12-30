@@ -9,6 +9,7 @@ namespace Extcode\CartBooks\Utility;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Cart\Domain\Model\Cart\Cart;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -60,24 +61,26 @@ class StockUtility
         );
     }
 
-    public function handleStock($params)
+    public function handleStock(Cart $cart)
     {
-        $cartProduct = $params['cartProduct'];
+        $cartProducts = $cart->getProducts();
 
-        if ($cartProduct->getProductType() === 'CartBooks') {
-            $productRepository = GeneralUtility::makeInstance(
-                \Extcode\CartBooks\Domain\Repository\BookRepository::class
-            );
+        foreach ($cartProducts as $cartProduct) {
+            if ($cartProduct->getProductType() === 'CartBooks') {
+                $productRepository = GeneralUtility::makeInstance(
+                    \Extcode\CartBooks\Domain\Repository\BookRepository::class
+                );
 
-            $cartProductId = $cartProduct->getProductId();
-            $product = $productRepository->findByUid($cartProductId);
+                $cartProductId = $cartProduct->getProductId();
+                $product = $productRepository->findByUid($cartProductId);
 
-            if ($product && $product->isHandleStock()) {
-                $product->setStock($product->getStock() - $cartProduct->getQuantity());
-                $productRepository->update($product);
-                $this->persistenceManager->persistAll();
+                if ($product && $product->isHandleStock()) {
+                    $product->setStock($product->getStock() - $cartProduct->getQuantity());
+                    $productRepository->update($product);
+                    $this->persistenceManager->persistAll();
 
-                $this->flushCache($product->getUid());
+                    $this->flushCache($product->getUid());
+                }
             }
         }
     }
