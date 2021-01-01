@@ -24,7 +24,7 @@ stages:
   - upload
 
 lint:cgl:
-  image: composer:1.6
+  image: composer:1
   stage: lint
   before_script:
     - composer remove typo3/cms-core --no-update
@@ -34,7 +34,7 @@ lint:cgl:
 
 lint:typoscriptcgl:
   stage: lint
-  image: composer:1.6
+  image: composer:1
   script:
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
@@ -95,7 +95,7 @@ lint:php74:
       fi
     - >
       if [[ "$COVERAGE" == "1" ]]; then
-        .build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml
+        XDEBUG_MODE=coverage .build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml
       fi
     - typo3DatabaseDriver=pdo_sqlite .build/bin/phpunit -c Build/FunctionalTests.xml
   artifacts:
