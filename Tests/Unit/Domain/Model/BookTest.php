@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace Extcode\CartBooks\Tests\Domain\Model;
+namespace Extcode\CartBooks\Tests\Unit\Domain\Model;
 
 use Extcode\CartBooks\Domain\Model\Book;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
