@@ -1,6 +1,6 @@
 # Cart Books
 
-[![Build Status](https://travis-ci.org/extcode/cart_books.svg?branch=master)](https://travis-ci.org/extcode/cart_books)
+[![Build Status](https://travis-ci.org/extcode/cart_books.svg?branch=1.x)](https://travis-ci.org/extcode/cart_books)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c5392a12e3ac48e58f1c74ea27ec9839)](https://www.codacy.com/app/extcode/cart_books?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extcode/cart_books&amp;utm_campaign=Badge_Grade)
 
 Cart is a small but powerful extension which "solely" adds a shopping cart to your TYPO3 installation.
@@ -35,8 +35,9 @@ and database!** If possible test the update in a test copy of your TYPO3 instanc
 
 | Cart Books    | TYPO3      | PHP       | Support/Development                                                                      |
 | ------------- | ---------- | ----------|------------------------------------------------------------------------------------------|
-| 2.x.x         | 9.5        | 7.2       | Features, Bugfixes, Security Updates                                                     |
-| 1.x.x         | 8.7        | 7.0 - 7.2 | Features _(in certain circumstances with feature toogle)_, Bugfixes, Security Updates    |
+| 3.x.x         | 10.4       | 7.2 - 7.4 | Features, Bugfixes, Security Updates                                                     |
+| 2.x.x         | 9.5        | 7.2 - 7.4 | Features, Bugfixes, Security Updates                                                     |
+| 1.x.x         | 8.7        | 7.0 - 7.4 | Bugfixes, Security Updates                                                               |
 
 ### 3.2. Changelog
 
