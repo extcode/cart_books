@@ -9,45 +9,6 @@ namespace Extcode\CartBooks\EventListener\ProcessOrderCreate;
  * LICENSE file that was distributed with this source code.
  */
 
-use Extcode\Cart\Event\ProcessOrderCreateEvent;
-use Extcode\CartBooks\Domain\Repository\BookRepository;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
-class HandleStock
+class HandleStock extends \Extcode\CartBooks\EventListener\Order\Stock\HandleStock
 {
-    /**
-     * @var PersistenceManager
-     */
-    protected $persistenceManager = null;
-
-    /**
-     * @bar BookRepository
-     */
-    protected $bookRepository;
-
-    public function __construct(
-        PersistenceManager $persistenceManager,
-        BookRepository $bookRepository
-    ) {
-        $this->persistenceManager = $persistenceManager;
-        $this->bookRepository = $bookRepository;
-    }
-
-    public function __invoke(ProcessOrderCreateEvent $event): void
-    {
-        $cartProducts = $event->getCart()->getProducts();
-
-        foreach ($cartProducts as $cartProduct) {
-            if ($cartProduct->getProductType() === 'CartBooks') {
-                $cartProductId = $cartProduct->getProductId();
-                $product = $this->bookRepository->findByUid($cartProductId);
-
-                if ($product && $product->isHandleStock()) {
-                    $product->setStock($product->getStock() - $cartProduct->getQuantity());
-                    $this->bookRepository->update($product);
-                    $this->persistenceManager->persistAll();
-                }
-            }
-        }
-    }
 }

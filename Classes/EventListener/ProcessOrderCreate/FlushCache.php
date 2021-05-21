@@ -9,24 +9,6 @@ namespace Extcode\CartBooks\EventListener\ProcessOrderCreate;
  * LICENSE file that was distributed with this source code.
  */
 
-use Extcode\Cart\Event\ProcessOrderCreateEvent;
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
-class FlushCache
+class FlushCache extends \Extcode\CartBooks\EventListener\Order\Stock\FlushCache
 {
-    public function __invoke(ProcessOrderCreateEvent $event): void
-    {
-        $cartProducts = $event->getCart()->getProducts();
-
-        foreach ($cartProducts as $cartProduct) {
-            if ($cartProduct->getProductType() === 'CartBooks') {
-                $cartProductId = $cartProduct->getProductId();
-
-                $cacheTag = 'tx_cartbooks_book_' . $cartProductId;
-                $cacheManager = GeneralUtility::makeInstance(CacheManager::class);
-                $cacheManager->flushCachesInGroupByTag('pages', $cacheTag);
-            }
-        }
-    }
 }
