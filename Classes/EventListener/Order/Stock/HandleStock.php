@@ -9,7 +9,7 @@ namespace Extcode\CartBooks\EventListener\Order\Stock;
  * LICENSE file that was distributed with this source code.
  */
 
-use Extcode\Cart\Event\Order\StockEvent;
+use Extcode\Cart\Event\Order\EventInterface;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
@@ -33,7 +33,7 @@ class HandleStock
         $this->bookRepository = $bookRepository;
     }
 
-    public function __invoke(StockEvent $event): void
+    public function __invoke(EventInterface $event): void
     {
         $cartProducts = $event->getCart()->getProducts();
 
