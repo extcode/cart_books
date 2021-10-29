@@ -655,7 +655,7 @@ class Book extends AbstractEntity
     /**
      * @param \Extcode\CartBooks\Domain\Model\Book $relatedBook
      */
-    public function addRelatedBook(\Extcode\CartBooks\Domain\Model\Book $relatedBook)
+    public function addRelatedBook(self $relatedBook)
     {
         $this->relatedBooks->attach($relatedBook);
     }
@@ -663,7 +663,7 @@ class Book extends AbstractEntity
     /**
      * @param \Extcode\CartBooks\Domain\Model\Book $relatedBook
      */
-    public function removeRelatedBook(\Extcode\CartBooks\Domain\Model\Book $relatedBook)
+    public function removeRelatedBook(self $relatedBook)
     {
         $this->relatedBooks->detach($relatedBook);
     }
@@ -687,7 +687,7 @@ class Book extends AbstractEntity
     /**
      * @param \Extcode\CartBooks\Domain\Model\Book $relatedBookFrom
      */
-    public function addRelatedBookFrom(\Extcode\CartBooks\Domain\Model\Book $relatedBookFrom)
+    public function addRelatedBookFrom(self $relatedBookFrom)
     {
         $this->relatedBooksFrom->attach($relatedBookFrom);
     }
@@ -695,7 +695,7 @@ class Book extends AbstractEntity
     /**
      * @param \Extcode\CartBooks\Domain\Model\Book $relatedBookFrom
      */
-    public function removeRelatedBookFrom(\Extcode\CartBooks\Domain\Model\Book $relatedBookFrom)
+    public function removeRelatedBookFrom(self $relatedBookFrom)
     {
         $this->relatedBooksFrom->detach($relatedBookFrom);
     }
