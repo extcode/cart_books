@@ -24,7 +24,7 @@ stages:
   - upload
 
 lint:cgl:
-  image: composer:1
+  image: composer:1.6
   stage: lint
   before_script:
     - composer remove typo3/cms-core --no-update
@@ -34,7 +34,7 @@ lint:cgl:
 
 lint:typoscriptcgl:
   stage: lint
-  image: composer:1
+  image: composer:1.6
   script:
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
@@ -46,7 +46,7 @@ lint:yaml:
   before_script:
     - pip install yamllint==1.10.0
   script:
-    - yamllint -c Build/yamllint.yaml Configuration/ Resources/ .travis.yml
+    - yamllint -c Build/yamllint.yaml Configuration/ Resources/
 
 lint:php70:
   stage: lint
