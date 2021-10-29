@@ -27,6 +27,7 @@ lint:cgl:
   image: composer:1
   stage: lint
   before_script:
+    - composer config platform.php 7.4
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
   script:
@@ -36,6 +37,7 @@ lint:typoscriptcgl:
   stage: lint
   image: composer:1
   script:
+    - composer config platform.php 7.4
     - composer remove typo3/cms-core --no-update
     - composer install --no-progress --no-ansi --no-interaction
     - .build/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration
@@ -46,7 +48,7 @@ lint:yaml:
   before_script:
     - pip install yamllint==1.10.0
   script:
-    - yamllint -c Build/yamllint.yaml Configuration/ Resources/ .travis.yml
+    - yamllint -c Build/yamllint.yaml Configuration/ Resources/
 
 lint:php72:
   stage: lint
