@@ -14,9 +14,11 @@ use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use Extcode\CartBooks\Domain\Repository\CategoryRepository;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 class BookController extends ActionController
 {
@@ -72,7 +74,7 @@ class BookController extends ActionController
         }
     }
 
-    public function listAction(): void
+    public function listAction(int $currentPage = 1): void
     {
         if (!$this->settings) {
             $this->settings = [];
@@ -80,9 +82,24 @@ class BookController extends ActionController
         $demand = $this->createDemandObjectFromSettings('list', $this->settings);
         $demand->setActionAndClass(__METHOD__, __CLASS__);
 
-        $books = $this->bookRepository->findDemanded($demand);
+        $itemsPerPage = $this->settings['itemsPerPage'] ?? 20;
 
-        $this->view->assign('books', $books);
+        $books = $this->bookRepository->findDemanded($demand);
+        $arrayPaginator = new QueryResultPaginator(
+            $books,
+            $currentPage,
+            $itemsPerPage
+        );
+        $pagination = new SimplePagination($arrayPaginator);
+        $this->view->assignMultiple(
+            [
+                'books' => $books,
+                'paginator' => $arrayPaginator,
+                'pagination' => $pagination,
+                'pages' => range(1, $pagination->getLastPageNumber()),
+            ]
+        );
+
         $this->view->assign('cartSettings', $this->cartSettings);
 
         $this->assignCurrencyTranslationData();

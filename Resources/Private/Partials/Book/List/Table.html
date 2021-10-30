@@ -12,7 +12,7 @@
         </tr>
         </thead>
         <tbody>
-        <f:for each="{books}" as="book">
+        <f:for each="{paginator.paginatedItems}" as="book" iteration="iterator">
             <tr>
                 <td>
                     <cartbooks:link.book book="{book}" settings="{settings}">
@@ -25,5 +25,8 @@
         </f:for>
         </tbody>
     </table>
+
+    <f:render partial="Utility/Paginator" arguments="{pagination: pagination, pages: pages, paginator: paginator}" />
+
 </div>
 </html>

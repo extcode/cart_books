@@ -2,7 +2,7 @@
       xmlns:cartbooks="http://typo3.org/ns/Extcode/CartBooks/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<f:for each="{books}" as="book">
+<f:for each="{paginator.paginatedItems}" as="book" iteration="iterator">
     <div class="book-list-item book-table-item mb-4">
         <div class="row">
             <div class="col-md-2">
@@ -44,4 +44,7 @@
         </div>
     </div>
 </f:for>
+
+<f:render partial="Utility/Paginator" arguments="{pagination: pagination, pages: pages, paginator: paginator}" />
+
 </html>
