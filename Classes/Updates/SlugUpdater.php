@@ -25,6 +25,11 @@ class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
     const TABLE_NAME = 'tx_cartbooks_domain_model_book';
 
     /**
+     * @var OutputInterface
+     */
+    protected $output;
+
+    /**
      * Return the identifier for this wizard
      * This should be the same string as used in the ext_localconf class registration
      */

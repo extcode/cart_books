@@ -66,7 +66,7 @@ class BookDemand extends AbstractEntity
         return $this->title;
     }
 
-    public function setTitle(string $title): string
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
