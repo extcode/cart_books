@@ -54,13 +54,15 @@
         "typo3/cms-core": "^10.4",
         "typo3/cms-extbase": "^10.4",
         "typo3/cms-fluid": "^10.4",
-        "extcode/cart": "^7.2"
+        "extcode/cart": "^7.2",
+        "ext-json": "*"
     },
     "require-dev": {
         "typo3/testing-framework": "^5.0",
         "friendsofphp/php-cs-fixer": "^2.14",
         "helmich/typo3-typoscript-lint": "^2.0",
-        "overtrue/phplint": "^1.1"
+        "overtrue/phplint": "^1.1",
+        "rector/rector": "0.11.32"
     },
     "scripts": {
         "test:cgl": [
@@ -78,6 +80,12 @@
         "test:php:functional": [
             "typo3DatabaseDriver=\"pdo_sqlite\" .build/bin/phpunit -c Build/FunctionalTests.xml"
         ],
+        "test:rector:process": [
+            ".build/bin/rector process *"
+        ],
+        "test:rector:process:dry-run": [
+            ".build/bin/rector process * --dry-run"
+        ],
         "test:typoscript:lint": [
             ".build/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration"
         ],
@@ -87,6 +95,7 @@
             "@test:php:functional"
         ],
         "test:all": [
+            "@test:rector:process",
             "@test:cgl",
             "@test:typoscript:lint",
             "@test:php"

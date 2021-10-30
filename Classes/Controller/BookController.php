@@ -9,17 +9,19 @@ namespace Extcode\CartBooks\Controller;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Cart\Utility\CartUtility;
+use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
+use Extcode\CartBooks\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class BookController extends ActionController
 {
     /**
-     * Cart Utility
-     *
-     * @var \Extcode\Cart\Utility\CartUtility
+     * @var CartUtility
      */
     protected $cartUtility;
 
@@ -29,9 +31,7 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected $bookRepository;
 
     /**
-     * categoryRepository
-     *
-     * @var \Extcode\CartBooks\Domain\Repository\CategoryRepository
+     * @var CategoryRepository
      */
     protected $categoryRepository;
 
@@ -40,39 +40,25 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     protected $cartSettings = [];
 
-    /**
-     * @param \Extcode\Cart\Utility\CartUtility $cartUtility
-     */
-    public function injectCartUtility(
-        \Extcode\Cart\Utility\CartUtility $cartUtility
-    ) {
+    public function injectCartUtility(CartUtility $cartUtility): void
+    {
         $this->cartUtility = $cartUtility;
     }
 
-    /**
-     * @param BookRepository $bookRepository
-     */
-    public function injectBookRepository(BookRepository $bookRepository)
+    public function injectBookRepository(BookRepository $bookRepository): void
     {
         $this->bookRepository = $bookRepository;
     }
 
-    /**
-     * @param \Extcode\CartBooks\Domain\Repository\CategoryRepository $categoryRepository
-     */
-    public function injectCategoryRepository(
-        \Extcode\CartBooks\Domain\Repository\CategoryRepository $categoryRepository
-    ) {
+    public function injectCategoryRepository(CategoryRepository $categoryRepository): void
+    {
         $this->categoryRepository = $categoryRepository;
     }
 
-    /**
-     * Action initialize
-     */
-    protected function initializeAction()
+    protected function initializeAction(): void
     {
         $this->cartSettings = $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'Cart'
         );
 
@@ -86,7 +72,7 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
     }
 
-    public function listAction()
+    public function listAction(): void
     {
         if (!$this->settings) {
             $this->settings = [];
@@ -104,13 +90,10 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->addCacheTags($books);
     }
 
-    /**
-     * action teaser
-     */
-    public function teaserAction()
+    public function teaserAction(): void
     {
         $limit = (int)$this->settings['limit'] ?: (int)$this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'CartBooks'
         )['view']['list']['limit'];
 
@@ -125,13 +108,9 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     }
 
     /**
-     * @param \Extcode\CartBooks\Domain\Model\Book $book
-     *
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("book")
-     *
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
-    public function showAction(\Extcode\CartBooks\Domain\Model\Book $book = null)
+    public function showAction(Book $book = null): void
     {
         if ($book === null) {
             $this->forward('list');
@@ -145,17 +124,8 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->addCacheTags([$book]);
     }
 
-    /**
-     * Create the demand object which define which records will get shown
-     *
-     * @param string $type
-     * @param array $settings
-     *
-     * @return BookDemand
-     */
-    protected function createDemandObjectFromSettings(string $type, array $settings) : BookDemand
+    protected function createDemandObjectFromSettings(string $type, array $settings): BookDemand
     {
-        /** @var BookDemand $demand */
         $demand = GeneralUtility::makeInstance(
             BookDemand::class
         );
@@ -165,14 +135,14 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         $limit = (int)$this->settings['limit'] ?: (int)$this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'CartBooks'
         )['view'][$type]['limit'];
 
         $demand->setLimit($limit);
 
         $order = $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'CartBooks'
         )['view'][$type]['order'];
 
@@ -181,12 +151,12 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
 
         $orderBy = $this->settings['orderBy'] ?: $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'CartBooks'
         )['view'][$type]['orderBy'];
 
         $orderDirection = $this->settings['orderDirection'] ?: $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'CartBooks'
         )['view'][$type]['orderDirection'];
 
@@ -199,13 +169,10 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         return $demand;
     }
 
-    /**
-     * @param BookDemand $demand
-     */
-    protected function addCategoriesToDemandObjectFromSettings(BookDemand &$demand)
+    protected function addCategoriesToDemandObjectFromSettings(BookDemand $demand): void
     {
         if ($this->settings['categoriesList']) {
-            $selectedCategories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(
+            $selectedCategories = GeneralUtility::intExplode(
                 ',',
                 $this->settings['categoriesList'],
                 true
@@ -229,15 +196,12 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         }
     }
 
-    /**
-     * assigns currency translation array to view
-     */
-    protected function assignCurrencyTranslationData()
+    protected function assignCurrencyTranslationData(): void
     {
         $currencyTranslationData = [];
 
         $cartFrameworkConfig = $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
             'Cart'
         );
 
@@ -252,10 +216,7 @@ class BookController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->view->assign('currencyTranslationData', $currencyTranslationData);
     }
 
-    /**
-     * @param QueryResultInterface|array $books
-     */
-    protected function addCacheTags($books)
+    protected function addCacheTags(iterable $books): void
     {
         $cacheTags = [];
 

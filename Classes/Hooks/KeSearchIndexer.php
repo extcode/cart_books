@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace Extcode\CartBooks\Hooks;
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\QueryGenerator;
 /*
  * This file is part of the package extcode/cart-books.
  *
@@ -9,35 +11,22 @@ namespace Extcode\CartBooks\Hooks;
  * LICENSE file that was distributed with this source code.
  */
 
-use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class KeSearchIndexer
 {
-    /**
-     * Registers the indexer configuration
-     *
-     * @param array $params
-     * @param $pObj
-     */
-    public function registerIndexerConfiguration(&$params, $pObj)
+    public function registerIndexerConfiguration(array &$params, $pObj): void
     {
         $newArray = [
             'Cart Book Indexer',
             'cartbookindexer',
-            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('cart_books') . 'Resources/Public/Icons/Extension.svg',
+            ExtensionManagementUtility::extPath('cart_books') . 'Resources/Public/Icons/Extension.svg',
         ];
         $params['items'][] = $newArray;
     }
 
-    /**
-     * custom indexer for ke_search
-     *
-     * @param array $indexerConfig
-     * @param array $indexerObject
-     * @return string
-     */
-    public function customIndexer(&$indexerConfig, &$indexerObject)
+    public function customIndexer(array &$indexerConfig, array &$indexerObject): string
     {
         if ($indexerConfig['type'] === 'cartbookindexer') {
             return $this->cartBookIndexer($indexerConfig, $indexerObject);
@@ -46,15 +35,7 @@ class KeSearchIndexer
         return '';
     }
 
-    /**
-     * cart indexer for ke_search
-     *
-     * @param array $indexerConfig
-     * @param array $indexerObject
-     *
-     * @return string
-     */
-    public function cartBookIndexer(&$indexerConfig, &$indexerObject)
+    public function cartBookIndexer(array &$indexerConfig, array &$indexerObject): string
     {
         $bookIndexerName = 'Book Indexer "' . $indexerConfig['title'] . '"';
 
@@ -120,14 +101,7 @@ class KeSearchIndexer
         return '<p><b>' . $bookIndexerName . '</b><br/><strong>' . $bookIndexerMessage . '</strong></p>';
     }
 
-    /**
-     * Returns all Storage Pids for indexing
-     *
-     * @param $config
-     *
-     * @return string
-     */
-    protected function getPidList($config)
+    protected function getPidList(array $config): string
     {
         $recursivePids = $this->extendPidListByChildren($config['startingpoints_recursive'], 99);
         if ($config['sysfolder']) {
@@ -137,15 +111,7 @@ class KeSearchIndexer
         return $recursivePids;
     }
 
-    /**
-     * Find all ids from given ids and level
-     *
-     * @param string $pidList
-     * @param int $recursive
-     *
-     * @return string
-     */
-    protected function extendPidListByChildren($pidList = '', $recursive = 0)
+    protected function extendPidListByChildren(string $pidList = '', int $recursive = 0): string
     {
         $recursive = (int)$recursive;
 
@@ -154,7 +120,7 @@ class KeSearchIndexer
         }
 
         $queryGenerator = GeneralUtility::makeInstance(
-            \TYPO3\CMS\Core\Database\QueryGenerator::class
+            QueryGenerator::class
         );
         $recursiveStoragePids = $pidList;
         $storagePids = GeneralUtility::intExplode(',', $pidList);
@@ -168,14 +134,7 @@ class KeSearchIndexer
         return $recursiveStoragePids;
     }
 
-    /**
-     * Returns all books for a given PidList
-     *
-     * @param string $indexPids
-     *
-     * @return array
-     */
-    protected function getBooksToIndex($indexPids)
+    protected function getBooksToIndex(string $indexPids): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_cartbooks_domain_model_book');
@@ -190,9 +149,6 @@ class KeSearchIndexer
         return $queryBuilder->execute()->fetchAll();
     }
 
-    /**
-     * @param mixed $categoryUid
-     */
     protected function getTargetPidFormCategory($categoryUid)
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)

@@ -2,20 +2,22 @@
 declare(strict_types=1);
 namespace Extcode\CartBooks\ViewHelpers\Link;
 
+use Extcode\CartBooks\Domain\Model\Book;
+use TYPO3\CMS\Fluid\ViewHelpers\Link\ActionViewHelper;
+
 /*
  * This file is part of the package extcode/cart-books.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
-class BookViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Link\ActionViewHelper
+class BookViewHelper extends ActionViewHelper
 {
     public function initializeArguments()
     {
         parent::initializeArguments();
 
-        $this->registerArgument('book', \Extcode\CartBooks\Domain\Model\Book::class, 'book', true);
+        $this->registerArgument('book', Book::class, 'book', true);
         $this->registerArgument('settings', 'array', 'settings array', true);
     }
 

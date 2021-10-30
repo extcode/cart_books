@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 defined('TYPO3_MODE') or die();
 
 $_LLL_db = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
@@ -44,8 +46,8 @@ $newSysCategoryColumns = [
     ],
 ];
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_category', $newSysCategoryColumns);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+ExtensionManagementUtility::addTCAcolumns('sys_category', $newSysCategoryColumns);
+ExtensionManagementUtility::addToAllTCAtypes(
     'sys_category',
     'cart_book_list_pid, cart_book_show_pid',
     '',

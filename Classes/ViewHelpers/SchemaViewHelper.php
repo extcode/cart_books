@@ -9,6 +9,7 @@ namespace Extcode\CartBooks\ViewHelpers;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\CartBooks\Domain\Model\Book;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 class SchemaViewHelper extends AbstractViewHelper
@@ -20,20 +21,24 @@ class SchemaViewHelper extends AbstractViewHelper
      */
     protected $escapeOutput = false;
 
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
 
-        $this->registerArgument('book', \Extcode\CartBooks\Domain\Model\Book::class, 'book', true);
+        $this->registerArgument(
+            'book',
+            Book::class,
+            'book',
+            true
+        );
     }
 
-    public function render()
+    public function render(): string
     {
-        /** @var \Extcode\CartBooks\Domain\Model\Book $book */
         $book = $this->arguments['book'];
 
         $schemaBook = [
-            '@context' => 'http://schema.org',
+            '@context' => 'https://schema.org',
             '@type' => 'Book',
             'additionalType' => 'Product',
             'name' => $book->getTitle(),

@@ -1,14 +1,16 @@
 <?php
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+
 defined('TYPO3_MODE') or die();
 
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 $_LLL_db = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
+ExtensionManagementUtility::makeCategorizable(
     'cart_books',
     'tx_cartbooks_domain_model_book',
     'category',
@@ -24,7 +26,7 @@ $_LLL_db = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
 
 $GLOBALS['TCA']['tx_cartbooks_domain_model_book']['category']['config']['maxitems'] = 1;
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
+ExtensionManagementUtility::makeCategorizable(
     'cart_books',
     'tx_cartbooks_domain_model_book',
     'categories',

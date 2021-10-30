@@ -10,17 +10,14 @@ namespace Extcode\CartBooks\Domain\Repository;
  */
 
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class BookRepository extends Repository
 {
-    /**
-     * @param BookDemand $demand
-     *
-     * @return QueryResultInterface|array
-     */
-    public function findDemanded(BookDemand $demand)
+    public function findDemanded(BookDemand $demand): QueryResultInterface
     {
         $query = $this->createQuery();
 
@@ -59,15 +56,7 @@ class BookRepository extends Repository
         return $query->execute();
     }
 
-    /**
-     * Find all books based on selected uids
-     *
-     * @param int $limit
-     * @param string $uids
-     *
-     * @return array
-     */
-    public function findByUids(int $limit, string $uids)
+    public function findByUids(int $limit, string $uids): array
     {
         $uids = explode(',', $uids);
 
@@ -84,27 +73,22 @@ class BookRepository extends Repository
         return $this->orderByField($query->execute(), $uids);
     }
 
-    /**
-     * @param BookDemand $demand
-     *
-     * @return array<\TYPO3\CMS\Extbase\Persistence\Generic\Qom\ConstraintInterface>
-     */
     protected function createOrderingsFromDemand(BookDemand $demand) : array
     {
         $orderings = [];
 
-        $orderList = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $demand->getOrder(), true);
+        $orderList = GeneralUtility::trimExplode(',', $demand->getOrder(), true);
 
         if (!empty($orderList)) {
             foreach ($orderList as $orderItem) {
                 list($orderField, $ascDesc) =
-                    \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(' ', $orderItem, true);
+                    GeneralUtility::trimExplode(' ', $orderItem, true);
                 if ($ascDesc) {
-                    $orderings[$orderField] = ((strtolower($ascDesc) == 'desc') ?
-                        \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING :
-                        \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING);
+                    $orderings[$orderField] = ((strtolower($ascDesc) === 'desc') ?
+                        QueryInterface::ORDER_DESCENDING :
+                        QueryInterface::ORDER_ASCENDING);
                 } else {
-                    $orderings[$orderField] = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING;
+                    $orderings[$orderField] = QueryInterface::ORDER_ASCENDING;
                 }
             }
         }
@@ -112,13 +96,7 @@ class BookRepository extends Repository
         return $orderings;
     }
 
-    /**
-     * @param QueryResultInterface $books
-     * @param array $uids
-     *
-     * @return array
-     */
-    protected function orderByField(QueryResultInterface $books, $uids)
+    protected function orderByField(QueryResultInterface $books, $uids): array
     {
         $indexedBooks = [];
         $orderedBooks = [];

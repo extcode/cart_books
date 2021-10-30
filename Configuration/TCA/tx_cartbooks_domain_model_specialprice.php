@@ -15,7 +15,6 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'dividers2tabs' => true,
 
         'versioningWS' => true,
 
@@ -34,17 +33,9 @@ return [
         'searchFields' => 'price',
         'iconfile' => 'EXT:cart_books/Resources/Public/Icons/tx_cartbooks_domain_model_specialprice.svg',
     ],
-    'interface' => [
-        'showRecordFieldList' => 'hidden, starttime, endtime, title, frontend_user_group, price',
-    ],
     'types' => [
         '1' => [
-            'showitem' => '
-                frontend_user_group, title, price,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
-                    --palette--;LLL:EXT:cart_books/Resources/Private/Language/locallang_tca.xlf:palettes.visibility;hiddenonly,
-                    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
-            ',
+            'showitem' => 'frontend_user_group,title,price,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,--palette--;LLL:EXT:cart_books/Resources/Private/Language/locallang_tca.xlf:palettes.visibility;hiddenonly,--palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access',
         ],
     ],
     'palettes' => [
@@ -77,7 +68,6 @@ return [
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'exclude' => 1,
             'label' => $_LLL_general . ':LGL.l18n_parent',
             'config' => [
                 'type' => 'select',

@@ -9,7 +9,10 @@ namespace Extcode\CartBooks\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Cart\Domain\Model\Tag;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Book extends AbstractEntity
 {
@@ -101,12 +104,12 @@ class Book extends AbstractEntity
     protected $description = '';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
     protected $images;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ObjectStorage<FileReference>
      */
     protected $files;
 
@@ -127,34 +130,34 @@ class Book extends AbstractEntity
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice>
+     * @var ObjectStorage<SpecialPrice>
      */
     protected $specialPrices;
 
     /**
-     * @var \Extcode\CartBooks\Domain\Model\Category
+     * @var Category
      */
-    protected $category = null;
+    protected $category;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      */
     protected $categories;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Cart\Domain\Model\Tag>
+     * @var ObjectStorage<Tag>
      */
     protected $tags;
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
+     * @var ObjectStorage<Book>
      */
     protected $relatedBooks;
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
+     * @var ObjectStorage<Book>
      */
     protected $relatedBooksFrom;
 
@@ -170,382 +173,241 @@ class Book extends AbstractEntity
 
     public function __construct()
     {
-        $this->files = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->specialPrices = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->relatedBooks = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->relatedBooksFrom = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->files = new ObjectStorage();
+        $this->images = new ObjectStorage();
+        $this->specialPrices = new ObjectStorage();
+        $this->relatedBooks = new ObjectStorage();
+        $this->relatedBooksFrom = new ObjectStorage();
+        $this->categories = new ObjectStorage();
     }
 
-    /**
-     * @return string
-     */
     public function getSku(): string
     {
         return $this->sku;
     }
 
-    /**
-     * @param string $sku
-     */
-    public function setSku(string $sku)
+    public function setSku(string $sku): void
     {
         $this->sku = $sku;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @return string
-     */
     public function getSubtitle(): string
     {
         return $this->subtitle;
     }
 
-    /**
-     * @param string $subtitle
-     */
-    public function setSubtitle(string $subtitle)
+    public function setSubtitle(string $subtitle): void
     {
         $this->subtitle = $subtitle;
     }
 
-    /**
-     * @return string
-     */
     public function getIsbn10(): string
     {
         return $this->isbn10;
     }
 
-    /**
-     * @param string $isbn10
-     */
-    public function setIsbn10(string $isbn10)
+    public function setIsbn10(string $isbn10): void
     {
         $this->isbn10 = $isbn10;
     }
 
-    /**
-     * @return string
-     */
     public function getIsbn13(): string
     {
         return $this->isbn13;
     }
 
-    /**
-     * @param string $isbn13
-     */
-    public function setIsbn13(string $isbn13)
+    public function setIsbn13(string $isbn13): void
     {
         $this->isbn10 = $isbn13;
     }
 
-    /**
-     * @return string
-     */
     public function getIssn(): string
     {
         return $this->issn;
     }
 
-    /**
-     * @param string $issn
-     */
-    public function setIssn(string $issn)
+    public function setIssn(string $issn): void
     {
         $this->isbn10 = $issn;
     }
 
-    /**
-     * @return string
-     */
     public function getAuthor(): string
     {
         return $this->author;
     }
 
-    /**
-     * @param string $author
-     */
-    public function setAuthor(string $author)
+    public function setAuthor(string $author): void
     {
         $this->author = $author;
     }
 
-    /**
-     * @return string
-     */
     public function getIllustrator(): string
     {
         return $this->illustrator;
     }
 
-    /**
-     * @param string $illustrator
-     */
-    public function setIllustrator(string $illustrator)
+    public function setIllustrator(string $illustrator): void
     {
         $this->illustrator = $illustrator;
     }
 
-    /**
-     * @return string
-     */
     public function getEditor(): string
     {
         return $this->editor;
     }
 
-    /**
-     * @param string $editor
-     */
-    public function setEditor(string $editor)
+    public function setEditor(string $editor): void
     {
         $this->editor = $editor;
     }
 
-    /**
-     * @return string
-     */
     public function getPublisher(): string
     {
         return $this->publisher;
     }
 
-    /**
-     * @param string $publisher
-     */
-    public function setPublisher(string $publisher)
+    public function setPublisher(string $publisher): void
     {
         $this->publisher = $publisher;
     }
 
-    /**
-     * @return string
-     */
     public function getTranslator(): string
     {
         return $this->translator;
     }
 
-    /**
-     * @param string $translator
-     */
-    public function setTranslator(string $translator)
+    public function setTranslator(string $translator): void
     {
         $this->translator = $translator;
     }
 
-    /**
-     * @return string
-     */
     public function getLanguage(): string
     {
         return $this->language;
     }
 
-    /**
-     * @param string $language
-     */
-    public function setLanguage(string $language)
+    public function setLanguage(string $language): void
     {
         $this->language = $language;
     }
 
-    /**
-     * @return string
-     */
     public function getNumberOfPages(): string
     {
         return $this->numberOfPages;
     }
 
-    /**
-     * @param string $numberOfPages
-     */
-    public function setNumberOfPages(string $numberOfPages)
+    public function setNumberOfPages(string $numberOfPages): void
     {
         $this->numberOfPages = $numberOfPages;
     }
 
-    /**
-     * @return \DateTime
-     */
     public function getDateOfPublication(): \DateTime
     {
         return $this->dateOfPublication;
     }
 
-    /**
-     * @param \DateTime $dateOfPublication
-     */
-    public function setDateOfPublication(\DateTime $dateOfPublication)
+    public function setDateOfPublication(\DateTime $dateOfPublication): void
     {
         $this->dateOfPublication = $dateOfPublication;
     }
 
-    /**
-     * @return string
-     */
     public function getGenre(): string
     {
         return $this->genre;
     }
 
-    /**
-     * @param string $genre
-     */
-    public function setGenre(string $genre)
+    public function setGenre(string $genre): void
     {
         $this->genre = $genre;
     }
 
-    /**
-     * @return string
-     */
     public function getTeaser(): string
     {
         return $this->teaser;
     }
 
-    /**
-     * @param string $teaser
-     */
-    public function setTeaser(string $teaser)
+    public function setTeaser(string $teaser): void
     {
         $this->teaser = $teaser;
     }
 
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    /**
-     * @param string $description
-     */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     */
-    public function getImages(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getImages(): ObjectStorage
     {
         return $this->images;
     }
 
-    /**
-     * @return null|\TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getFirstImage(): ?\TYPO3\CMS\Extbase\Domain\Model\FileReference
+    public function getFirstImage(): ?FileReference
     {
-        return array_shift($this->getImages()->toArray());
+        $images = $this->getImages()->toArray();
+        return array_shift($images);
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $images
-     */
-    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
+    public function setImages(ObjectStorage $images): void
     {
         $this->images = $images;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-     */
-    public function getFiles(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getFiles(): ObjectStorage
     {
         return $this->files;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $files
-     */
-    public function setFiles(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $files)
+    public function setFiles(ObjectStorage $files): void
     {
         $this->files = $files;
     }
 
-    /**
-     * @return float
-     */
     public function getPrice(): float
     {
         return $this->price;
     }
 
-    /**
-     * @param float $price
-     */
-    public function setPrice(float $price)
+    public function setPrice(float $price): void
     {
         $this->price = $price;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice>
-     */
-    public function getSpecialPrices(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getSpecialPrices(): ObjectStorage
     {
         return $this->specialPrices;
     }
 
-    /**
-     * @param \Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice
-     */
-    public function addSpecialPrice(\Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice)
+    public function addSpecialPrice(SpecialPrice $specialPrice): void
     {
         $this->specialPrices->attach($specialPrice);
     }
 
-    /**
-     * @param \Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice
-     */
-    public function removeSpecialPrice(\Extcode\CartBooks\Domain\Model\SpecialPrice $specialPrice)
+    public function removeSpecialPrice(SpecialPrice $specialPrice): void
     {
         $this->specialPrices->detach($specialPrice);
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\SpecialPrice> $specialPrices
-     */
-    public function setSpecialPrices(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $specialPrices)
+    public function setSpecialPrices(ObjectStorage $specialPrices): void
     {
         $this->specialPrices = $specialPrices;
     }
 
-    /**
-     * Returns best Special Price
-     *
-     * @param mixed $frontendUserGroupIds
-     *
-     * @return float
-     */
-    public function getBestSpecialPrice($frontendUserGroupIds = []): float
+    public function getBestSpecialPrice(array $frontendUserGroupIds = []): float
     {
         $bestSpecialPrice = $this->price;
 
@@ -564,178 +426,112 @@ class Book extends AbstractEntity
         return $bestSpecialPrice;
     }
 
-    /**
-     * @return bool
-     */
     public function isHandleStock(): bool
     {
         return $this->handleStock;
     }
 
-    /**
-     * @param bool $handleStock
-     */
-    public function setHandleStock(bool $handleStock)
+    public function setHandleStock(bool $handleStock): void
     {
         $this->handleStock = $handleStock;
     }
 
-    /**
-     * @return int
-     */
     public function getStock(): int
     {
         return $this->stock;
     }
 
-    /**
-     * @param int $stock
-     */
-    public function setStock(int $stock)
+    public function setStock(int $stock): void
     {
         $this->stock = $stock;
     }
 
-    /**
-     * @return null|Category
-     */
     public function getCategory(): ?Category
     {
         return $this->category;
     }
 
-    /**
-     * @param Category $category
-     */
-    public function setCategory(Category $category)
+    public function setCategory(Category $category): void
     {
         $this->category = $category;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category>
-     */
-    public function getCategories(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getCategories(): ObjectStorage
     {
         return $this->categories;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Category> $categories
-     */
-    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+    public function setCategories(ObjectStorage $categories): void
     {
         $this->categories = $categories;
     }
 
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Cart\Domain\Model\Tag>
-     */
-    public function getTags(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getTags(): ObjectStorage
     {
         return $this->tags;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Cart\Domain\Model\Tag> $tags
-     */
-    public function setTags(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags)
+    public function setTags(ObjectStorage $tags): void
     {
         $this->tags = $tags;
     }
 
-    /**
-     * @param Book $relatedBook
-     */
-    public function addRelatedBook(self $relatedBook)
-    {
-        $this->relatedBooks->attach($relatedBook);
-    }
-
-    /**
-     * @param Book $relatedBook
-     */
-    public function removeRelatedBook(self $relatedBook)
-    {
-        $this->relatedBooks->detach($relatedBook);
-    }
-
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
-     */
-    public function getRelatedBooks(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getRelatedBooks(): ObjectStorage
     {
         return $this->relatedBooks;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBooks
-     */
-    public function setRelatedBooks(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedBooks)
+    public function addRelatedBook(self $relatedBook): void
+    {
+        $this->relatedBooks->attach($relatedBook);
+    }
+
+    public function removeRelatedBook(self $relatedBook): void
+    {
+        $this->relatedBooks->detach($relatedBook);
+    }
+
+    public function setRelatedBooks(ObjectStorage $relatedBooks): void
     {
         $this->relatedBooks = $relatedBooks;
     }
 
-    /**
-     * @param Book $relatedBookFrom
-     */
-    public function addRelatedBookFrom(self $relatedBookFrom)
-    {
-        $this->relatedBooksFrom->attach($relatedBookFrom);
-    }
-
-    /**
-     * @param Book $relatedBookFrom
-     */
-    public function removeRelatedBookFrom(self $relatedBookFrom)
-    {
-        $this->relatedBooksFrom->detach($relatedBookFrom);
-    }
-
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book>
-     */
-    public function getRelatedBooksFrom(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    public function getRelatedBooksFrom(): ObjectStorage
     {
         return $this->relatedBooksFrom;
     }
 
-    /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartBooks\Domain\Model\Book> $relatedBooksFrom
-     */
-    public function setRelatedBooksFrom(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedBooksFrom)
+    public function addRelatedBookFrom(self $relatedBookFrom): void
+    {
+        $this->relatedBooksFrom->attach($relatedBookFrom);
+    }
+
+    public function removeRelatedBookFrom(self $relatedBookFrom): void
+    {
+        $this->relatedBooksFrom->detach($relatedBookFrom);
+    }
+
+    public function setRelatedBooksFrom(ObjectStorage $relatedBooksFrom): void
     {
         $this->relatedBooksFrom = $relatedBooksFrom;
     }
 
-    /**
-     * @return int
-     */
     public function getTaxClassId(): int
     {
         return $this->taxClassId;
     }
 
-    /**
-     * @param int $taxClassId
-     */
-    public function setTaxClassId(int $taxClassId)
+    public function setTaxClassId(int $taxClassId): void
     {
         $this->taxClassId = $taxClassId;
     }
 
-    /**
-     * @return string $metaDescription
-     */
     public function getMetaDescription(): string
     {
         return $this->metaDescription;
     }
 
-    /**
-     * @param string $metaDescription
-     */
-    public function setMetaDescription(string $metaDescription)
+    public function setMetaDescription(string $metaDescription): void
     {
         $this->metaDescription = $metaDescription;
     }

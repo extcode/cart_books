@@ -10,8 +10,9 @@ namespace Extcode\CartBooks\Domain\Model;
  */
 
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class SpecialPrice extends AbstractEntity
 {
     /**
      * @var string
@@ -26,23 +27,15 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $price = 0.0;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
+     * @var FrontendUserGroup
      */
-    protected $frontendUserGroup = null;
+    protected $frontendUserGroup;
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     *
-     * @return SpecialPrice
-     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -50,21 +43,11 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this;
     }
 
-    /**
-     * @return float $price
-     */
     public function getPrice(): float
     {
         return $this->price;
     }
 
-    /**
-     * Sets the Price
-     *
-     * @param float $price
-     *
-     * @return SpecialPrice
-     */
     public function setPrice(float $price): self
     {
         $this->price = $price;
@@ -72,19 +55,11 @@ class SpecialPrice extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         return $this;
     }
 
-    /**
-     * @return null|FrontendUserGroup
-     */
     public function getFrontendUserGroup(): ?FrontendUserGroup
     {
         return $this->frontendUserGroup;
     }
 
-    /**
-     * @param FrontendUserGroup $frontendUserGroup
-     *
-     * @return SpecialPrice
-     */
     public function setFrontendUserGroup(FrontendUserGroup $frontendUserGroup): self
     {
         $this->frontendUserGroup = $frontendUserGroup;

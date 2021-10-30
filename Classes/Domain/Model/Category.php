@@ -21,19 +21,11 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
      */
     protected $cartBookShowPid;
 
-    /**
-     * @return int|null
-     */
     public function getCartBookListPid(): ?int
     {
         return $this->cartBookListPid;
     }
 
-    /**
-     * Returns Cart Book Single Pid
-     *
-     * @return int|null
-     */
     public function getCartBookShowPid(): ?int
     {
         return $this->cartBookShowPid;

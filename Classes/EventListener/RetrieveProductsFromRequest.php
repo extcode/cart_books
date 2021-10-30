@@ -35,6 +35,10 @@ class RetrieveProductsFromRequest
         $requestArguments = $request->getArguments();
         $taxClasses = $cart->getTaxClasses();
 
+        if ($requestArguments['productType'] !== 'CartBooks') {
+            return;
+        }
+
         $errors = $this->checkRequestArguments($requestArguments);
 
         if (!empty($errors)) {
