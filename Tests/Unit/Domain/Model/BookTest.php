@@ -333,4 +333,76 @@ class BookTest extends UnitTestCase
             $this->book->getDescription()
         );
     }
+
+    /**
+     * @test
+     */
+    public function getIsbn10ReturnsInitialValueForIsbn10(): void
+    {
+        $this->assertSame(
+            '',
+            $this->book->getIsbn10()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setIsbn10ForStringSetsIsbn10(): void
+    {
+        $this->book->setIsbn10('Conceived at T3CON10');
+
+        $this->assertSame(
+            'Conceived at T3CON10',
+            $this->book->getIsbn10()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getIsbn13ReturnsInitialValueForIsbn13(): void
+    {
+        $this->assertSame(
+            '',
+            $this->book->getIsbn13()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setIsbn13ForStringSetsIsbn13(): void
+    {
+        $this->book->setIsbn13('Conceived at T3CON10');
+
+        $this->assertSame(
+            'Conceived at T3CON10',
+            $this->book->getIsbn13()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getIssnReturnsInitialValueForIssn(): void
+    {
+        $this->assertSame(
+            '',
+            $this->book->getIssn()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setIssnForStringSetsIssn(): void
+    {
+        $this->book->setIssn('Conceived at T3CON10');
+
+        $this->assertSame(
+            'Conceived at T3CON10',
+            $this->book->getIssn()
+        );
+    }
 }

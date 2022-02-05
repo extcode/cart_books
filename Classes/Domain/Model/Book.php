@@ -228,7 +228,7 @@ class Book extends AbstractEntity
 
     public function setIsbn13(string $isbn13): void
     {
-        $this->isbn10 = $isbn13;
+        $this->isbn13 = $isbn13;
     }
 
     public function getIssn(): string
@@ -238,7 +238,7 @@ class Book extends AbstractEntity
 
     public function setIssn(string $issn): void
     {
-        $this->isbn10 = $issn;
+        $this->issn = $issn;
     }
 
     public function getAuthor(): string
