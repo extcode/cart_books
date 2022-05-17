@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="fi">
+    <header/>
+    <body>
+      <trans-unit id="tx_cartbooks_domain_model_book">
+        <source>Book</source>
+        <target state="needs-translation">Book</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.sku">
+        <source>Stock keeping unit</source>
+        <target state="needs-translation">Stock keeping unit</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.title">
+        <source>Title</source>
+        <target state="needs-translation">Title</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.subtitle">
+        <source>Subtitle</source>
+        <target state="needs-translation">Subtitle</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.path_segment">
+        <source>URL segment</source>
+        <target state="needs-translation">URL segment</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.author">
+        <source>Author</source>
+        <target state="needs-translation">Author</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.illustrator">
+        <source>Illustrator</source>
+        <target state="needs-translation">Illustrator</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.editor">
+        <source>Editor</source>
+        <target state="needs-translation">Editor</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.publisher">
+        <source>Publisher</source>
+        <target state="needs-translation">Publisher</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.translator">
+        <source>Translator</source>
+        <target state="needs-translation">Translator</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.number_of_pages">
+        <source>Number of Pages</source>
+        <target state="needs-translation">Number of Pages</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.language">
+        <source>Language</source>
+        <target state="needs-translation">Language</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
+        <source>Date of Publication</source>
+        <target state="needs-translation">Date of Publication</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.isbn10">
+        <source>ISBN-10</source>
+        <target state="needs-translation">ISBN-10</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.isbn13">
+        <source>ISBN-13</source>
+        <target state="needs-translation">ISBN-13</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.issn">
+        <source>ISSN</source>
+        <target state="needs-translation">ISSN</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.genre">
+        <source>Genre</source>
+        <target state="needs-translation">Genre</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.teaser">
+        <source>Teaser</source>
+        <target state="needs-translation">Teaser</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.description">
+        <source>Description</source>
+        <target state="needs-translation">Description</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.meta_description">
+        <source>Meta description</source>
+        <target state="needs-translation">Meta description</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.images">
+        <source>Images</source>
+        <target state="needs-translation">Images</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.files">
+        <source>Files</source>
+        <target state="needs-translation">Files</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.price">
+        <source>Price</source>
+        <target state="needs-translation">Price</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.special_prices">
+        <source>Special Prices</source>
+        <target state="needs-translation">Special Prices</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.handle_stock">
+        <source>Stock handling</source>
+        <target state="needs-translation">Stock handling</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.stock">
+        <source>Stock</source>
+        <target state="needs-translation">Stock</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.category">
+        <source>Main Category</source>
+        <target state="needs-translation">Main Category</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.categories">
+        <source>Associated Categories</source>
+        <target state="needs-translation">Associated Categories</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.tags">
+        <source>Tags</source>
+        <target state="needs-translation">Tags</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.related_books">
+        <source>Related Books</source>
+        <target state="needs-translation">Related Books</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.related_books_from">
+        <source>Related Books (from)</source>
+        <target state="needs-translation">Related Books (from)</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_specialprice">
+        <source>Special Price</source>
+        <target state="needs-translation">Special Price</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_specialprice.title">
+        <source>Title</source>
+        <target state="needs-translation">Title</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_specialprice.frontend_user_group">
+        <source>Website Usergroup</source>
+        <target state="needs-translation">Website Usergroup</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_specialprice.price">
+        <source>Price</source>
+        <target state="needs-translation">Price</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
+        <source>Cart: Page where Books of this category are listed.</source>
+        <target state="needs-translation">Cart: Page where Books of this category are listed.</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_category.cart_book_show_pid">
+        <source>Cart: Page where Books of this category are shown.</source>
+        <target state="needs-translation">Cart: Page where Books of this category are shown.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
