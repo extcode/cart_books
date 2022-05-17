@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="af" datatype="plaintext" original="messages" date="2020-02-29T12:35:00Z" product-name="cart_books">
+    <header/>
+    <body>
+      <trans-unit id="tx_cartbooks.more_link">
+        <source>more</source>
+        <target state="needs-translation">more</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit">
+        <source>Add to cart</source>
+        <target state="needs-translation">Add to cart</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.success">
+        <source>The book has been added to your shopping cart.</source>
+        <target state="needs-translation">The book has been added to your shopping cart.</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.error">
+        <source>The book could not be added to the shopping cart!</source>
+        <target state="needs-translation">The book could not be added to the shopping cart!</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.error.book_is_not_bookable">
+        <source>Book is not bookable.</source>
+        <target state="needs-translation">Book is not bookable.</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.error.not_enough_seets_available">
+        <source>Not enough Books available.</source>
+        <target state="needs-translation">Not enough Books available.</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book">
+        <source>Book</source>
+        <target state="needs-translation">Book</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.sku">
+        <source>Stock keeping unit</source>
+        <target state="needs-translation">Stock keeping unit</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.title">
+        <source>Title</source>
+        <target state="needs-translation">Title</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.subtitle">
+        <source>Subtitle</source>
+        <target state="needs-translation">Subtitle</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.path_segment">
+        <source>URL segment</source>
+        <target state="needs-translation">URL segment</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.author">
+        <source>Author</source>
+        <target state="needs-translation">Author</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.illustrator">
+        <source>Illustrator</source>
+        <target state="needs-translation">Illustrator</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.editor">
+        <source>Editor</source>
+        <target state="needs-translation">Editor</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.publisher">
+        <source>Publisher</source>
+        <target state="needs-translation">Publisher</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.translator">
+        <source>Translator</source>
+        <target state="needs-translation">Translator</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.number_of_pages">
+        <source>Number of pages</source>
+        <target state="needs-translation">Number of pages</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.language">
+        <source>Language</source>
+        <target state="needs-translation">Language</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
+        <source>Date of publication</source>
+        <target state="needs-translation">Date of publication</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.genre">
+        <source>Genre</source>
+        <target state="needs-translation">Genre</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.teaser">
+        <source>Teaser</source>
+        <target state="needs-translation">Teaser</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.description">
+        <source>Description</source>
+        <target state="needs-translation">Description</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.meta_description">
+        <source>Meta description</source>
+        <target state="needs-translation">Meta description</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.images">
+        <source>Images</source>
+        <target state="needs-translation">Images</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.files">
+        <source>Files</source>
+        <target state="needs-translation">Files</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.price">
+        <source>Price</source>
+        <target state="needs-translation">Price</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.special_prices">
+        <source>Special Prices</source>
+        <target state="needs-translation">Special Prices</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.handle_stock">
+        <source>Stock handling</source>
+        <target state="needs-translation">Stock handling</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.stock">
+        <source>Stock</source>
+        <target state="needs-translation">Stock</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.category">
+        <source>Main Category</source>
+        <target state="needs-translation">Main Category</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.categories">
+        <source>Associated Categories</source>
+        <target state="needs-translation">Associated Categories</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.tags">
+        <source>Tags</source>
+        <target state="needs-translation">Tags</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.related_books">
+        <source>Related Books</source>
+        <target state="needs-translation">Related Books</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks_domain_model_book.related_books_from">
+        <source>Related Books (from)</source>
+        <target state="needs-translation">Related Books (from)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
