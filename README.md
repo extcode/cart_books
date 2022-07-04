@@ -45,7 +45,7 @@ we are happy to offer paid services.
 
 ### 3.2. Changelog
 
-Please have a look into the [official extension documentation in changelog chapter](https://docs.typo3.org/p/extcode/cart-books/main/en-us/Changelog/Index.html)
+Please have a look into the [official extension documentation in changelog chapter](https://docs.typo3.org/p/extcode/cart-girosolution/main/en-us/Changelog/Index.html)
 
 ### 3.3. Release Management
 

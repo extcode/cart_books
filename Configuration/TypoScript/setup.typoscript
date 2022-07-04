@@ -8,14 +8,6 @@ plugin.tx_cartbooks {
     persistence {
         storagePid = {$plugin.tx_cartbooks.persistence.storagePid}
         recursive = {$plugin.tx_cartbooks.persistence.recursive}
-
-        classes {
-            Extcode\CartBooks\Domain\Model\Category {
-                mapping {
-                    tableName = sys_category
-                }
-            }
-        }
     }
 
     settings {

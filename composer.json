@@ -33,9 +33,11 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "typo3/cms-composer-installers": true,
+            "typo3/class-alias-loader": true
+        },
         "bin-dir": ".build/bin",
-        "discard-changes": true,
-        "optimize-autoloader": true,
         "vendor-dir": ".build/vendor"
     },
     "extra": {
@@ -47,15 +49,15 @@
     },
     "require": {
         "php": "^7.2 || ^8.0",
+        "ext-json": "*",
         "ext-pdo": "*",
         "typo3/cms-core": "^10.4 || ^11.5",
         "typo3/cms-extbase": "^10.4 || ^11.5",
         "typo3/cms-fluid": "^10.4 || ^11.5",
-        "extcode/cart": "^8.0",
-        "ext-json": "*"
+        "extcode/cart": "^8.2"
     },
     "require-dev": {
-        "typo3/testing-framework": "^6.0",
+        "typo3/testing-framework": "^6.16",
         "typo3/cms-install": "^10.4 || ^11.5",
         "friendsofphp/php-cs-fixer": "^2.14",
         "helmich/typo3-typoscript-lint": "^2.0",

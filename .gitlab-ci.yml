@@ -7,6 +7,7 @@ cache:
 variables:
   COMPOSER_CACHE_DIR: ".composer"
   TYPO3_PATH_WEB: "$CI_PROJECT_DIR/.build/public"
+  TYPO3_PATH_ROOT: "$CI_PROJECT_DIR/.build/public"
   MYSQL_DATABASE: "typo3"
   MYSQL_ROOT_PASSWORD: "joh316"
   typo3DatabaseName: "typo3"
@@ -20,6 +21,7 @@ before_script:
 stages:
   - lint
   - test
+  - documentation
   - analysis
 
 lint:cgl:
@@ -109,17 +111,16 @@ phpstan:analyse:
     - php composer-setup.php --no-ansi --install-dir=/usr/bin --filename=composer
     - php -r "unlink('composer-setup.php'); unlink('installer.sig');"
     - composer require typo3/cms-core="${TYPO3_VERSION}"
-    - composer require typo3/cms-install="${TYPO3_VERSION}"
   script:
     - >
       if [[ "$COVERAGE" == "0" ]]; then
-        .build/bin/phpunit -c Build/UnitTests.xml
+        .build/bin/phpunit -c Build/UnitTests.xml Tests/Unit
       fi
     - >
       if [[ "$COVERAGE" == "1" ]]; then
-        .build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml
+        composer require typo3/cms-install="${TYPO3_VERSION}"
+        XDEBUG_MODE=coverage TYPO3_PATH_WEB=${TYPO3_PATH_WEB} .build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml Tests/Unit
       fi
-    - typo3DatabaseDriver=pdo_sqlite .build/bin/phpunit -c Build/FunctionalTests.xml
   artifacts:
     paths:
       - phpunit.coverage.xml
@@ -174,6 +175,23 @@ test:php81:typo3_11:
     DOCKER_TAG: 8.1-alpine
     TYPO3_VERSION: ^11.5
     COVERAGE: 1
+
+documentation:
+  stage: documentation
+  image:
+    name: t3docs/render-documentation:v2.4.0
+    entrypoint: [""]
+  before_script:
+    - cp -a ${CI_PROJECT_DIR}/. /PROJECT
+    - mkdir -p ${CI_PROJECT_DIR}/Documentation-GENERATED-temp
+  script:
+    - cd /ALL/venv
+    - /ALL/Menu/mainmenu.sh makehtml-no-cache -c resultdir ${CI_PROJECT_DIR}/Documentation-GENERATED-temp
+  artifacts:
+    paths:
+      - ${CI_PROJECT_DIR}/Documentation-GENERATED-temp/Result/project/0.0.0
+    expire_in: 1 day
+    when: always
 
 sonarqube:
   stage: analysis
