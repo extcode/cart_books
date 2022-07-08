@@ -2,8 +2,6 @@
 declare(strict_types=1);
 namespace Extcode\CartBooks\Hooks;
 
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Database\QueryGenerator;
 /*
  * This file is part of the package extcode/cart-books.
  *
@@ -11,6 +9,9 @@ use TYPO3\CMS\Core\Database\QueryGenerator;
  * LICENSE file that was distributed with this source code.
  */
 
+use Tpwd\KeSearch\Indexer\IndexerRunner;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\QueryGenerator;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -26,7 +27,7 @@ class KeSearchIndexer
         $params['items'][] = $newArray;
     }
 
-    public function customIndexer(array &$indexerConfig, array &$indexerObject): string
+    public function customIndexer(array &$indexerConfig, IndexerRunner &$indexerObject): string
     {
         if ($indexerConfig['type'] === 'cartbookindexer') {
             return $this->cartBookIndexer($indexerConfig, $indexerObject);
@@ -35,7 +36,7 @@ class KeSearchIndexer
         return '';
     }
 
-    public function cartBookIndexer(array &$indexerConfig, array &$indexerObject): string
+    public function cartBookIndexer(array &$indexerConfig, IndexerRunner &$indexerObject): string
     {
         $bookIndexerName = 'Book Indexer "' . $indexerConfig['title'] . '"';
 
@@ -149,7 +150,7 @@ class KeSearchIndexer
         return $queryBuilder->execute()->fetchAll();
     }
 
-    protected function getTargetPidFormCategory($categoryUid)
+    protected function getTargetPidFormCategory(int $categoryUid): ?int
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('sys_category');
