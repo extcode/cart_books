@@ -1,10 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-use TYPO3\CMS\Core\Resource\File;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $_LLL_general = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf';
 $_LLL_ttc = 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf';
@@ -20,7 +18,6 @@ return [
         'label_alt_force' => 1,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
 
         'sortby' => 'sorting',
 
@@ -105,18 +102,7 @@ return [
         'sys_language_uid' => [
             'exclude' => 1,
             'label' => $_LLL_general . ':LGL.language',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    [$_LLL_general . ':LGL.allLanguages', -1],
-                    [$_LLL_general . ':LGL.default_value', 0],
-                ],
-                'eval' => 'int',
-                'default' => 0,
-            ],
+            'config' => ['type' => 'language'],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -125,7 +111,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_cartbooks_domain_model_book',
                 'foreign_table_where' => 'AND tx_cartbooks_domain_model_book.pid=###CURRENT_PID### AND tx_cartbooks_domain_model_book.sys_language_uid IN (-1,0)',
@@ -194,7 +180,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'title' => [
@@ -203,7 +190,8 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,trim',
+                'eval' => 'trim',
+                'required' => true,
             ],
         ],
         'subtitle' => [
@@ -379,123 +367,39 @@ return [
         'images' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.images',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'images',
-                [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => $_LLL_ttc . ':images.addFileReference',
-                        'showPossibleLocalizationRecords' => true,
-                        'showRemovedLocalizationRecords' => true,
-                        'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true,
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'image',
-                        'tablenames' => 'tx_cartbooks_domain_model_book',
-                        'table_local' => 'sys_file',
-                    ],
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // to use the imageoverlayPalette instead of the basicoverlayPalette
-                    'overrideChildTca' => [
-                        'types' => [
-                            '0' => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_TEXT => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_IMAGE => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_AUDIO => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_VIDEO => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_APPLICATION => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                        ],
-                    ],
-                    'minitems' => 0,
-                    'maxitems' => 99,
+            'config' => [
+                'type' => 'file',
+                'appearance' => [
+                    'createNewRelationLinkTitle' => $_LLL_ttc . ':images.addFileReference',
+                    'showPossibleLocalizationRecords' => true,
+                    'showRemovedLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true,
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'allowed' => 'common-image-types',
+            ],
         ],
 
         'files' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_cartbooks_domain_model_book.files',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'files',
-                [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => $_LLL_ttc . ':images.addFileReference',
-                        'showPossibleLocalizationRecords' => true,
-                        'showRemovedLocalizationRecords' => true,
-                        'showAllLocalizationLink' => true,
-                        'showSynchronizationLink' => true,
-                    ],
-                    'foreign_match_fields' => [
-                        'fieldname' => 'files',
-                        'tablenames' => 'tx_cartbooks_domain_model_book',
-                        'table_local' => 'sys_file',
-                    ],
-                    // custom configuration for displaying fields in the overlay/reference table
-                    // to use the imageoverlayPalette instead of the basicoverlayPalette
-                    'overrideChildTca' => [
-                        'types' => [
-                            '0' => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_TEXT => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_IMAGE => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_AUDIO => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_VIDEO => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                            File::FILETYPE_APPLICATION => [
-                                'showitem' => '
-                                --palette--;LLL:EXT:core/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
-                                --palette--;;filePalette',
-                            ],
-                        ],
-                    ],
-                    'minitems' => 0,
-                    'maxitems' => 99,
+            'config' => [
+                'type' => 'file',
+                'appearance' => [
+                    'createNewRelationLinkTitle' => $_LLL_ttc . ':images.addFileReference',
+                    'showPossibleLocalizationRecords' => true,
+                    'showRemovedLocalizationRecords' => true,
+                    'showAllLocalizationLink' => true,
+                    'showSynchronizationLink' => true,
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'] . ', pdf'
-            ),
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+                'allowed' => 'common-media-types',
+            ],
         ],
 
         'price' => [
@@ -504,8 +408,9 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,double2',
+                'eval' => 'double2',
                 'default' => '0.00',
+                'required' => true,
             ],
         ],
         'special_prices' => [
@@ -534,9 +439,9 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    [$_LLL_cart . ':tx_cart.tax_class_id.1', 1],
-                    [$_LLL_cart . ':tx_cart.tax_class_id.2', 2],
-                    [$_LLL_cart . ':tx_cart.tax_class_id.3', 3],
+                    ['label' => $_LLL_cart . ':tx_cart.tax_class_id.1', 'value' => 1],
+                    ['label' => $_LLL_cart . ':tx_cart.tax_class_id.2', 'value' => 2],
+                    ['label' => $_LLL_cart . ':tx_cart.tax_class_id.3', 'value' => 3],
                 ],
                 'size' => 1,
                 'minitems' => 1,
@@ -568,7 +473,6 @@ return [
             'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.related_books',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_cartbooks_domain_model_book',
                 'foreign_table' => 'tx_cartbooks_domain_model_book',
                 'MM_opposite_field' => 'related_books_from',
@@ -589,7 +493,6 @@ return [
             'label' => $_LLL_db . 'tx_cartbooks_domain_model_book.related_books_from',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'foreign_table' => 'tx_cartbooks_domain_model_book',
                 'allowed' => 'tx_cartbooks_domain_model_book',
                 'size' => 5,
@@ -599,12 +502,24 @@ return [
             ],
         ],
 
+        'category' => [
+            'config' => [
+                'type' => 'category',
+                'relationship' => 'oneToOne',
+            ],
+        ],
+
+        'categories' => [
+            'config' => [
+                'type' => 'category',
+            ],
+        ],
+
         'tags' => [
             'exclude' => 1,
             'label' => $_LLL_cart . ':tx_cart_domain_model_tags',
             'config' => [
                 'type' => 'group',
-                'internal_type' => 'db',
                 'allowed' => 'tx_cart_domain_model_tag',
                 'foreign_table' => 'tx_cart_domain_model_tag',
                 'size' => 5,

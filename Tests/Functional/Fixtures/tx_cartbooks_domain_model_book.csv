@@ -1,0 +1,4 @@
+tx_cartbooks_domain_model_book,,,,,,,,,,,,,,,
+        ,uid,pid,sku,title,subtitle,isbn13,author,publisher,translator,language,number_of_pages,genre,teaser,description,meta_description
+        ,1,1,9783785726259,NSA,Nationales Sicherheits-Amt,978-3-7857-2625-9,"Eschbach, Andreas",Bastei Lübbe,,deutsch,800,Roman,,,
+        ,2,1,9783492061315,1793,,978-3-492-06131-5,"Natt och Dag, Niklas",Piper,"Flegler, Leena",deutsch,496,Roman,,,

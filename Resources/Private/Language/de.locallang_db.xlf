@@ -3,6 +3,10 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books">
         <header/>
         <body>
+            <trans-unit id="tx_cart_domain_model_order_product.product_type.cart_books">
+                <source>Cart: Books</source>
+                <target>Cart: Bücher</target>
+            </trans-unit>
 
             <trans-unit id="tx_cartbooks_domain_model_book">
                 <source>Book</source>

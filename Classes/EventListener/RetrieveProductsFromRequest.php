@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\EventListener;
 
 /*
@@ -60,7 +62,7 @@ class RetrieveProductsFromRequest
         int $quantity,
         array $taxClasses
     ): Product {
-        $product = new Product(
+        return new Product(
             'CartBooks',
             $book->getUid(),
             $book->getSku(),
@@ -71,8 +73,6 @@ class RetrieveProductsFromRequest
             false,
             null
         );
-
-        return $product;
     }
 
     protected function checkRequestArguments(array $requestArguments): array
@@ -83,7 +83,7 @@ class RetrieveProductsFromRequest
                     'tx_cartbooks.error.book_not_found',
                     'cart_books'
                 ),
-                AbstractMessage::ERROR
+                AbstractMessage::ERROR,
             ];
         }
 
@@ -93,7 +93,7 @@ class RetrieveProductsFromRequest
                     'tx_cart.error.invalid_quantity',
                     'cart_products'
                 ),
-                'severity' => AbstractMessage::WARNING
+                'severity' => AbstractMessage::WARNING,
             ];
         }
 

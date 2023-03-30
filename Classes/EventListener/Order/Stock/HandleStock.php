@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\EventListener\Order\Stock;
 
 /*
@@ -18,7 +20,7 @@ class HandleStock
     /**
      * @var PersistenceManager
      */
-    protected $persistenceManager = null;
+    protected $persistenceManager;
 
     /**
      * @bar BookRepository

@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Domain\Repository;
 
 /*
@@ -73,7 +75,7 @@ class BookRepository extends Repository
         return $this->orderByField($query->execute(), $uids);
     }
 
-    protected function createOrderingsFromDemand(BookDemand $demand) : array
+    protected function createOrderingsFromDemand(BookDemand $demand): array
     {
         $orderings = [];
 

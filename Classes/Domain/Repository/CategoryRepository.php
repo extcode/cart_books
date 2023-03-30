@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Domain\Repository;
 
 /*
@@ -10,29 +12,29 @@ namespace Extcode\CartBooks\Domain\Repository;
  */
 
 use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+class CategoryRepository extends Repository
 {
     public function findAllAsRecursiveTreeArray(Category $selectedCategory = null): array
     {
         $categoriesArray = $this->findAllAsArray($selectedCategory);
-        $categoriesTree = $this->buildSubcategories($categoriesArray, null);
 
-        return $categoriesTree;
+        return $this->buildSubcategories($categoriesArray, null);
     }
 
     public function findAllAsArray(Category $selectedCategory = null): array
     {
-        $localCategories = $this->findAll();
         $categories = [];
-        // Transform categories to array
+
+        $localCategories = $this->findAll();
         foreach ($localCategories as $localCategory) {
             $newCategory = [
                 'uid' => $localCategory->getUid(),
                 'title' => $localCategory->getTitle(),
                 'parent' => ($localCategory->getParent() ? $localCategory->getParent()->getUid() : null),
                 'subcategories' => null,
-                'isSelected' => ($selectedCategory == $localCategory ? true : false),
+                'isSelected' => ($selectedCategory === $localCategory),
             ];
             $categories[] = $newCategory;
         }
@@ -40,14 +42,15 @@ class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRe
         return $categories;
     }
 
-    public function findSubcategoriesRecursiveAsArray(Category $parentCategory): array
+    public function findSubcategoriesRecursiveAsArray(Category $parentCategory = null): array
     {
         $categories = [];
+
         $localCategories = $this->findAllAsArray();
         foreach ($localCategories as $category) {
             if (
-                ($parentCategory && $category['uid'] === $parentCategory->getUid()) ||
-                !$parentCategory
+                !$parentCategory ||
+                $category['uid'] === $parentCategory->getUid()
             ) {
                 $this->getSubcategoriesIds(
                     $localCategories,
@@ -80,6 +83,7 @@ class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRe
     protected function buildSubcategories(array $categoriesArray, array $parentCategory): array
     {
         $categories = null;
+
         foreach ($categoriesArray as $category) {
             if ($category['parent'] == $parentCategory['uid']) {
                 $newCategory = $category;

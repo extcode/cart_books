@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $_LLL_db = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
 
@@ -13,7 +14,6 @@ $newSysCategoryColumns = [
         'label' => $_LLL_db . ':tx_cartbooks_domain_model_category.cart_book_list_pid',
         'config' => [
             'type' => 'group',
-            'internal_type' => 'db',
             'allowed' => 'pages',
             'size' => 1,
             'maxitems' => 1,
@@ -31,7 +31,6 @@ $newSysCategoryColumns = [
         'label' => $_LLL_db . ':tx_cartbooks_domain_model_category.cart_book_show_pid',
         'config' => [
             'type' => 'group',
-            'internal_type' => 'db',
             'allowed' => 'pages',
             'size' => 1,
             'maxitems' => 1,

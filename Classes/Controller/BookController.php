@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Controller;
 
 /*
@@ -9,51 +11,45 @@ namespace Extcode\CartBooks\Controller;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Cart\Domain\Model\Cart\Cart;
+use Extcode\Cart\Service\SessionHandler;
 use Extcode\Cart\Utility\CartUtility;
 use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use Extcode\CartBooks\Domain\Repository\CategoryRepository;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation\IgnoreValidation;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 class BookController extends ActionController
 {
-    /**
-     * @var CartUtility
-     */
-    protected $cartUtility;
+    protected SessionHandler $sessionHandler;
 
-    /**
-     * @var BookRepository
-     */
-    protected $bookRepository;
+    protected Cart $cart;
 
-    /**
-     * @var CategoryRepository
-     */
-    protected $categoryRepository;
+    protected CartUtility $cartUtility;
 
-    /**
-     * @var array
-     */
-    protected $cartSettings = [];
+    protected BookRepository $bookRepository;
 
-    public function injectCartUtility(CartUtility $cartUtility): void
-    {
+    protected CategoryRepository $categoryRepository;
+
+    protected array $cartSettings = [];
+
+    public function __construct(
+        SessionHandler $sessionHandler,
+        CartUtility $cartUtility,
+        BookRepository $bookRepository,
+        CategoryRepository $categoryRepository
+    ) {
+        $this->sessionHandler = $sessionHandler;
         $this->cartUtility = $cartUtility;
-    }
-
-    public function injectBookRepository(BookRepository $bookRepository): void
-    {
         $this->bookRepository = $bookRepository;
-    }
-
-    public function injectCategoryRepository(CategoryRepository $categoryRepository): void
-    {
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -72,14 +68,16 @@ class BookController extends ActionController
                 $cacheTagsSet = true;
             }
         }
+
+        $this->settings['addToCartByAjax'] = isset($this->settings['addToCartByAjax']) ? (int)$this->settings['addToCartByAjax'] : 0;
     }
 
-    public function listAction(int $currentPage = 1): void
+    public function listAction(int $currentPage = 1): ResponseInterface
     {
         if (!$this->settings) {
             $this->settings = [];
         }
-        $demand = $this->createDemandObjectFromSettings('list', $this->settings);
+        $demand = $this->createDemandObjectFromSettings('list');
         $demand->setActionAndClass(__METHOD__, __CLASS__);
 
         $itemsPerPage = $this->settings['itemsPerPage'] ?? 20;
@@ -105,9 +103,10 @@ class BookController extends ActionController
         $this->assignCurrencyTranslationData();
 
         $this->addCacheTags($books);
+        return $this->htmlResponse();
     }
 
-    public function teaserAction(): void
+    public function teaserAction(): ResponseInterface
     {
         $limit = (int)$this->settings['limit'] ?: (int)$this->configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
@@ -122,15 +121,19 @@ class BookController extends ActionController
         $this->assignCurrencyTranslationData();
 
         $this->addCacheTags($books);
+        return $this->htmlResponse();
     }
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("book")
      */
-    public function showAction(Book $book = null): void
+    /**
+     * @IgnoreValidation("book")
+     */
+    public function showAction(Book $book = null): ResponseInterface
     {
         if ($book === null) {
-            $this->forward('list');
+            return new ForwardResponse('list');
         }
 
         $this->view->assign('book', $book);
@@ -139,43 +142,54 @@ class BookController extends ActionController
         $this->assignCurrencyTranslationData();
 
         $this->addCacheTags([$book]);
+        return $this->htmlResponse();
     }
 
-    protected function createDemandObjectFromSettings(string $type, array $settings): BookDemand
+    protected function createDemandObjectFromSettings(string $type): BookDemand
     {
         $demand = GeneralUtility::makeInstance(
             BookDemand::class
         );
 
-        if ($settings['orderBy']) {
-            $demand->setOrder($settings['orderBy'] . ' ' . $settings['orderDirection']);
+        $limit = (int)$this->settings['limit'];
+        $orderBy = $this->settings['orderBy'];
+        $orderDirection = $this->settings['orderDirection'];
+
+        if (
+            isset($this->settings['view']) &&
+            is_array($this->settings['view']) &&
+            isset($this->settings['view']['type']) &&
+            is_array($this->settings['view']['type'])
+        ) {
+            $settingsForType = $this->settings['view']['type'];
+
+            if (
+                $limit === 0 &&
+                (int)$settingsForType['limit'] > 0
+            ) {
+                $limit = (int)$settingsForType['limit'];
+            }
+
+            if (
+                empty($orderBy) &&
+                !empty($settingsForType['orderBy'])
+            ) {
+                $orderBy = $settingsForType['orderBy'];
+            }
+
+            if (
+                empty($orderDirection) &&
+                !empty($settingsForType['orderDirection'])
+            ) {
+                $orderDirection = $settingsForType['orderDirection'];
+            } else {
+                $orderDirection = 'ASC';
+            }
         }
 
-        $limit = (int)$this->settings['limit'] ?: (int)$this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
-            'CartBooks'
-        )['view'][$type]['limit'];
-
-        $demand->setLimit($limit);
-
-        $order = $this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
-            'CartBooks'
-        )['view'][$type]['order'];
-
-        if ($order) {
-            $demand->setOrder($order);
+        if ($limit) {
+            $demand->setLimit($limit);
         }
-
-        $orderBy = $this->settings['orderBy'] ?: $this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
-            'CartBooks'
-        )['view'][$type]['orderBy'];
-
-        $orderDirection = $this->settings['orderDirection'] ?: $this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
-            'CartBooks'
-        )['view'][$type]['orderDirection'];
 
         if ($orderBy && $orderDirection) {
             $demand->setOrder($orderBy . ' ' . $orderDirection);
@@ -215,20 +229,13 @@ class BookController extends ActionController
 
     protected function assignCurrencyTranslationData(): void
     {
-        $currencyTranslationData = [];
+        $this->restoreSession();
 
-        $cartFrameworkConfig = $this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
-            'Cart'
-        );
-
-        $cart = $this->cartUtility->getCartFromSession($cartFrameworkConfig);
-
-        if ($cart) {
-            $currencyTranslationData['currencyCode'] = $cart->getCurrencyCode();
-            $currencyTranslationData['currencySign'] = $cart->getCurrencySign();
-            $currencyTranslationData['currencyTranslation'] = $cart->getCurrencyTranslation();
-        }
+        $currencyTranslationData = [
+            'currencyCode' => $this->cart->getCurrencyCode(),
+            'currencySign' => $this->cart->getCurrencySign(),
+            'currencyTranslation' => $this->cart->getCurrencyTranslation(),
+        ];
 
         $this->view->assign('currencyTranslationData', $currencyTranslationData);
     }
@@ -245,5 +252,18 @@ class BookController extends ActionController
                 $GLOBALS['TSFE']->addCacheTags($cacheTags);
             }
         }
+    }
+
+    protected function restoreSession(): void
+    {
+        $cart = $this->sessionHandler->restoreCart($this->cartSettings['cart']['pid']);
+
+        if ($cart instanceof Cart) {
+            $this->cart = $cart;
+            return;
+        }
+
+        $this->cart = $this->cartUtility->getNewCart($this->cartSettings);
+        $this->sessionHandler->writeCart($this->cartSettings['cart']['pid'], $this->cart);
     }
 }

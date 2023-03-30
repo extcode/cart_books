@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:';
 
@@ -41,26 +41,24 @@ $_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf:';
 
 // Icon Registry
 
-if (TYPO3_MODE === 'BE') {
-    $icons = [
-        'apps-pagetree-folder-cartbooks-books' => 'apps_pagetree_folder_cartbooks_books.svg',
-        'apps-pagetree-page-cartbooks-book' => 'apps_pagetree_page_cartbooks_books.svg',
-        'ext-cartbooks-wizard-icon' => 'cartbooks_plugin_wizard.svg',
-    ];
+$icons = [
+    'apps-pagetree-folder-cartbooks-books' => 'apps_pagetree_folder_cartbooks_books.svg',
+    'apps-pagetree-page-cartbooks-book' => 'apps_pagetree_page_cartbooks_books.svg',
+    'ext-cartbooks-wizard-icon' => 'cartbooks_plugin_wizard.svg',
+];
 
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-        \TYPO3\CMS\Core\Imaging\IconRegistry::class
+$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \TYPO3\CMS\Core\Imaging\IconRegistry::class
+);
+
+foreach ($icons as $identifier => $fileName) {
+    $iconRegistry->registerIcon(
+        $identifier,
+        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        [
+            'source' => 'EXT:cart_books/Resources/Public/Icons/' . $fileName,
+        ]
     );
-
-    foreach ($icons as $identifier => $fileName) {
-        $iconRegistry->registerIcon(
-            $identifier,
-            \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-            [
-                'source' => 'EXT:cart_books/Resources/Public/Icons/' . $fileName,
-            ]
-        );
-    }
 }
 
 // TSconfig
@@ -68,13 +66,6 @@ if (TYPO3_MODE === 'BE') {
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
     <INCLUDE_TYPOSCRIPT: source="FILE:EXT:cart_books/Configuration/TSconfig/ContentElementWizard.tsconfig">
 ');
-
-// ke_search Hook - register indexer for books
-
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['registerIndexerConfiguration'][] =
-    \Extcode\CartBooks\Hooks\KeSearchIndexer::class;
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ke_search']['customIndexer'][] =
-    \Extcode\CartBooks\Hooks\KeSearchIndexer::class;
 
 // clearCachePostProc Hook
 

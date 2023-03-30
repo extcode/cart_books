@@ -9,6 +9,7 @@ namespace Extcode\CartBooks\Tests\Functional\Repository;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Model\Dto\BookDemand;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -16,23 +17,21 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 class BookRepositoryTest extends FunctionalTestCase
 {
-    /**
-     * @var BookRepository
-     */
-    protected $bookRepository;
+    protected BookRepository $bookRepository;
 
-    protected $testExtensionsToLoad = [
+    protected array $testExtensionsToLoad = [
         'typo3conf/ext/cart',
-        'typo3conf/ext/cart_books'
+        'typo3conf/ext/cart_books',
     ];
 
     public function setUp(): void
     {
         parent::setUp();
+
         $this->bookRepository = GeneralUtility::makeInstance(BookRepository::class);
 
-        $this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');
-        $this->importDataSet(__DIR__ . '/../Fixtures/tx_cartbooks_domain_model_book.xml');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/pages.csv');
+        $this->importCSVDataSet(__DIR__ . '/../Fixtures/tx_cartbooks_domain_model_book.csv');
     }
 
     public function tearDown(): void
@@ -45,14 +44,20 @@ class BookRepositoryTest extends FunctionalTestCase
      */
     public function findRecordsByUid(): void
     {
-        $address = $this->bookRepository->findByUid(1);
-        $this->assertSame(
-            'NSA',
-            $address->getTitle()
+        $book = $this->bookRepository->findByUid(1);
+
+        self::assertInstanceOf(
+            Book::class,
+            $book
         );
-        $this->assertSame(
+
+        self::assertSame(
+            'NSA',
+            $book->getTitle()
+        );
+        self::assertSame(
             'Nationales Sicherheits-Amt',
-            $address->getSubtitle()
+            $book->getSubtitle()
         );
     }
 
@@ -61,19 +66,19 @@ class BookRepositoryTest extends FunctionalTestCase
      */
     public function findAllRecords(): void
     {
-        $addresses = $this->bookRepository->findAll();
-        $this->assertSame(
+        $books = $this->bookRepository->findAll();
+        self::assertSame(
             0,
-            $addresses->count()
+            $books->count()
         );
 
         $querySettings = $this->bookRepository->createQuery()->getQuerySettings();
         $querySettings->setRespectStoragePage(false);
         $this->bookRepository->setDefaultQuerySettings($querySettings);
-        $addresses = $this->bookRepository->findAll();
-        $this->assertSame(
+        $books = $this->bookRepository->findAll();
+        self::assertSame(
             2,
-            $addresses->count()
+            $books->count()
         );
     }
 
@@ -90,12 +95,12 @@ class BookRepositoryTest extends FunctionalTestCase
         $this->bookRepository->setDefaultQuerySettings($querySettings);
         $books = $this->bookRepository->findDemanded($demand);
 
-        $this->assertCount(
+        self::assertCount(
             1,
             $books
         );
 
-        $this->assertSame(
+        self::assertSame(
             'NSA',
             $books->getFirst()->getTitle()
         );
