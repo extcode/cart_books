@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\EventListener;
 
 /*
@@ -8,29 +10,19 @@ namespace Extcode\CartBooks\EventListener;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
 use Extcode\Cart\Event\CheckProductAvailabilityEvent;
+use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class CheckProductAvailability
 {
-    /**
-     * @bar BookRepository
-     */
-    protected $bookRepository;
-
-    /**
-     * MailHandler constructor
-     */
     public function __construct(
-        BookRepository $bookRepository
-    ) {
-        $this->bookRepository = $bookRepository;
-    }
+        private readonly BookRepository $bookRepository,
+    ) {}
 
     public function __invoke(CheckProductAvailabilityEvent $event): void
     {
@@ -43,8 +35,8 @@ class CheckProductAvailability
             return;
         }
 
-        if (($mode === 'add') && $cart->getProduct($cartProduct->getId())) {
-            $quantity += $cart->getProduct($cartProduct->getId())->getQuantity();
+        if (($mode === 'add') && $cart->getProductById($cartProduct->getId())) {
+            $quantity += $cart->getProductById($cartProduct->getId())->getQuantity();
         }
 
         $querySettings = $this->bookRepository->createQuery()->getQuerySettings();
@@ -53,7 +45,13 @@ class CheckProductAvailability
 
         $book = $this->bookRepository->findByIdentifier($cartProduct->getProductId());
 
-        if ($book->isHandleStock() && ($quantity > $book->getStock())) {
+        if (
+            !$book instanceof Book ||
+            (
+                $book->isHandleStock() &&
+                ($quantity > $book->getStock())
+            )
+        ) {
             $event->setAvailable(false);
             $event->addMessage(
                 GeneralUtility::makeInstance(
@@ -63,7 +61,7 @@ class CheckProductAvailability
                         'cart'
                     ),
                     '',
-                    AbstractMessage::ERROR
+                    ContextualFeedbackSeverity::ERROR
                 )
             );
         }

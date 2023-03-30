@@ -1,0 +1,15 @@
+{
+  "name": "extcode/cart-books-test",
+  "description": "Add a cart_books test extension",
+  "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "typo3/cms-core": "*",
+    "extcode/cart-books": "@dev"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "cart_books_test"
+    }
+  }
+}

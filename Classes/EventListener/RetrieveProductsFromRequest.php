@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\EventListener;
 
 /*
@@ -8,25 +10,18 @@ namespace Extcode\CartBooks\EventListener;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
 use Extcode\Cart\Domain\Model\Cart\Product;
 use Extcode\Cart\Event\RetrieveProductsFromRequestEvent;
 use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class RetrieveProductsFromRequest
 {
-    /**
-     * @var BookRepository
-     */
-    protected $bookRepository;
-
-    public function __construct(BookRepository $bookRepository)
-    {
-        $this->bookRepository = $bookRepository;
-    }
+    public function __construct(
+        private readonly BookRepository $bookRepository,
+    ) {}
 
     public function __invoke(RetrieveProductsFromRequestEvent $event): void
     {
@@ -60,7 +55,7 @@ class RetrieveProductsFromRequest
         int $quantity,
         array $taxClasses
     ): Product {
-        $product = new Product(
+        return new Product(
             'CartBooks',
             $book->getUid(),
             $book->getSku(),
@@ -71,8 +66,6 @@ class RetrieveProductsFromRequest
             false,
             null
         );
-
-        return $product;
     }
 
     protected function checkRequestArguments(array $requestArguments): array
@@ -81,9 +74,9 @@ class RetrieveProductsFromRequest
             return [
                 'messageBody' => LocalizationUtility::translate(
                     'tx_cartbooks.error.book_not_found',
-                    'cart_books'
+                    'CartBooks'
                 ),
-                AbstractMessage::ERROR
+                ContextualFeedbackSeverity::ERROR,
             ];
         }
 
@@ -91,9 +84,9 @@ class RetrieveProductsFromRequest
             return [
                 'messageBody' => LocalizationUtility::translate(
                     'tx_cart.error.invalid_quantity',
-                    'cart_products'
+                    'CartBooks'
                 ),
-                'severity' => AbstractMessage::WARNING
+                'severity' => ContextualFeedbackSeverity::WARNING,
             ];
         }
 

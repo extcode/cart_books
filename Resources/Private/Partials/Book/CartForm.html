@@ -2,30 +2,39 @@
       data-namespace-typo3-fluid="true">
 
 <div class="cart_form">
-    <f:form id="book-{book.uid}"
-            class="add-to-cart-form"
-            pageUid="{pid}"
-            extensionName="Cart"
-            pluginName="Cart"
-            controller="Cart\Product"
-            action="add"
-            method="post"
-            pageType="{f:if(condition:'{settings.addToCartByAjax}', then:'{settings.addToCartByAjax}', else:'')}"
-            additionalAttributes="{data-ajax: '{f:if(condition: \'{settings.addToCartByAjax}\', then: \'1\', else: \'0\')}', data-type: 'book', data-id: '{book.uid}'}">
-        <input type="hidden" name="tx_cart_cart[productType]" value="CartBooks">
-        <input type="hidden" name="tx_cart_cart[book]" value="{book.uid}">
+    <f:if condition="{book.handleStock} && {book.stock} == 0">
+        <f:then>
+            <f:translate key="tx_cartbooks.out_of_stock" />
+        </f:then>
+        <f:else>
+            <f:form id="book-{book.uid}"
+                    class="add-to-cart-form"
+                    pageUid="{pid}"
+                    extensionName="Cart"
+                    pluginName="Cart"
+                    controller="Cart\Product"
+                    action="add"
+                    method="post"
+                    pageType="{settings.addToCartByAjax}"
+                    additionalAttributes="{data-ajax: '{f:if(condition: \'{settings.addToCartByAjax}\', then: \'1\', else: \'0\')}', data-type: 'book', data-id: '{book.uid}'}">
+                <input type="hidden" name="tx_cart_cart[productType]" value="CartBooks">
+                <input type="hidden" name="tx_cart_cart[book]" value="{book.uid}">
 
-        <input class="form-control" type="number" min="1" step="1" value="1" name="tx_cart_cart[quantity]">
-        <input type="submit" class="form-control btn btn-default" value="<f:translate key='tx_cartbooks.plugin.form.submit' />">
+                <input class="form-control" type="number" min="1" step="1" value="1" name="tx_cart_cart[quantity]">
+                <input type="submit" class="form-control btn btn-default" value="<f:translate key='tx_cartbooks.plugin.form.submit' />">
 
-        <div class="form-message" data-ajax-message-timeout="3000">
-            <div class="form-success" style="display: none;" data-ajax-success-block>
-                <div class="alert alert-success" data-ajax-success-message></div>
-            </div>
-            <div class="form-error" style="display: none;" data-ajax-error-block>
-                <div class="alert alert-warning" data-ajax-error-message></div>
-            </div>
-        </div>
-    </f:form>
+                <div class="form-message" data-ajax-message-timeout="3000">
+                    <div class="form-success" style="display: none;" data-ajax-success-block>
+                        <div class="alert alert-success" data-ajax-success-message></div>
+                    </div>
+                    <div class="form-error" style="display: none;" data-ajax-error-block>
+                        <div class="alert alert-warning" data-ajax-error-message></div>
+                    </div>
+                </div>
+            </f:form>
+        </f:else>
+    </f:if>
 </div>
+
+<f:asset.script identifier="add-to-cart" src="EXT:cart/Resources/Public/JavaScript/add_to_cart.js" />
 </html>
