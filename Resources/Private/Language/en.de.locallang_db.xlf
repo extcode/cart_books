@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="de">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="en">
     <header/>
     <body>
       <trans-unit id="tx_cartbooks_domain_model_book">
@@ -54,18 +54,6 @@
       <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
         <source>Date of Publication</source>
         <target state="needs-translation">Date of Publication</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_book.isbn10">
-        <source>ISBN-10</source>
-        <target state="needs-translation">ISBN-10</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_book.isbn13">
-        <source>ISBN-13</source>
-        <target state="needs-translation">ISBN-13</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_book.issn">
-        <source>ISSN</source>
-        <target state="needs-translation">ISSN</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.genre">
         <source>Genre</source>
@@ -126,22 +114,6 @@
       <trans-unit id="tx_cartbooks_domain_model_book.related_books_from">
         <source>Related Books (from)</source>
         <target state="needs-translation">Related Books (from)</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice">
-        <source>Special Price</source>
-        <target state="needs-translation">Special Price</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice.title">
-        <source>Title</source>
-        <target state="needs-translation">Title</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice.frontend_user_group">
-        <source>Website Usergroup</source>
-        <target state="needs-translation">Website Usergroup</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice.price">
-        <source>Price</source>
-        <target state="needs-translation">Price</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
         <source>Cart: Page where Books of this category are listed.</source>

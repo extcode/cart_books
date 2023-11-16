@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="de">
+  <file source-language="en" target-language="vi" datatype="plaintext" original="messages" date="2020-02-29T12:35:00Z" product-name="cart_books">
     <header/>
     <body>
+      <trans-unit id="tx_cartbooks.more_link">
+        <source>more</source>
+        <target state="needs-translation">more</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit">
+        <source>Add to cart</source>
+        <target state="needs-translation">Add to cart</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.success">
+        <source>The book has been added to your shopping cart.</source>
+        <target state="needs-translation">The book has been added to your shopping cart.</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.error">
+        <source>The book could not be added to the shopping cart!</source>
+        <target state="needs-translation">The book could not be added to the shopping cart!</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.error.book_is_not_bookable">
+        <source>Book is not bookable.</source>
+        <target state="needs-translation">Book is not bookable.</target>
+      </trans-unit>
+      <trans-unit id="tx_cartbooks.plugin.form.submit.error.not_enough_seets_available">
+        <source>Not enough Books available.</source>
+        <target state="needs-translation">Not enough Books available.</target>
+      </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book">
         <source>Book</source>
         <target state="needs-translation">Book</target>
@@ -44,28 +68,16 @@
         <target state="needs-translation">Translator</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.number_of_pages">
-        <source>Number of Pages</source>
-        <target state="needs-translation">Number of Pages</target>
+        <source>Number of pages</source>
+        <target state="needs-translation">Number of pages</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.language">
         <source>Language</source>
         <target state="needs-translation">Language</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.date_of_publication">
-        <source>Date of Publication</source>
-        <target state="needs-translation">Date of Publication</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_book.isbn10">
-        <source>ISBN-10</source>
-        <target state="needs-translation">ISBN-10</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_book.isbn13">
-        <source>ISBN-13</source>
-        <target state="needs-translation">ISBN-13</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_book.issn">
-        <source>ISSN</source>
-        <target state="needs-translation">ISSN</target>
+        <source>Date of publication</source>
+        <target state="needs-translation">Date of publication</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.genre">
         <source>Genre</source>
@@ -126,30 +138,6 @@
       <trans-unit id="tx_cartbooks_domain_model_book.related_books_from">
         <source>Related Books (from)</source>
         <target state="needs-translation">Related Books (from)</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice">
-        <source>Special Price</source>
-        <target state="needs-translation">Special Price</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice.title">
-        <source>Title</source>
-        <target state="needs-translation">Title</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice.frontend_user_group">
-        <source>Website Usergroup</source>
-        <target state="needs-translation">Website Usergroup</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_specialprice.price">
-        <source>Price</source>
-        <target state="needs-translation">Price</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_category.cart_book_list_pid">
-        <source>Cart: Page where Books of this category are listed.</source>
-        <target state="needs-translation">Cart: Page where Books of this category are listed.</target>
-      </trans-unit>
-      <trans-unit id="tx_cartbooks_domain_model_category.cart_book_show_pid">
-        <source>Cart: Page where Books of this category are shown.</source>
-        <target state="needs-translation">Cart: Page where Books of this category are shown.</target>
       </trans-unit>
     </body>
   </file>

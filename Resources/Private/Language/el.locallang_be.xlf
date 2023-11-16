@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="de">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="el">
     <header/>
     <body>
       <trans-unit id="extmng.categoryRestriction" xml:space="preserve">
@@ -30,7 +30,7 @@
             <target state="needs-translation">No restriction</target></trans-unit>
       <trans-unit id="tcarecords-pages-contains.cart_books">
         <source>Cart: Books</source>
-        <target state="translated">Cart: Bücher</target>
+        <target state="needs-translation">Cart: Books</target>
       </trans-unit>
       <trans-unit id="flexforms_template.templateLayout">
         <source>Template Layout</source>
@@ -38,7 +38,7 @@
       </trans-unit>
       <trans-unit id="flexforms_template.templateLayout.books.table">
         <source>Table</source>
-        <target state="translated">Tabelle</target>
+        <target state="needs-translation">Table</target>
       </trans-unit>
       <trans-unit id="flexforms_template.templateLayout.books.grid1">
         <source>Grid 1</source>
@@ -50,35 +50,35 @@
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.title">
         <source>CartBooks: List</source>
-        <target state="translated">CartBooks: Liste</target>
+        <target state="needs-translation">CartBooks: List</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.description">
         <source>list and show books</source>
-        <target state="translated">Listen- und Detailansicht für Bücher</target>
+        <target state="needs-translation">list and show books</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.switch">
         <source>Display Type</source>
-        <target state="translated">Darstellungsart</target>
+        <target state="needs-translation">Display Type</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list_and_show">
         <source>List (and Show) View</source>
-        <target state="translated">Listenansicht (und Detailansicht)</target>
+        <target state="needs-translation">List (and Show) View</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.show">
         <source>Show View</source>
-        <target state="translated">Detailansicht</target>
+        <target state="needs-translation">Show View</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.teaser">
         <source>Teaser View</source>
-        <target state="translated">Teaseransicht</target>
+        <target state="needs-translation">Teaser View</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.select.single_pid">
         <source>Book Detail Page</source>
-        <target state="translated">Buchdetailseite</target>
+        <target state="needs-translation">Book Detail Page</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderBy">
         <source>Sort by</source>
-        <target state="translated">Sortieren nach</target>
+        <target state="needs-translation">Sort by</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderBy.uid">
         <source>Uid</source>
@@ -86,47 +86,47 @@
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderBy.tstamp">
         <source>Last edited</source>
-        <target state="translated">Zuletzt geändert</target>
+        <target state="needs-translation">Last edited</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderBy.sorting">
         <source>Backend Sorting</source>
-        <target state="translated">Backend Sortierung</target>
+        <target state="needs-translation">Backend Sorting</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderBy.crdate">
         <source>Created</source>
-        <target state="translated">Erstellt</target>
+        <target state="needs-translation">Created</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderBy.title">
         <source>Title</source>
-        <target state="translated">Titel</target>
+        <target state="needs-translation">Title</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderDirection">
         <source>Sort direction</source>
-        <target state="translated">Sortierreihenfolge</target>
+        <target state="needs-translation">Sort direction</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderDirection.asc">
         <source>Ascending</source>
-        <target state="translated">Aufsteigend</target>
+        <target state="needs-translation">Ascending</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.orderDirection.desc">
         <source>Descending</source>
-        <target state="translated">Absteigend</target>
+        <target state="needs-translation">Descending</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.limit">
         <source>Number of records to display</source>
-        <target state="translated">Anzahl der anzuzeigenden Datensätze</target>
+        <target state="needs-translation">Number of records to display</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.categories">
         <source>Categories</source>
-        <target state="translated">Kategorie</target>
+        <target state="needs-translation">Categories</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.list.subcategories">
         <source>with Subcategories</source>
-        <target state="translated">mit Unterkategorien</target>
+        <target state="needs-translation">with Subcategories</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.books.action.book.teaser.select.product">
         <source>Choose teaser product</source>
-        <target state="translated">Teaserprodukt auswählen</target>
+        <target state="needs-translation">Choose teaser product</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.teaser_books.title">
         <source>CartBooks: Teaser</source>
@@ -134,11 +134,11 @@
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.teaser_books.description">
         <source>list or tease selected books</source>
-        <target state="translated">Listen- oder Teaseransicht für ausgewählte Bücher</target>
+        <target state="needs-translation">list or tease selected books</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.single_book.title">
         <source>CartBooks: Detail</source>
-        <target state="translated">CartBooks: Detailansicht</target>
+        <target state="needs-translation">CartBooks: Detail</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks.plugin.single_book.description">
         <source>show a single book</source>
@@ -146,7 +146,7 @@
       </trans-unit>
       <trans-unit id="pages.doktype.188">
         <source>Cart: Books</source>
-        <target state="translated">Cart: Bücher</target>
+        <target state="needs-translation">Cart: Books</target>
       </trans-unit>
     </body>
   </file>

@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="de">
+  <file source-language="en" datatype="plaintext" original="messages" date="2018-07-90T08:45:00Z" product-name="cart_books" target-language="pl">
     <header/>
     <body>
       <trans-unit id="tx_cartbooks_domain_model_book.div.categorization">
         <source>Categorization</source>
-        <target state="translated">Kategorisierung</target>
+        <target state="needs-translation">Categorization</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.div.data">
         <source>Data</source>
-        <target state="translated">Daten</target>
+        <target state="needs-translation">Data</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.div.descriptions">
         <source>Description</source>
-        <target state="translated">Beschreibung</target>
+        <target state="needs-translation">Description</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.div.images_and_files">
         <source>Images / Files</source>
-        <target state="translated">Bilder / Dateien</target>
+        <target state="needs-translation">Images / Files</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.div.price_and_stock">
         <source>Price and Stock</source>
-        <target state="translated">Preis und Lager</target>
+        <target state="needs-translation">Price and Stock</target>
       </trans-unit>
       <trans-unit id="tx_cartbooks_domain_model_book.div.related_books">
         <source>Related Books</source>
-        <target state="translated">Verwandte Bücher</target>
+        <target state="needs-translation">Related Books</target>
       </trans-unit>
       <trans-unit id="palettes.visibility">
         <source>Visibility</source>
-        <target state="translated">Sichtbarkeit</target>
+        <target state="needs-translation">Visibility</target>
       </trans-unit>
     </body>
   </file>
