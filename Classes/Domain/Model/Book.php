@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Domain\Model;
 
 /*
@@ -9,196 +11,70 @@ namespace Extcode\CartBooks\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
-use Extcode\Cart\Domain\Model\Tag;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference;
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use Extcode\Cart\Domain\Model\Product\AbstractProduct;
+use Extcode\Cart\Domain\Model\Product\CategoryTrait;
+use Extcode\Cart\Domain\Model\Product\FileAndImageTrait;
+use Extcode\Cart\Domain\Model\Product\StockTrait;
+use Extcode\Cart\Domain\Model\Product\TagTrait;
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Book extends AbstractEntity
+class Book extends AbstractProduct
 {
-    /**
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $sku = '';
+    use CategoryTrait;
+    use FileAndImageTrait;
+    use SpecialPriceTrait;
+    use StockTrait;
+    use TagTrait;
+
+    protected string $subtitle = '';
+
+    protected string $isbn10 = '';
+
+    protected string $isbn13 = '';
+
+    protected string $issn = '';
+
+    protected string $author = '';
+
+    protected string $illustrator = '';
+
+    protected string $editor = '';
+
+    protected string $publisher = '';
+
+    protected string $translator = '';
+
+    protected string $language = '';
+
+    protected string $numberOfPages = '';
+
+    protected \DateTime $dateOfPublication;
+
+    protected string $genre = '';
+
+    protected float $price = 0.0;
 
     /**
-     * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
-     */
-    protected $title = '';
-
-    /**
-     * @var string
-     */
-    protected $subtitle = '';
-
-    /**
-     * @var string
-     */
-    protected $isbn10 = '';
-
-    /**
-     * @var string
-     */
-    protected $isbn13 = '';
-
-    /**
-     * @var string
-     */
-    protected $issn = '';
-
-    /**
-     * @var string
-     */
-    protected $author = '';
-
-    /**
-     * @var string
-     */
-    protected $illustrator = '';
-
-    /**
-     * @var string
-     */
-    protected $editor = '';
-
-    /**
-     * @var string
-     */
-    protected $publisher = '';
-
-    /**
-     * @var string
-     */
-    protected $translator = '';
-
-    /**
-     * @var string
-     */
-    protected $language = '';
-
-    /**
-     * @var string
-     */
-    protected $numberOfPages = '';
-
-    /**
-     * @var \DateTime
-     */
-    protected $dateOfPublication;
-
-    /**
-     * @var string
-     */
-    protected $genre = '';
-
-    /**
-     * @var string
-     */
-    protected $teaser = '';
-
-    /**
-     * @var string
-     */
-    protected $description = '';
-
-    /**
-     * @var ObjectStorage<FileReference>
-     */
-    protected $images;
-
-    /**
-     * @var ObjectStorage<FileReference>
-     */
-    protected $files;
-
-    /**
-     * @var float
-     */
-    protected $price = 0.0;
-
-    /**
-     * @var bool
-     */
-    protected $handleStock = false;
-
-    /**
-     * @var int
-     */
-    protected $stock = 0;
-
-    /**
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Cascade("remove")
-     * @var ObjectStorage<SpecialPrice>
-     */
-    protected $specialPrices;
-
-    /**
-     * @var Category
-     */
-    protected $category;
-
-    /**
-     * @var ObjectStorage<Category>
-     */
-    protected $categories;
-
-    /**
-     * @var ObjectStorage<Tag>
-     */
-    protected $tags;
-
-    /**
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @var ObjectStorage<Book>
      */
-    protected $relatedBooks;
+    #[Lazy]
+    protected ObjectStorage $relatedBooks;
 
     /**
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @var ObjectStorage<Book>
      */
-    protected $relatedBooksFrom;
+    #[Lazy]
+    protected ObjectStorage $relatedBooksFrom;
 
-    /**
-     * @var int
-     */
-    protected $taxClassId = 1;
+    protected int $taxClassId = 1;
 
-    /**
-     * @var string
-     */
-    protected $metaDescription = '';
+    protected string $metaDescription = '';
 
     public function __construct()
     {
-        $this->files = new ObjectStorage();
-        $this->images = new ObjectStorage();
-        $this->specialPrices = new ObjectStorage();
         $this->relatedBooks = new ObjectStorage();
         $this->relatedBooksFrom = new ObjectStorage();
-        $this->categories = new ObjectStorage();
-    }
-
-    public function getSku(): string
-    {
-        return $this->sku;
-    }
-
-    public function setSku(string $sku): void
-    {
-        $this->sku = $sku;
-    }
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
     }
 
     public function getSubtitle(): string
@@ -331,52 +207,6 @@ class Book extends AbstractEntity
         $this->genre = $genre;
     }
 
-    public function getTeaser(): string
-    {
-        return $this->teaser;
-    }
-
-    public function setTeaser(string $teaser): void
-    {
-        $this->teaser = $teaser;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
-    public function getImages(): ObjectStorage
-    {
-        return $this->images;
-    }
-
-    public function getFirstImage(): ?FileReference
-    {
-        $images = $this->getImages()->toArray();
-        return array_shift($images);
-    }
-
-    public function setImages(ObjectStorage $images): void
-    {
-        $this->images = $images;
-    }
-
-    public function getFiles(): ObjectStorage
-    {
-        return $this->files;
-    }
-
-    public function setFiles(ObjectStorage $files): void
-    {
-        $this->files = $files;
-    }
-
     public function getPrice(): float
     {
         return $this->price;
@@ -385,95 +215,6 @@ class Book extends AbstractEntity
     public function setPrice(float $price): void
     {
         $this->price = $price;
-    }
-
-    public function getSpecialPrices(): ObjectStorage
-    {
-        return $this->specialPrices;
-    }
-
-    public function addSpecialPrice(SpecialPrice $specialPrice): void
-    {
-        $this->specialPrices->attach($specialPrice);
-    }
-
-    public function removeSpecialPrice(SpecialPrice $specialPrice): void
-    {
-        $this->specialPrices->detach($specialPrice);
-    }
-
-    public function setSpecialPrices(ObjectStorage $specialPrices): void
-    {
-        $this->specialPrices = $specialPrices;
-    }
-
-    public function getBestSpecialPrice(array $frontendUserGroupIds = []): float
-    {
-        $bestSpecialPrice = $this->price;
-
-        if ($this->specialPrices) {
-            foreach ($this->specialPrices as $specialPrice) {
-                if ($specialPrice->getPrice() < $bestSpecialPrice) {
-                    if (!$specialPrice->getFrontendUserGroup() ||
-                        in_array($specialPrice->getFrontendUserGroup()->getUid(), $frontendUserGroupIds)
-                    ) {
-                        $bestSpecialPrice = $specialPrice->getPrice();
-                    }
-                }
-            }
-        }
-
-        return $bestSpecialPrice;
-    }
-
-    public function isHandleStock(): bool
-    {
-        return $this->handleStock;
-    }
-
-    public function setHandleStock(bool $handleStock): void
-    {
-        $this->handleStock = $handleStock;
-    }
-
-    public function getStock(): int
-    {
-        return $this->stock;
-    }
-
-    public function setStock(int $stock): void
-    {
-        $this->stock = $stock;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(Category $category): void
-    {
-        $this->category = $category;
-    }
-
-    public function getCategories(): ObjectStorage
-    {
-        return $this->categories;
-    }
-
-    public function setCategories(ObjectStorage $categories): void
-    {
-        $this->categories = $categories;
-    }
-
-    public function getTags(): ObjectStorage
-    {
-        return $this->tags;
-    }
-
-    public function setTags(ObjectStorage $tags): void
-    {
-        $this->tags = $tags;
     }
 
     public function getRelatedBooks(): ObjectStorage

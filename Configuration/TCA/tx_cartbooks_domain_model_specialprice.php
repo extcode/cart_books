@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $_LLL_general = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf';
 $_LLL = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_db.xlf';
@@ -14,7 +15,6 @@ return [
         'label_alt_force' => 1,
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
 
         'versioningWS' => true,
 
@@ -53,18 +53,7 @@ return [
         'sys_language_uid' => [
             'exclude' => 1,
             'label' => $_LLL_general . ':LGL.language',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
-                'items' => [
-                    [$_LLL_general . ':LGL.allLanguages', -1],
-                    [$_LLL_general . ':LGL.default_value', 0],
-                ],
-                'eval' => 'int',
-                'default' => 0,
-            ],
+            'config' => ['type' => 'language'],
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -73,7 +62,7 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'foreign_table' => 'tx_cartbooks_domain_model_specialprice',
                 'foreign_table_where' => 'AND tx_cartbooks_domain_model_specialprice.pid=###CURRENT_PID### AND tx_cartbooks_domain_model_specialprice.sys_language_uid IN (-1,0)',
@@ -106,10 +95,8 @@ return [
             'exclude' => 1,
             'label' => $_LLL_general . ':LGL.starttime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
             ],
@@ -118,10 +105,8 @@ return [
             'exclude' => 1,
             'label' => $_LLL_general . ':LGL.endtime',
             'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
+                'type' => 'datetime',
                 'size' => 13,
-                'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
             ],
@@ -140,10 +125,11 @@ return [
             'exclude' => 1,
             'label' => $_LLL . ':tx_cartbooks_domain_model_specialprice.price',
             'config' => [
-                'type' => 'input',
+                'type' => 'number',
                 'size' => 30,
-                'eval' => 'required,double2',
                 'default' => '0.00',
+                'required' => true,
+                'format' => 'decimal',
             ],
         ],
 
@@ -157,7 +143,7 @@ return [
                 'foreign_table' => 'fe_groups',
                 'size' => 1,
                 'items' => [
-                    ['', 0],
+                    ['label' => '', 'value' => 0],
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,

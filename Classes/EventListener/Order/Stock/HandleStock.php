@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\EventListener\Order\Stock;
 
 /*
@@ -10,28 +12,16 @@ namespace Extcode\CartBooks\EventListener\Order\Stock;
  */
 
 use Extcode\Cart\Event\Order\EventInterface;
+use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 class HandleStock
 {
-    /**
-     * @var PersistenceManager
-     */
-    protected $persistenceManager = null;
-
-    /**
-     * @bar BookRepository
-     */
-    protected $bookRepository;
-
     public function __construct(
-        PersistenceManager $persistenceManager,
-        BookRepository $bookRepository
-    ) {
-        $this->persistenceManager = $persistenceManager;
-        $this->bookRepository = $bookRepository;
-    }
+        private readonly PersistenceManager $persistenceManager,
+        private readonly BookRepository $bookRepository
+    ) {}
 
     public function __invoke(EventInterface $event): void
     {
@@ -42,7 +32,7 @@ class HandleStock
                 $cartProductId = $cartProduct->getProductId();
                 $product = $this->bookRepository->findByUid($cartProductId);
 
-                if ($product && $product->isHandleStock()) {
+                if ($product instanceof Book && $product->isHandleStock()) {
                     $product->setStock($product->getStock() - $cartProduct->getQuantity());
                     $this->bookRepository->update($product);
                     $this->persistenceManager->persistAll();

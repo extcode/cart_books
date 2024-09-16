@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace Extcode\CartBooks\Tests\Unit\Domain\Model;
 
 use Extcode\CartBooks\Domain\Model\Book;
@@ -25,57 +27,9 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSkuReturnsInitialValueForSku(): void
-    {
-        $this->assertSame(
-            '',
-            $this->book->getSku()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setSkuForStringSetsSku(): void
-    {
-        $this->book->setSku('Conceived at T3CON10');
-
-        $this->assertSame(
-            'Conceived at T3CON10',
-            $this->book->getSku()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getTitleReturnsInitialValueForTitle(): void
-    {
-        $this->assertSame(
-            '',
-            $this->book->getTitle()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setTitleForStringSetsTitle(): void
-    {
-        $this->book->setTitle('Conceived at T3CON10');
-
-        $this->assertSame(
-            'Conceived at T3CON10',
-            $this->book->getTitle()
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getSubtitleReturnsInitialValueForSubtitle(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getSubtitle()
         );
@@ -88,7 +42,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setSubtitle('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getSubtitle()
         );
@@ -99,7 +53,7 @@ class BookTest extends UnitTestCase
      */
     public function getAuthorReturnsInitialValueForAuthor(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getAuthor()
         );
@@ -112,7 +66,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setAuthor('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getAuthor()
         );
@@ -123,7 +77,7 @@ class BookTest extends UnitTestCase
      */
     public function getIllustratorReturnsInitialValueForIllustrator(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getIllustrator()
         );
@@ -136,7 +90,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setIllustrator('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getIllustrator()
         );
@@ -147,7 +101,7 @@ class BookTest extends UnitTestCase
      */
     public function getEditorReturnsInitialValueForEditor(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getEditor()
         );
@@ -160,7 +114,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setEditor('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getEditor()
         );
@@ -171,7 +125,7 @@ class BookTest extends UnitTestCase
      */
     public function getPublisherReturnsInitialValueForPublisher(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getPublisher()
         );
@@ -184,7 +138,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setPublisher('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getPublisher()
         );
@@ -195,7 +149,7 @@ class BookTest extends UnitTestCase
      */
     public function getTranslatorReturnsInitialValueForTranslator(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getTranslator()
         );
@@ -208,7 +162,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setTranslator('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getTranslator()
         );
@@ -219,7 +173,7 @@ class BookTest extends UnitTestCase
      */
     public function getLanguageReturnsInitialValueForLanguage(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getLanguage()
         );
@@ -232,7 +186,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setLanguage('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getLanguage()
         );
@@ -243,7 +197,7 @@ class BookTest extends UnitTestCase
      */
     public function getNumberOfPagesReturnsInitialValueForNumberOfPages(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getNumberOfPages()
         );
@@ -256,7 +210,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setNumberOfPages('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getNumberOfPages()
         );
@@ -267,7 +221,7 @@ class BookTest extends UnitTestCase
      */
     public function getGenreReturnsInitialValueForGenre(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getGenre()
         );
@@ -280,7 +234,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setGenre('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getGenre()
         );
@@ -289,57 +243,9 @@ class BookTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTeaserReturnsInitialValueForTeaser(): void
-    {
-        $this->assertSame(
-            '',
-            $this->book->getTeaser()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setTeaserForStringSetsTeaser(): void
-    {
-        $this->book->setTeaser('Conceived at T3CON10');
-
-        $this->assertSame(
-            'Conceived at T3CON10',
-            $this->book->getTeaser()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getDescriptionReturnsInitialValueForDescription(): void
-    {
-        $this->assertSame(
-            '',
-            $this->book->getDescription()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setDescriptionForStringSetsDescription(): void
-    {
-        $this->book->setDescription('Conceived at T3CON10');
-
-        $this->assertSame(
-            'Conceived at T3CON10',
-            $this->book->getDescription()
-        );
-    }
-
-    /**
-     * @test
-     */
     public function getIsbn10ReturnsInitialValueForIsbn10(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getIsbn10()
         );
@@ -352,7 +258,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setIsbn10('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getIsbn10()
         );
@@ -363,7 +269,7 @@ class BookTest extends UnitTestCase
      */
     public function getIsbn13ReturnsInitialValueForIsbn13(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getIsbn13()
         );
@@ -376,7 +282,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setIsbn13('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getIsbn13()
         );
@@ -387,7 +293,7 @@ class BookTest extends UnitTestCase
      */
     public function getIssnReturnsInitialValueForIssn(): void
     {
-        $this->assertSame(
+        self::assertSame(
             '',
             $this->book->getIssn()
         );
@@ -400,7 +306,7 @@ class BookTest extends UnitTestCase
     {
         $this->book->setIssn('Conceived at T3CON10');
 
-        $this->assertSame(
+        self::assertSame(
             'Conceived at T3CON10',
             $this->book->getIssn()
         );

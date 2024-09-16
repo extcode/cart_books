@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 call_user_func(function () {
     $_LLL_be = 'LLL:EXT:cart_books/Resources/Private/Language/locallang_be.xlf';
@@ -24,7 +25,7 @@ call_user_func(function () {
 
     foreach ($pluginNames as $pluginName => $pluginConf) {
         $pluginSignature = 'cartbooks_' . strtolower($pluginName);
-        $pluginNameSC = strtolower(preg_replace('/[A-Z]/', '_$0', lcfirst($pluginName)));
+        $pluginNameSC = strtolower((string)preg_replace('/[A-Z]/', '_$0', lcfirst($pluginName)));
         ExtensionUtility::registerPlugin(
             'cart_books',
             $pluginName,

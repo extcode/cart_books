@@ -7,6 +7,9 @@
             <trans-unit id="tx_cartbooks.more_link">
                 <source>more</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks.out_of_stock">
+                <source>Out of stock</source>
+            </trans-unit>
             <trans-unit id="tx_cartbooks.plugin.form.submit">
                 <source>Add to cart</source>
             </trans-unit>
