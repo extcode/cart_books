@@ -93,7 +93,7 @@ class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
                 )
                 ->set('path_segment', $slugHelper->sanitize((string)$record['title']));
             $queryBuilder->getSQL();
-            $queryBuilder->execute();
+            $queryBuilder->executeStatement();
         }
 
         return true;

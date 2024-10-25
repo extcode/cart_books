@@ -2,13 +2,13 @@
 
 .. _start:
 
-===========================
+===============
 EXT: Cart Books
-===========================
+===============
 
 .. image:: Images/cart_books_logo.png
-   :height: 200
-   :width: 200
+   :height: 100
+   :width: 100
 
 
 .. only:: html
@@ -16,41 +16,55 @@ EXT: Cart Books
    :Classification:
       cart
 
+   :Package name:
+      extcode/cart-books
+
    :Version:
       |release|
 
    :Language:
       en
 
-   :Description:
-      Cart is a small but powerful extension which "solely" adds a shopping cart to your TYPO3 installation.
-      Cart Books provides an own data storage for books, magazines and journals. Books can be offered via a list and detail view and can be purchased via cart function of the Cart extension.
-
-   :Keywords:
-      cart, books, magazines, shopping
-
-   :Autor:
-      Daniel Gohlke
-
-   :E-Mail:
-      ext@extco.de
+   :Author:
+      Daniel Gohlke & Contributors
 
    :License:
-      This document is published under the Open Publication License
-      available from http://www.opencontent.org/openpub/
+      This document is published under the
+      `Open Publication License <https://www.opencontent.org/openpub/>`__.
 
    :Rendered:
       |today|
 
-   The content of this document is related to TYPO3,
-   a GNU/GPL CMS/Framework available from `www.typo3.org <https://typo3.org/>`__.
+----
 
-   **Table of Contents**
+Cart is a small but powerful extension which "solely" adds a shopping cart to your TYPO3 installation.
+Cart Books provides an own data storage for books, magazines and journals. Books can be offered via a list and detail view and can be purchased via cart function of the Cart extension.
+
+..  card-grid::
+    :columns: 1
+    :columns-md: 2
+    :gap: 4
+    :class: pb-4
+    :card-height: 100
+
+    ..  card:: :ref:`Introduction <introduction>`
+
+        Introduction to the extension books, general information.
+
+    ..  card:: :ref:`For Administrators <administrator>`
+
+        Install the extension and configure it correctly.
+
+    ..  card:: :ref:`Changelog <changelog>`
+
+        Changes of this extension during updates.
+
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :titlesonly:
+   :hidden:
 
    Introduction/Index
-   AdministratorManual/Index
+   Administrator/Index
    Changelog/Index

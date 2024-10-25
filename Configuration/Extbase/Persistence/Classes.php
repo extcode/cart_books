@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Extcode\CartBooks\Domain\Model\Category;
+use Extcode\CartBooks\Domain\Model\Book;
 
 return [
-    Category::class => [
-        'tableName' => 'sys_category',
+    Book::class => [
+        'tableName' => 'tx_books_domain_model_book',
     ],
 ];

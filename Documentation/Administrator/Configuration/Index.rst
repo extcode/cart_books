@@ -1,17 +1,17 @@
-.. include:: ../../../Includes.txt
+.. include:: ../../Includes.rst.txt
 
-Main Configuration
-==================
+=============
+Configuration
+=============
 
-::
+.. code-block:: typoscript
+   :caption: EXT:cart-books/Configuration/TypoScript/setup.typoscript
 
     plugin.tx_cartbooks {
         settings {
             format.currency < plugin.tx_cart.settings.format.currency
 
             addToCartByAjax = {$plugin.tx_cart.settings.addToCartByAjax}
-
-            itemsPerPage = 9
         }
     }
 
@@ -38,14 +38,3 @@ Main Configuration
       The response can used to display messages or update the MiniCart-Plugin.
    Default
       The TypoScript template use the setting defined by the constant of the cart extension.
-
-.. container:: table-row
-
-   Property
-      plugin.tx_cartbooks.settings.itemsPerPage
-   Data type
-      int
-   Description
-      Defines how many records should be displayed per page in the list action.
-   Default
-      The default value is 20 if there is no TypoScript configuration.

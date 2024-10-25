@@ -16,7 +16,7 @@ use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
-class HandleStock
+final class HandleStock
 {
     public function __construct(
         private readonly PersistenceManager $persistenceManager,

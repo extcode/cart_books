@@ -161,7 +161,7 @@ return [
             'uid' => '1',
             'pid' => '1',
             'title' => 'Test Template',
-            'include_static_file' => 'EXT:fluid_styled_content/Configuration/TypoScript/,EXT:cart_books_test/Configuration/TypoScript,EXT:cart/Configuration/TypoScript,EXT:cart_books/Configuration/TypoScript',
+            'include_static_file' => 'EXT:fluid_styled_content/Configuration/TypoScript/,EXT:cart_books_test/Configuration/TypoScript,EXT:cart/Configuration/TypoScript,EXT:books/Configuration/TypoScript,EXT:cart_books/Configuration/TypoScript',
         ],
     ],
 ];

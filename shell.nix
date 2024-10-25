@@ -1,6 +1,6 @@
 {
   pkgs ? import <nixpkgs> { }
-  ,phpVersion ? "php81"
+  ,phpVersion ? "php82"
 }:
 
 let
@@ -48,6 +48,30 @@ let
 
     text = ''
       ./vendor/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php
+    '';
+  };
+
+  projectLintPhp = pkgs.writeShellApplication {
+    name = "project-lint-php";
+
+    runtimeInputs = [
+      php
+    ];
+
+    text = ''
+      find ./*.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+    '';
+  };
+
+  projectLintTypoScript = pkgs.writeShellApplication {
+    name = "project-lint-typoscript";
+
+    runtimeInputs = [
+      php
+    ];
+
+    text = ''
+      ./vendor/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration
     '';
   };
 
@@ -114,14 +138,16 @@ let
   };
 
 in pkgs.mkShell {
-  name = "TYPO3 Extension cart";
+  name = "TYPO3 Extension cart-books";
   buildInputs = [
     php
     composer
     projectInstall
+    projectPhpstan
     projectCgl
     projectCglFix
-    projectPhpstan
+    projectLintPhp
+    projectLintTypoScript
     projectTestUnit
     projectTestFunctional
     projectTestAcceptance
@@ -129,6 +155,8 @@ in pkgs.mkShell {
   packages = [ pkgs.gnumake pkgs.busybox ];
 
   shellHook = ''
+    export TMPDIR=$HOME/.cache/development/cart_books
+
     export PROJECT_ROOT="$(pwd)"
 
     export typo3DatabaseDriver=pdo_sqlite
