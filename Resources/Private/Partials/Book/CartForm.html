@@ -4,7 +4,7 @@
 <div class="cart_form">
     <f:if condition="{book.handleStock} && {book.stock} == 0">
         <f:then>
-            <f:translate key="tx_cartbooks.out_of_stock" />
+            <f:translate extensionName="cart_books" key="tx_cartbooks.out_of_stock" />
         </f:then>
         <f:else>
             <f:form id="book-{book.uid}"
@@ -21,7 +21,7 @@
                 <input type="hidden" name="tx_cart_cart[book]" value="{book.uid}">
 
                 <input class="form-control" type="number" min="1" step="1" value="1" name="tx_cart_cart[quantity]">
-                <input type="submit" class="form-control btn btn-default" value="<f:translate key='tx_cartbooks.plugin.form.submit' />">
+                <input type="submit" class="form-control btn btn-default" value="<f:translate extensionName='cart_books' key='tx_cartbooks.plugin.form.submit' />">
 
                 <div class="form-message" data-ajax-message-timeout="3000">
                     <div class="form-success" style="display: none;" data-ajax-success-block>

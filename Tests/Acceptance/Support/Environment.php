@@ -29,6 +29,7 @@ final class Environment extends BackendEnvironment
         ],
         'testExtensionsToLoad' => [
             'extcode/cart',
+            'extcode/books',
             'extcode/cart-books',
             __DIR__ . '/../../Fixtures/cart_books_test',
         ],

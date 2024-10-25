@@ -14,7 +14,7 @@ namespace Extcode\CartBooks\EventListener\Order\Stock;
 use Extcode\Cart\Event\Order\EventInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 
-class FlushCache
+final class FlushCache
 {
     public function __construct(
         private readonly CacheManager $cacheManager

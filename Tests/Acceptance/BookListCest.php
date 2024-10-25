@@ -28,6 +28,7 @@ class BookListCest
 
         $I->dontSee('Book 4');
     }
+
     public function testShowForAvailableBooks(Tester $I): void
     {
         $I->amOnUrl('http://127.0.0.1:8080/books/');

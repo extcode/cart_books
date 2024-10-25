@@ -1,5 +1,6 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       xmlns:cart="http://typo3.org/ns/Extcode/Cart/ViewHelpers"
+      xmlns:cartbooks="http://typo3.org/ns/Extcode/CartBooks/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <cart:titleTag>
@@ -33,8 +34,8 @@
                     <f:render partial="Book/Price" arguments="{book: book}" />
                 </div>
 
-                <f:if condition="{cartSettings.cart.pid}">
-                    <f:render partial="Book/CartForm" arguments="{book: book, pid: cartSettings.cart.pid}" />
+                <f:if condition="settings.cart.pid}">
+                    <f:render partial="Book/CartForm" arguments="{book: book, pid: settings.cart.pid}" />
                 </f:if>
             </div>
         </div>

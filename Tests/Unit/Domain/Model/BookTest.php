@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Extcode\CartBooks\Tests\Unit\Domain\Model;
 
 use Extcode\CartBooks\Domain\Model\Book;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
+#[CoversClass(Book::class)]
 class BookTest extends UnitTestCase
 {
-    /**
-     * @var Book
-     */
-    protected $book;
+    protected Book $book;
 
     protected function setUp(): void
     {
@@ -24,291 +24,70 @@ class BookTest extends UnitTestCase
         unset($this->book);
     }
 
-    /**
-     * @test
-     */
-    public function getSubtitleReturnsInitialValueForSubtitle(): void
+    #[Test]
+    public function getPriceReturnsInitialValueForPrice(): void
+    {
+        self::assertSame(
+            0.0,
+            $this->book->getPrice()
+        );
+    }
+
+    #[Test]
+    public function getPriceReturnsValueForPrice(): void
+    {
+        $this->setProperty($this->book, 'price', 12.99);
+
+        self::assertSame(
+            12.99,
+            $this->book->getPrice()
+        );
+    }
+
+    #[Test]
+    public function getSkuReturnsInitialValueForSku(): void
     {
         self::assertSame(
             '',
-            $this->book->getSubtitle()
+            $this->book->getSku()
         );
     }
 
-    /**
-     * @test
-     */
-    public function setSubtitleForStringSetsSubtitle(): void
+    #[Test]
+    public function getSkuReturnsValueForSku(): void
     {
-        $this->book->setSubtitle('Conceived at T3CON10');
+        $this->setProperty($this->book, 'sku', 'Book Sku');
 
         self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getSubtitle()
+            'Book Sku',
+            $this->book->getSku()
         );
     }
 
-    /**
-     * @test
-     */
-    public function getAuthorReturnsInitialValueForAuthor(): void
+    #[Test]
+    public function getTaxClassIdReturnsInitialValueForTaxClassId(): void
     {
         self::assertSame(
-            '',
-            $this->book->getAuthor()
+            1,
+            $this->book->getTaxClassId()
         );
     }
 
-    /**
-     * @test
-     */
-    public function setAuthorForStringSetsAuthor(): void
+    #[Test]
+    public function getTaxClassIdReturnsValueForTaxClassId(): void
     {
-        $this->book->setAuthor('Conceived at T3CON10');
+        $this->setProperty($this->book, 'taxClassId', 2);
 
         self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getAuthor()
+            2,
+            $this->book->getTaxClassId()
         );
     }
 
-    /**
-     * @test
-     */
-    public function getIllustratorReturnsInitialValueForIllustrator(): void
+    private function setProperty(object $instance, string $propertyName, mixed $propertyValue)
     {
-        self::assertSame(
-            '',
-            $this->book->getIllustrator()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setIllustratorForStringSetsIllustrator(): void
-    {
-        $this->book->setIllustrator('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getIllustrator()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getEditorReturnsInitialValueForEditor(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getEditor()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setEditorForStringSetsEditor(): void
-    {
-        $this->book->setEditor('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getEditor()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getPublisherReturnsInitialValueForPublisher(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getPublisher()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setPublisherForStringSetsPublisher(): void
-    {
-        $this->book->setPublisher('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getPublisher()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getTranslatorReturnsInitialValueForTranslator(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getTranslator()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setTranslatorForStringSetsTranslator(): void
-    {
-        $this->book->setTranslator('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getTranslator()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getLanguageReturnsInitialValueForLanguage(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getLanguage()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setLanguageForStringSetsLanguage(): void
-    {
-        $this->book->setLanguage('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getLanguage()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getNumberOfPagesReturnsInitialValueForNumberOfPages(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getNumberOfPages()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setNumberOfPagesForStringSetsNumberOfPages(): void
-    {
-        $this->book->setNumberOfPages('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getNumberOfPages()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getGenreReturnsInitialValueForGenre(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getGenre()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setGenreForStringSetsGenre(): void
-    {
-        $this->book->setGenre('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getGenre()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getIsbn10ReturnsInitialValueForIsbn10(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getIsbn10()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setIsbn10ForStringSetsIsbn10(): void
-    {
-        $this->book->setIsbn10('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getIsbn10()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getIsbn13ReturnsInitialValueForIsbn13(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getIsbn13()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setIsbn13ForStringSetsIsbn13(): void
-    {
-        $this->book->setIsbn13('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getIsbn13()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function getIssnReturnsInitialValueForIssn(): void
-    {
-        self::assertSame(
-            '',
-            $this->book->getIssn()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function setIssnForStringSetsIssn(): void
-    {
-        $this->book->setIssn('Conceived at T3CON10');
-
-        self::assertSame(
-            'Conceived at T3CON10',
-            $this->book->getIssn()
-        );
+        $reflection = new \ReflectionProperty($instance, $propertyName);
+        $reflection->setAccessible(true);
+        $reflection->setValue($instance, $propertyValue);
     }
 }

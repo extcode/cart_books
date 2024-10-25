@@ -2,9 +2,9 @@
 
 .. _start:
 
-===========================
+===============
 EXT: Cart Books
-===========================
+===============
 
 .. image:: Images/cart_books_logo.png
    :height: 100
@@ -13,8 +13,8 @@ EXT: Cart Books
 
 .. only:: html
 
-   :Extension key:
-      cart_products
+   :Classification:
+      cart
 
    :Package name:
       extcode/cart-books
@@ -48,8 +48,9 @@ EXT: Cart Books
   * As said does it extend EXT:cart so those products can be purchased with the cart of EXT:cart.
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :titlesonly:
+   :hidden:
 
    Introduction/Index
    Administrator/Index
