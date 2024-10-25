@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'tx_cartbooks_domain_model_book' => [
+    'tx_books_domain_model_book' => [
         0 => [
             'uid' => '1',
             'pid' => '7',

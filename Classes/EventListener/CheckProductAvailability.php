@@ -10,6 +10,7 @@ namespace Extcode\CartBooks\EventListener;
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
+
 use Extcode\Cart\Event\CheckProductAvailabilityEvent;
 use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
@@ -18,7 +19,7 @@ use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
-class CheckProductAvailability
+final class CheckProductAvailability
 {
     public function __construct(
         private readonly BookRepository $bookRepository,

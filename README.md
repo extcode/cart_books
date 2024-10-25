@@ -33,20 +33,21 @@ Sometimes minor versions also result in minor adjustments to own templates or co
 
 ## 3.1 Compatibility and supported Versions
 
-| Cart Books    | TYPO3      | PHP       | Support/Development                  |
-| ------------- | ---------- |-----------|--------------------------------------|
-| 5.x.x         | 12.0       | 8.1 - 8.4 | Features, Bugfixes, Security Updates |
-| 4.x.x         | 10.4, 11.5 | 7.2+      | Bugfixes, Security Updates           |
-| 3.x.x         | 10.4       | 7.2 - 7.4 | Security Updates                     |
-| 2.x.x         | 9.5        | 7.2 - 7.4 |                                      |
-| 1.x.x         | 8.7        | 7.0 - 7.4 |                                      |
+| Cart Books | TYPO3      | PHP       | Support/Development                  |
+|------------|------------|-----------|--------------------------------------|
+| 6.x.x      | 13.0       | 8.2 - 8.4 | Features, Bugfixes, Security Updates |
+| 5.x.x      | 12.0       | 8.1 - 8.4 | Bugfixes, Security Updates           |
+| 4.x.x      | 10.4, 11.5 | 7.2+      | Security Updates                     |
+| 3.x.x      | 10.4       | 7.2 - 7.4 |                                      |
+| 2.x.x      | 9.5        | 7.2 - 7.4 |                                      |
+| 1.x.x      | 8.7        | 7.0 - 7.4 |                                      |
 
 If you need extended support for features and bug fixes outside of the currently supported versions,
 we are happy to offer paid services.
 
 ### 3.2. Changelog
 
-Please have a look into the [official extension documentation in changelog chapter](https://docs.typo3.org/p/extcode/cart-girosolution/main/en-us/Changelog/Index.html)
+Please have a look into the [official extension documentation in changelog chapter](https://docs.typo3.org/p/extcode/cart-books/main/en-us/Changelog/Index.html)
 
 ### 3.3. Release Management
 

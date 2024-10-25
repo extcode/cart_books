@@ -7,6 +7,15 @@ services:
   Extcode\CartBooks\:
     resource: '../Classes/*'
 
+  Extcode\Books\Controller\BookController:
+    arguments:
+      - '@Extcode\CartBooks\Domain\Repository\BookRepository'
+
+  Extcode\CartBooks\EventListener\View\ModifyView:
+    tags:
+      - name: event.listener
+        identifier: 'cart-books--view--modify-view'
+
   Extcode\CartBooks\EventListener\Order\Stock\HandleStock:
     tags:
       - name: event.listener
