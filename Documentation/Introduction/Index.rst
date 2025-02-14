@@ -1,4 +1,4 @@
-.. include:: ../Includes.txt
+.. include:: ../Includes.rst.txt
 
 Introduction
 ------------
@@ -12,4 +12,3 @@ Cart Books provides an own data storage for books, magazines and journals. Books
 
    Support/Index
    Sponsoring/Index
-   NoteOfThanks/Index

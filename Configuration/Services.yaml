@@ -31,6 +31,3 @@ services:
       - name: event.listener
         identifier: 'cart-books--check-product-availability'
         event: Extcode\Cart\Event\CheckProductAvailabilityEvent
-
-  Extcode\CartBooks\Updates\SlugUpdater:
-    public: true

@@ -1,4 +1,4 @@
-.. include:: ../../Includes.txt
+.. include:: ../../Includes.rst.txt
 
 ===================================================
 Breaking: #52 - Move Fluid Pagination to Controller

@@ -67,7 +67,7 @@ class BookController extends ActionController
         $demand = $this->createDemandObjectFromSettings('list');
         $demand->setActionAndClass(__METHOD__, self::class);
 
-        $itemsPerPage = $this->settings['itemsPerPage'] ?? 20;
+        $itemsPerPage = (int)($this->settings['itemsPerPage'] ?? 20);
 
         $books = $this->bookRepository->findDemanded($demand);
         $arrayPaginator = new QueryResultPaginator(

@@ -1,12 +1,22 @@
-.. include:: ../../../Includes.txt
+.. include:: ../../../Includes.rst.txt
 
-Main Configuration
-==================
+==========
+TypoScript
+==========
 
 ::
 
     plugin.tx_cartbooks {
         settings {
+            cart {
+                pid = {$plugin.tx_cart.settings.cart.pid}
+                isNetCart = {$plugin.tx_cart.settings.cart.isNetCart}
+            }
+
+            order {
+                pid = {$plugin.tx_cart.settings.order.pid}
+            }
+
             format.currency < plugin.tx_cart.settings.format.currency
 
             addToCartByAjax = {$plugin.tx_cart.settings.addToCartByAjax}

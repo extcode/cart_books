@@ -2,7 +2,6 @@
 
 use Extcode\CartBooks\Controller\BookController;
 use Extcode\CartBooks\Hooks\DataHandler;
-use Extcode\CartBooks\Updates\SlugUpdater;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
@@ -59,10 +58,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clea
 // register "cartbooks:" namespace
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['cartbooks'][]
     = 'Extcode\\CartBooks\\ViewHelpers';
-
-// update wizard for slugs
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['cartBooksSlugUpdater'] =
-    SlugUpdater::class;
 
 // register listTemplateLayouts
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['cart_books']['templateLayouts']['books'][] = [$_LLL_be . 'flexforms_template.templateLayout.books.table', 'table'];
