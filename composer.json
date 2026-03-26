@@ -45,7 +45,7 @@
         }
     },
     "require": {
-        "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
         "ext-json": "*",
         "ext-pdo": "*",
         "extcode/cart": "^11.0",
@@ -55,7 +55,7 @@
         "typo3/cms-fluid": "^13.4"
     },
     "require-dev": {
-        "codappix/typo3-php-datasets": "^1.5",
+        "codappix/typo3-php-datasets": "^2.1",
         "codeception/codeception": "^5.0",
         "codeception/module-db": "^3.1",
         "codeception/module-webdriver": "^4.0",

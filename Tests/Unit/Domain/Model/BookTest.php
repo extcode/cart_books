@@ -87,7 +87,6 @@ class BookTest extends UnitTestCase
     private function setProperty(object $instance, string $propertyName, mixed $propertyValue)
     {
         $reflection = new \ReflectionProperty($instance, $propertyName);
-        $reflection->setAccessible(true);
         $reflection->setValue($instance, $propertyValue);
     }
 }
