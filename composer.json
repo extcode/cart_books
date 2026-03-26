@@ -1,69 +1,78 @@
 {
-    "name": "extcode/cart-books",
-    "type": "typo3-cms-extension",
-    "description": "Shopping Cart(s) for TYPO3 - Book Extension",
-    "homepage": "https://cart.extco.de",
-    "license": [
-        "GPL-2.0-or-later"
-    ],
-    "keywords": [
-        "TYPO3 CMS",
-        "Shopping Cart",
-        "cart",
-        "books"
-    ],
-    "authors": [
-        {
-            "name": "Daniel Gohlke",
-            "email": "ext@extco.de",
-            "role": "Developer"
-        }
-    ],
-    "support": {
-        "issues": "https://github.com/extcode/cart_books/issues"
-    },
-    "autoload": {
-        "psr-4": {
-            "Extcode\\CartBooks\\": "Classes/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Extcode\\CartBooks\\Tests\\": "Tests/"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "typo3/cms-composer-installers": true,
-            "typo3/class-alias-loader": true
-        }
-    },
-    "extra": {
-        "typo3/cms": {
-            "extension-key": "cart_books",
-            "web-dir": ".build/web"
-        }
-    },
-    "require": {
-        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "ext-json": "*",
-        "ext-pdo": "*",
-        "extcode/cart": "^11.0",
-        "extcode/books": "^1.0",
-        "typo3/cms-core": "^13.4",
-        "typo3/cms-extbase": "^13.4",
-        "typo3/cms-fluid": "^13.4"
-    },
-    "require-dev": {
-        "codappix/typo3-php-datasets": "^2.1",
-        "codeception/codeception": "^5.0",
-        "codeception/module-db": "^3.1",
-        "codeception/module-webdriver": "^4.0",
-        "friendsofphp/php-cs-fixer": "^3.16",
-        "helmich/typo3-typoscript-lint": "^3.1",
-        "phpstan/phpstan": "^1.10",
-        "typo3/cms-fluid-styled-content": "^13.4",
-        "typo3/cms-install": "^13.4",
-        "typo3/testing-framework": "^8.2"
+  "name": "extcode/cart-books",
+  "type": "typo3-cms-extension",
+  "description": "Shopping Cart(s) for TYPO3 - Book Extension",
+  "homepage": "https://cart.extco.de",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "TYPO3 CMS",
+    "Shopping Cart",
+    "cart",
+    "books"
+  ],
+  "authors": [
+    {
+      "name": "Daniel Gohlke",
+      "email": "ext@extco.de",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "issues": "https://github.com/extcode/cart_books/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Extcode\\CartBooks\\": "Classes/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Extcode\\CartBooks\\Tests\\": "Tests/"
+    }
+  },
+  "config": {
+    "bin-dir": ".build/bin",
+    "vendor-dir": ".build/vendor",
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true,
+      "phpstan/extension-installer": true
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "cart_books",
+      "web-dir": ".build/public"
+    }
+  },
+  "require": {
+    "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "extcode/cart": "dev-12.x-dev as 12.0.0",
+    "extcode/books": "dev-main as 2.0.0",
+    "typo3/cms-core": "^14.1",
+    "typo3/cms-extbase": "^14.1",
+    "typo3/cms-fluid": "^14.1"
+  },
+  "require-dev": {
+    "codappix/typo3-php-datasets": "^2.1",
+    "codeception/codeception": "^5.0",
+    "codeception/module-db": "^3.1",
+    "codeception/module-webdriver": "^4.0",
+    "friendsofphp/php-cs-fixer": "^3.16",
+    "helmich/typo3-typoscript-lint": "^3.1",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "phpstan/phpstan-deprecation-rules": "^2.0",
+    "phpstan/phpstan-phpunit": "^2.0",
+    "spaze/phpstan-disallowed-calls": "^4.7",
+    "staabm/phpstan-todo-by": "^0.3",
+    "typo3/cms-fluid-styled-content": "^14.1",
+    "typo3/cms-install": "^14.1",
+    "typo3/testing-framework": "^9.3",
+    "ssch/typo3-rector": "^3.11"
+  }
 }

@@ -1,0 +1,229 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Cannot call method getFrontendUserGroup\(\) on object\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Cannot call method getPrice\(\) on object\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Cannot call method getUid\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\Domain\\Model\\Book\:\:getBestSpecialPrice\(\) has parameter \$frontendUserGroupIds with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\Domain\\Model\\Book\:\:getBestSpecialPrice\(\) should return float but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\Domain\\Model\\Book\:\:getSpecialPrices\(\) return type with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage does not specify its types\: TEntity$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\Domain\\Model\\Book\:\:setSpecialPrices\(\) has parameter \$specialPrices with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage but does not specify its types\: TEntity$#'
+			identifier: missingType.generics
+			count: 1
+			path: ../Classes/Domain/Model/Book.php
+
+		-
+			message: '#^Binary operation "\+\=" between mixed and int results in an error\.$#'
+			identifier: assignOp.invalid
+			count: 1
+			path: ../Classes/EventListener/CheckProductAvailability.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 4
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:checkRequestArguments\(\) has parameter \$requestArguments with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:checkRequestArguments\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:getCartProductFromBook\(\) has parameter \$taxClasses with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Parameter \#1 \$book of method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:getCartProductFromBook\(\) expects Extcode\\CartBooks\\Domain\\Model\\Book, TYPO3\\CMS\\Extbase\\DomainObject\\DomainObjectInterface\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Parameter \#2 \$productId of class Extcode\\Cart\\Domain\\Model\\Cart\\Product constructor expects int, int\<1, max\>\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Parameter \#6 \$taxClass of class Extcode\\Cart\\Domain\\Model\\Cart\\Product constructor expects Extcode\\Cart\\Domain\\Model\\Cart\\TaxClass, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
+
+		-
+			message: '#^Cannot access offset ''cart'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: ../Classes/EventListener/View/ModifyView.php
+
+		-
+			message: '#^Cannot access offset ''pid'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: ../Classes/EventListener/View/ModifyView.php
+
+		-
+			message: '#^Parameter \#1 \$key of method Extcode\\Cart\\Service\\SessionHandler\:\:restoreCart\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../Classes/EventListener/View/ModifyView.php
+
+		-
+			message: '#^Parameter \#1 \$key of method Extcode\\Cart\\Service\\SessionHandler\:\:writeCart\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../Classes/EventListener/View/ModifyView.php
+
+		-
+			message: '#^Property Extcode\\CartBooks\\EventListener\\View\\ModifyView\:\:\$cartConfiguration type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../Classes/EventListener/View/ModifyView.php
+
+		-
+			message: '#^Cannot call method getAuthor\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: ../Classes/ViewHelpers/SchemaViewHelper.php
+
+		-
+			message: '#^Cannot call method getPrice\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: ../Classes/ViewHelpers/SchemaViewHelper.php
+
+		-
+			message: '#^Cannot call method getTitle\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: ../Classes/ViewHelpers/SchemaViewHelper.php
+
+		-
+			message: '#^Method Extcode\\CartBooks\\ViewHelpers\\SchemaViewHelper\:\:render\(\) should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: ../Classes/ViewHelpers/SchemaViewHelper.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
+
+		-
+			message: '#^Cannot access offset ''columns'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
+
+		-
+			message: '#^Cannot access offset ''config'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
+
+		-
+			message: '#^Cannot access offset ''items'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
+
+		-
+			message: '#^Cannot access offset ''product_type'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
+
+		-
+			message: '#^Cannot access offset ''tx_cart_domain_model_order_product'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
+
+		-
+			message: '#^Parameter \#1 \$dataSet of method Codappix\\Typo3PhpDatasets\\PhpDataSet\:\:import\(\) expects array\<string, array\<array\<string, string\>\>\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../Tests/Acceptance/Support/Environment.php
+
+		-
+			message: '#^Property Extcode\\CartBooks\\Tests\\Acceptance\\Support\\Environment\:\:\$localConfig type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: ../Tests/Acceptance/Support/Environment.php
+
+		-
+			message: '#^Cannot access offset ''cart_books'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../ext_emconf.php
+
+		-
+			message: '#^Cannot access an offset on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''SYS'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''cartbooks'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''fluid'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../ext_localconf.php
+
+		-
+			message: '#^Cannot access offset ''namespaces'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../ext_localconf.php
