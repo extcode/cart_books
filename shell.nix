@@ -156,8 +156,6 @@ in pkgs.mkShell {
   packages = [ pkgs.gnumake pkgs.busybox ];
 
   shellHook = ''
-    export TMPDIR=$HOME/.cache/development/cart_books
-
     export PROJECT_ROOT="$(pwd)"
 
     export typo3DatabaseDriver=pdo_sqlite

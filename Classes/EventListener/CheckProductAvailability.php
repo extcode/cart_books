@@ -47,10 +47,10 @@ final class CheckProductAvailability
         $book = $this->bookRepository->findByIdentifier($cartProduct->getProductId());
 
         if (
-            !$book instanceof Book ||
-            (
-                $book->isHandleStock() &&
-                ($quantity > $book->getStock())
+            !$book instanceof Book
+            || (
+                $book->isHandleStock()
+                && ($quantity > $book->getStock())
             )
         ) {
             $event->setAvailable(false);
