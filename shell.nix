@@ -23,7 +23,8 @@ let
       composer
     ];
     text = ''
-      composer update --prefer-dist --no-progress
+      rm -rf .build/ composer.lock
+      composer update --prefer-dist --no-progress --working-dir="$PROJECT_ROOT"
     '';
   };
 
@@ -35,7 +36,7 @@ let
     ];
 
     text = ''
-      ./vendor/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --dry-run --diff
+      ./.build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --dry-run --diff
     '';
   };
 
@@ -47,12 +48,12 @@ let
     ];
 
     text = ''
-      ./vendor/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php
+      ./.build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php
     '';
   };
 
-  projectLintPhp = pkgs.writeShellApplication {
-    name = "project-lint-php";
+  projectLint = pkgs.writeShellApplication {
+    name = "project-lint";
 
     runtimeInputs = [
       php
@@ -60,18 +61,6 @@ let
 
     text = ''
       find ./*.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
-    '';
-  };
-
-  projectLintTypoScript = pkgs.writeShellApplication {
-    name = "project-lint-typoscript";
-
-    runtimeInputs = [
-      php
-    ];
-
-    text = ''
-      ./vendor/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration
     '';
   };
 
@@ -83,7 +72,7 @@ let
     ];
 
     text = ''
-      ./vendor/bin/phpstan analyse -c Build/phpstan.neon --memory-limit 256M
+      ./.build/bin/phpstan analyse -c Build/phpstan.neon --memory-limit 256M
     '';
   };
 
@@ -95,7 +84,7 @@ let
     ];
     text = ''
       project-install
-      vendor/bin/phpunit -c Build/UnitTests.xml
+      ./.build/bin/phpunit -c Build/phpunit.xml.dist --testsuite unit --display-warnings --display-deprecations --display-errors
     '';
   };
 
@@ -107,7 +96,19 @@ let
     ];
     text = ''
       project-install
-      vendor/bin/phpunit -c Build/FunctionalTests.xml
+      ./.build/bin/phpunit -c Build/phpunit.xml.dist --testsuite functional --display-warnings --display-deprecations --display-errors
+    '';
+  };
+
+  projectTestWithCoverage = pkgs.writeShellApplication {
+    name = "project-test-with-coverage";
+    runtimeInputs = [
+      php
+      projectInstall
+    ];
+    text = ''
+      project-install
+      XDEBUG_MODE=coverage ./.build/bin/phpunit -c Build/phpunit.xml.dist --coverage-html=coverage_result
     '';
   };
 
@@ -124,36 +125,35 @@ let
     text = ''
       project-install
 
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance"
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance-logs"
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance-reports"
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance-sqlite-dbs"
+      mkdir -p "$PROJECT_ROOT/.build/public/typo3temp/var/tests/acceptance"
+      mkdir -p "$PROJECT_ROOT/.build/public/typo3temp/var/tests/acceptance-logs"
+      mkdir -p "$PROJECT_ROOT/.build/public/typo3temp/var/tests/acceptance-reports"
+      mkdir -p "$PROJECT_ROOT/.build/public/typo3temp/var/tests/acceptance-sqlite-dbs"
 
-      export INSTANCE_PATH="$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance"
+      export INSTANCE_PATH="$PROJECT_ROOT/.build/public/typo3temp/var/tests/acceptance"
 
-      ./vendor/bin/codecept run
+      ./.build/bin/codecept run
 
       pgrep -f "php -S" | xargs -r kill
       pgrep -f "geckodriver" | xargs -r kill
     '';
   };
 
-in pkgs.mkShell {
-  name = "TYPO3 Extension cart-books";
+in pkgs.mkShellNoCC {
+  name = "TYPO3 Extension extcode/cart-books";
   buildInputs = [
     php
     composer
     projectInstall
-    projectPhpstan
     projectCgl
     projectCglFix
-    projectLintPhp
-    projectLintTypoScript
+    projectLint
+    projectPhpstan
     projectTestUnit
     projectTestFunctional
+    projectTestWithCoverage
     projectTestAcceptance
   ];
-  packages = [ pkgs.gnumake pkgs.busybox ];
 
   shellHook = ''
     export PROJECT_ROOT="$(pwd)"

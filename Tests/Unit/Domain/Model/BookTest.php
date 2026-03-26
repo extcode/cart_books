@@ -16,12 +16,9 @@ class BookTest extends UnitTestCase
 
     protected function setUp(): void
     {
-        $this->book = new Book();
-    }
+        parent::setUp();
 
-    protected function tearDown(): void
-    {
-        unset($this->book);
+        $this->book = new Book();
     }
 
     #[Test]
@@ -84,7 +81,7 @@ class BookTest extends UnitTestCase
         );
     }
 
-    private function setProperty(object $instance, string $propertyName, mixed $propertyValue)
+    private function setProperty(object $instance, string $propertyName, mixed $propertyValue): void
     {
         $reflection = new \ReflectionProperty($instance, $propertyName);
         $reflection->setValue($instance, $propertyValue);

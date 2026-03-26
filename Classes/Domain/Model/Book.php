@@ -83,7 +83,9 @@ class Book extends \Extcode\Books\Domain\Model\Book
         $bestSpecialPrice = $this->price;
 
         foreach ($this->getSpecialPrices() as $specialPrice) {
-            if ($specialPrice->getPrice() < $bestSpecialPrice) {
+            if ($specialPrice instanceof SpecialPrice
+                && $specialPrice->getPrice() < $bestSpecialPrice
+            ) {
                 if (!$specialPrice->getFrontendUserGroup()
                     || in_array($specialPrice->getFrontendUserGroup()->getUid(), $frontendUserGroupIds)
                 ) {
