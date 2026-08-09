@@ -39,7 +39,9 @@
       "typo3/cms-composer-installers": true,
       "typo3/class-alias-loader": true,
       "phpstan/extension-installer": true
-    }
+    },
+    "lock": false,
+    "sort-packages": true
   },
   "extra": {
     "typo3/cms": {
@@ -62,6 +64,7 @@
     "codeception/codeception": "^5.0",
     "codeception/module-db": "^3.1",
     "codeception/module-webdriver": "^4.0",
+    "extcode/testing-framework": "^1.0",
     "friendsofphp/php-cs-fixer": "^3.16",
     "helmich/typo3-typoscript-lint": "^3.1",
     "phpstan/extension-installer": "^1.4",
@@ -72,7 +75,6 @@
     "staabm/phpstan-todo-by": "^0.3",
     "typo3/cms-fluid-styled-content": "^14.1",
     "typo3/cms-install": "^14.1",
-    "typo3/testing-framework": "^9.3",
     "ssch/typo3-rector": "^3.11"
   }
 }

@@ -157,39 +157,6 @@ parameters:
 			path: ../Configuration/TCA/Overrides/tx_cart_domain_model_order_product.php
 
 		-
-			message: '''
-				#^Access to property \$config of deprecated class TYPO3\\TestingFramework\\Core\\Acceptance\\Extension\\BackendEnvironment\:
-				\: TYPO3 core v14 and v15 switched from codeception to playwright\.
-				             The testing\-framework codeception related scaffolding files and
-				             helpers will be removed with testing\-framework v10\.$#
-			'''
-			identifier: property.deprecatedClass
-			count: 2
-			path: ../Tests/Acceptance/Support/Environment.php
-
-		-
-			message: '''
-				#^Call to method bootstrapTypo3Environment\(\) of deprecated class TYPO3\\TestingFramework\\Core\\Acceptance\\Extension\\BackendEnvironment\:
-				\: TYPO3 core v14 and v15 switched from codeception to playwright\.
-				             The testing\-framework codeception related scaffolding files and
-				             helpers will be removed with testing\-framework v10\.$#
-			'''
-			identifier: method.deprecatedClass
-			count: 1
-			path: ../Tests/Acceptance/Support/Environment.php
-
-		-
-			message: '''
-				#^Class Extcode\\CartBooks\\Tests\\Acceptance\\Support\\Environment extends deprecated class TYPO3\\TestingFramework\\Core\\Acceptance\\Extension\\BackendEnvironment\:
-				\: TYPO3 core v14 and v15 switched from codeception to playwright\.
-				             The testing\-framework codeception related scaffolding files and
-				             helpers will be removed with testing\-framework v10\.$#
-			'''
-			identifier: class.extendsDeprecatedClass
-			count: 1
-			path: ../Tests/Acceptance/Support/Environment.php
-
-		-
 			message: '#^Parameter \#1 \$dataSet of method Codappix\\Typo3PhpDatasets\\PhpDataSet\:\:import\(\) expects array\<string, array\<array\<string, string\>\>\>, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -200,17 +167,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../Tests/Acceptance/Support/Environment.php
-
-		-
-			message: '''
-				#^Usage of deprecated trait TYPO3\\TestingFramework\\Core\\Acceptance\\Step\\FrameSteps in class Extcode\\CartBooks\\Tests\\Acceptance\\Support\\Tester\:
-				\: TYPO3 core v14 and v15 switched from codeception to playwright\.
-				             The testing\-framework codeception related scaffolding files and
-				             helpers will be removed with testing\-framework v10\.$#
-			'''
-			identifier: traitUse.deprecatedTrait
-			count: 1
-			path: ../Tests/Acceptance/Support/Tester.php
 
 		-
 			message: '#^Cannot access an offset on mixed\.$#'
