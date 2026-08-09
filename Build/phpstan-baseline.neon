@@ -213,12 +213,6 @@ parameters:
 			path: ../Tests/Acceptance/Support/Tester.php
 
 		-
-			message: '#^Cannot access offset ''cart_books'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../ext_emconf.php
-
-		-
 			message: '#^Cannot access an offset on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
