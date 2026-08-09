@@ -142,6 +142,7 @@ let
 in pkgs.mkShellNoCC {
   name = "TYPO3 Extension extcode/cart-books";
   buildInputs = [
+    pkgs.cacert
     php
     composer
     projectInstall
