@@ -23,7 +23,8 @@ let
       composer
     ];
     text = ''
-      composer update --prefer-dist --no-progress
+      rm -rf .Build/ composer.lock
+      composer update --prefer-dist --no-progress --working-dir="$PROJECT_ROOT"
     '';
   };
 
@@ -35,7 +36,7 @@ let
     ];
 
     text = ''
-      ./.Build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --dry-run --diff
+      "$PROJECT_ROOT/Build/Scripts/cgl.sh"
     '';
   };
 
@@ -47,31 +48,19 @@ let
     ];
 
     text = ''
-      ./.Build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php
+      "$PROJECT_ROOT/Build/Scripts/cgl.sh" --fix
     '';
   };
 
-  projectLintPhp = pkgs.writeShellApplication {
-    name = "project-lint-php";
+  projectLint = pkgs.writeShellApplication {
+    name = "project-lint";
 
     runtimeInputs = [
       php
     ];
 
     text = ''
-      find ./*.php Classes Configuration Tests -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
-    '';
-  };
-
-  projectLintTypoScript = pkgs.writeShellApplication {
-    name = "project-lint-typoscript";
-
-    runtimeInputs = [
-      php
-    ];
-
-    text = ''
-      ./.Build/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration
+      "$PROJECT_ROOT/Build/Scripts/lint-php.sh"
     '';
   };
 
@@ -83,7 +72,7 @@ let
     ];
 
     text = ''
-      ./.Build/bin/phpstan analyse -c Build/phpstan.neon --memory-limit 256M
+      "$PROJECT_ROOT/Build/Scripts/phpstan.sh"
     '';
   };
 
@@ -95,7 +84,7 @@ let
     ];
     text = ''
       project-install
-      .Build/bin/phpunit -c Build/UnitTests.xml
+      "$PROJECT_ROOT/Build/Scripts/phpunit.sh" unit
     '';
   };
 
@@ -107,7 +96,19 @@ let
     ];
     text = ''
       project-install
-      .Build/bin/phpunit -c Build/FunctionalTests.xml
+      "$PROJECT_ROOT/Build/Scripts/phpunit.sh" functional
+    '';
+  };
+
+  projectTestWithCoverage = pkgs.writeShellApplication {
+    name = "project-test-with-coverage";
+    runtimeInputs = [
+      php
+      projectInstall
+    ];
+    text = ''
+      project-install
+      XDEBUG_MODE=coverage ./.Build/bin/phpunit -c Build/phpunit.xml.dist --coverage-html=coverage_result
     '';
   };
 
@@ -138,22 +139,21 @@ let
     '';
   };
 
-in pkgs.mkShell {
-  name = "TYPO3 Extension cart-books";
+in pkgs.mkShellNoCC {
+  name = "TYPO3 Extension extcode/cart-books";
   buildInputs = [
     php
     composer
     projectInstall
-    projectPhpstan
     projectCgl
     projectCglFix
-    projectLintPhp
-    projectLintTypoScript
+    projectLint
+    projectPhpstan
     projectTestUnit
     projectTestFunctional
+    projectTestWithCoverage
     projectTestAcceptance
   ];
-  packages = [ pkgs.gnumake pkgs.busybox ];
 
   shellHook = ''
     export PROJECT_ROOT="$(pwd)"
