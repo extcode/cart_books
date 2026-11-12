@@ -76,5 +76,13 @@
     "typo3/cms-fluid-styled-content": "^14.1",
     "typo3/cms-install": "^14.1",
     "ssch/typo3-rector": "^3.11"
+  },
+  "scripts": {
+    "project:cgl": "Build/Scripts/cgl.sh",
+    "project:cgl:fix": "Build/Scripts/cgl.sh --fix",
+    "project:lint:php": "Build/Scripts/lint-php.sh",
+    "project:phpstan": "Build/Scripts/phpstan.sh",
+    "project:test:unit": "Build/Scripts/phpunit.sh unit",
+    "project:test:functional": "Build/Scripts/phpunit.sh functional"
   }
 }
