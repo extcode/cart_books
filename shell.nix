@@ -35,7 +35,7 @@ let
     ];
 
     text = ''
-      ./vendor/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --dry-run --diff
+      ./.Build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --dry-run --diff
     '';
   };
 
@@ -47,7 +47,7 @@ let
     ];
 
     text = ''
-      ./vendor/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php
+      ./.Build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php
     '';
   };
 
@@ -71,7 +71,7 @@ let
     ];
 
     text = ''
-      ./vendor/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration
+      ./.Build/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration
     '';
   };
 
@@ -83,7 +83,7 @@ let
     ];
 
     text = ''
-      ./vendor/bin/phpstan analyse -c Build/phpstan.neon --memory-limit 256M
+      ./.Build/bin/phpstan analyse -c Build/phpstan.neon --memory-limit 256M
     '';
   };
 
@@ -95,7 +95,7 @@ let
     ];
     text = ''
       project-install
-      vendor/bin/phpunit -c Build/UnitTests.xml
+      .Build/bin/phpunit -c Build/UnitTests.xml
     '';
   };
 
@@ -107,7 +107,7 @@ let
     ];
     text = ''
       project-install
-      vendor/bin/phpunit -c Build/FunctionalTests.xml
+      .Build/bin/phpunit -c Build/FunctionalTests.xml
     '';
   };
 
@@ -124,14 +124,14 @@ let
     text = ''
       project-install
 
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance"
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance-logs"
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance-reports"
-      mkdir -p "$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance-sqlite-dbs"
+      mkdir -p "$PROJECT_ROOT/.Build/public/typo3temp/var/tests/acceptance"
+      mkdir -p "$PROJECT_ROOT/.Build/public/typo3temp/var/tests/acceptance-logs"
+      mkdir -p "$PROJECT_ROOT/.Build/public/typo3temp/var/tests/acceptance-reports"
+      mkdir -p "$PROJECT_ROOT/.Build/public/typo3temp/var/tests/acceptance-sqlite-dbs"
 
-      export INSTANCE_PATH="$PROJECT_ROOT/.build/web/typo3temp/var/tests/acceptance"
+      export INSTANCE_PATH="$PROJECT_ROOT/.Build/public/typo3temp/var/tests/acceptance"
 
-      ./vendor/bin/codecept run
+      ./.Build/bin/codecept run
 
       pgrep -f "php -S" | xargs -r kill
       pgrep -f "geckodriver" | xargs -r kill
