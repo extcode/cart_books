@@ -36,12 +36,14 @@
         "allow-plugins": {
             "typo3/cms-composer-installers": true,
             "typo3/class-alias-loader": true
-        }
+        },
+        "vendor-dir": ".Build/vendor",
+        "bin-dir": ".Build/bin"
     },
     "extra": {
         "typo3/cms": {
             "extension-key": "cart_books",
-            "web-dir": ".build/web"
+            "web-dir": ".Build/public"
         }
     },
     "require": {
@@ -65,5 +67,18 @@
         "typo3/cms-fluid-styled-content": "^13.4",
         "typo3/cms-install": "^13.4",
         "typo3/testing-framework": "^8.2"
+    },
+    "scripts": {
+        "project:cgl": "Build/Scripts/cgl.sh",
+        "project:cgl:fix": "Build/Scripts/cgl.sh --fix",
+        "project:lint:php": "Build/Scripts/lint-php.sh",
+        "project:lint:typoscript": "typoscript-lint -c Build/typoscriptlint.yaml Configuration",
+        "project:phpstan": "Build/Scripts/phpstan.sh",
+        "project:test:unit": "Build/Scripts/phpunit.sh unit",
+        "project:test:functional": "Build/Scripts/phpunit.sh functional",
+        "project:test:acceptance": [
+            "Composer\\Config::disableProcessTimeout",
+            "Build/Scripts/acceptance.sh"
+        ]
     }
 }
