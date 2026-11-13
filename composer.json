@@ -38,7 +38,8 @@
             "typo3/class-alias-loader": true
         },
         "vendor-dir": ".Build/vendor",
-        "bin-dir": ".Build/bin"
+        "bin-dir": ".Build/bin",
+        "lock": false
     },
     "extra": {
         "typo3/cms": {
