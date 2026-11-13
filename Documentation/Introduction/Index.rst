@@ -13,5 +13,6 @@ Cart Books provides an own data storage for books, magazines and journals. Books
    :maxdepth: 5
    :titlesonly:
 
+   SupportedVersions/Index
    Support/Index
    Sponsoring/Index
