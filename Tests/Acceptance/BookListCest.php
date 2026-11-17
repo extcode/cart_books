@@ -46,7 +46,7 @@ class BookListCest
         $I->seeElement('input[type="submit"]');
     }
 
-    public function testShowForUnvailableBooks(Tester $I): void
+    public function testShowForUnavailableBooks(Tester $I): void
     {
         $I->amOnUrl('http://127.0.0.1:8080/books/');
 
