@@ -15,6 +15,7 @@ use Extcode\Cart\Domain\Model\Cart\Product;
 use Extcode\Cart\Event\RetrieveProductsFromRequestEvent;
 use Extcode\CartBooks\Domain\Model\Book;
 use Extcode\CartBooks\Domain\Repository\BookRepository;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -43,6 +44,12 @@ final class RetrieveProductsFromRequest
         }
 
         $book = $this->bookRepository->findByUid((int)$requestArguments['book']);
+        if (!$book instanceof Book) {
+            $event->setErrors([
+                $this->createError('tx_cartbooks.error.book_not_found', ContextualFeedbackSeverity::ERROR),
+            ]);
+            return;
+        }
 
         $quantity = (int)$requestArguments['quantity'];
 
@@ -69,28 +76,33 @@ final class RetrieveProductsFromRequest
         );
     }
 
+    /**
+     * @return FlashMessage[]
+     */
     protected function checkRequestArguments(array $requestArguments): array
     {
         if (!(int)$requestArguments['book']) {
             return [
-                'messageBody' => LocalizationUtility::translate(
-                    'tx_cartbooks.error.book_not_found',
-                    'CartBooks'
-                ),
-                ContextualFeedbackSeverity::ERROR,
+                $this->createError('tx_cartbooks.error.book_not_found', ContextualFeedbackSeverity::ERROR),
             ];
         }
 
         if ((int)$requestArguments['quantity'] < 0) {
             return [
-                'messageBody' => LocalizationUtility::translate(
-                    'tx_cart.error.invalid_quantity',
-                    'CartBooks'
-                ),
-                'severity' => ContextualFeedbackSeverity::WARNING,
+                $this->createError('tx_cartbooks.error.invalid_quantity', ContextualFeedbackSeverity::WARNING),
             ];
         }
 
         return [];
+    }
+
+    private function createError(string $key, ContextualFeedbackSeverity $severity): FlashMessage
+    {
+        return new FlashMessage(
+            LocalizationUtility::translate($key, 'CartBooks') ?? $key,
+            '',
+            $severity,
+            false
+        );
     }
 }

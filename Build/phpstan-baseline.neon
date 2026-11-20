@@ -37,20 +37,8 @@ parameters:
 			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
 
 		-
-			message: '#^Method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:checkRequestArguments\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
-
-		-
 			message: '#^Method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:getCartProductFromBook\(\) has parameter \$taxClasses with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
-
-		-
-			message: '#^Parameter \#1 \$book of method Extcode\\CartBooks\\EventListener\\RetrieveProductsFromRequest\:\:getCartProductFromBook\(\) expects Extcode\\CartBooks\\Domain\\Model\\Book, TYPO3\\CMS\\Extbase\\DomainObject\\DomainObjectInterface\|null given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../Classes/EventListener/RetrieveProductsFromRequest.php
 
