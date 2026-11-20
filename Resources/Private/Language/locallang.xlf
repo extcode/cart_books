@@ -25,6 +25,12 @@
             <trans-unit id="tx_cartbooks.plugin.form.submit.error.not_enough_seets_available">
                 <source>Not enough Books available.</source>
             </trans-unit>
+            <trans-unit id="tx_cartbooks.error.book_not_found">
+                <source>The book could not be found.</source>
+            </trans-unit>
+            <trans-unit id="tx_cartbooks.error.invalid_quantity">
+                <source>The quantity is invalid.</source>
+            </trans-unit>
 
             <trans-unit id="tx_books_domain_model_book.sku">
                 <source>Stock keeping unit</source>
